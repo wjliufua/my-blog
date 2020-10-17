@@ -25,17 +25,17 @@ button {
   vertical-align: middle;
 }
 .login_from {
-  width: 500px;
+  width: 2.604167rem;
   position: relative;
-  padding: 110px 0 20px 0;
-  margin: 15% auto 0 auto;
+  padding: 0.572917rem 0 0.104167rem 0;
+  margin: 1.40625rem auto 0 auto;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 0.026042rem;
   background-color: #FFFEFE;
 }
-.head_portrait {
-  width: 150px;
-  height: 150px;
+.login_from .head_portrait {
+  width: 0.78125rem;
+  height: 0.78125rem;
   position: absolute;
   top: 0px;
   left: 50%;
@@ -43,29 +43,29 @@ button {
   border: 2px solid #ccc;
   border-radius: 50%;
   overflow: hidden;
-  box-shadow: 0 5px 5px #ccc;
+  box-shadow: 0 0.026042rem 0.026042rem #ccc;
 }
-.head_portrait img {
+.login_from .head_portrait img {
   width: 100%;
 }
-.login_input {
+.login_from .login_input {
   width: 80%;
-  height: 27px;
-  padding: 6px 10px;
-  margin: 0 auto 20px auto;
+  height: 0.140625rem;
+  padding: 0.03125rem 0.052083rem;
+  margin: 0 auto 0.104167rem auto;
   display: block;
-  font-size: 15px;
+  font-size: 0.078125rem;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 0.026042rem;
 }
-.login_button {
-  width: 150px;
-  padding: 8px 0px;
+.login_from .login_button {
+  width: 0.78125rem;
+  padding: 0.041667rem 0px;
   margin: 0 auto;
   display: block;
-  font-size: 15px;
+  font-size: 0.078125rem;
   border: 1px solid #ccc;
   background-color: #0099cb;
   color: #fff;
-  border-radius: 5px;
+  border-radius: 0.026042rem;
 }
