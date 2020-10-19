@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <title>首页</title>
     <link rel="stylesheet" href="../../public/Comment/css/comment.css">
     <link rel="stylesheet" href="../../public/Client/comment/comment.css">
@@ -33,8 +33,61 @@
     </div>
     <!-- 博客主体内容 -->
     <div class="content">
+        <!-- 文章列表 -->
         <div class="article">
-            <p title="看就完事了!">文章</p>
+            <!-- 文章列表标题 -->
+            <div class="article_title" title="看就完事了!"><i class="iconfont icon-16"></i>文章列表(你想要的都在这里哦)</div>
+            <ul>
+                <li>
+                    <!-- 博客展示图片 -->
+                    <div class="content_img">
+                        <img src="../../public/Client/images/4.jpg" alt="">
+                    </div>
+                    <!-- 博客展示内容 -->
+                    <div class="content_details">
+                        <!-- 博客展示内容标题 -->
+                        <p class="details_title">
+                            <a href="#" target="_blank"><i class="iconfont icon-huabanfuben"></i>HTML是世界上最好的语言aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</a>
+                        </p>
+                        <!-- 博客展示内容主体 -->
+                        <p class="details_content">
+                            <a href="#" target="_blank">众所周知,HTML是世界上最好的语言,什么这那那这的,花里胡哨的语言,就比如这几个php,java,javascript,c,c++,python....等等之类的语言,在HTML面前,都是弟弟哒哒哒哒哒哒多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多多哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或</a>
+                        </p>
+                        <!-- 作者信息 -->
+                        <div class="author">
+                            <!-- 作者头像 -->
+                            <div class="details_authorPhoto">
+                                <img src="../../public/admin/images/1.jpg" alt="作者头像">
+                            </div>
+                            <!-- 作者昵称 -->
+                            <div class="details_authorName"><a href="#" target="_blank">富婆</a></div>
+                            <!-- 发布日期 -->
+                            <span>0000-00-00</span>
+                            <!-- 点赞、评论、浏览次数 -->
+                            <div class="details_order">
+                                <!-- 点赞 -->
+                                <a title="奥利给!" href="#" target="_blank"><i class="iconfont icon-dianzan"></i>-999+</a>
+                                <!-- 评论 -->
+                                <a title="期待你的骚话" href="#" target="_blank"><i class="iconfont icon-pinglun1"></i>999+</a>
+                                <!-- 浏览次数 -->
+                                <a title="偷窥次数" href="#" target="_blank"><i class="iconfont icon-chakan"></i>999+</a>
+                            </div>
+                        </div>
+                        <!-- 标签 -->
+                        <div class="label">
+                            <a class="blue" href="#" target="_blank" title="node.js">node.js</a>
+                            <a class="green" href="#" target="_blank" title="java">java</a>
+                            <a class="red" href="#" target="_blank" title="python">python</a>
+                            <a class="yellow" href="#" target="_blank" title="c++">c++</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- 分类列表 -->
+        <div class="sort_list">
+            <!-- 分类标题 -->
+            <p class="sort_title"><i class="iconfont icon-sort"></i></i>分类</p>
         </div>
     </div>
     <script src="../../public/Comment/js/comment.js"></script>
