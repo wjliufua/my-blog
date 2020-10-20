@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-CN" style="min-width:1322px;">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>首页</title>
     <link rel="stylesheet" href="../../public/Comment/css/comment.css">
-    <link rel="stylesheet" href="../../public/Client/comment/comment.css">
+    <link rel="stylesheet" href="../../public/Client/comment/comment1.css">
     <link rel="stylesheet" href="../../public/Client/comment/font.css">
 </head>
 
@@ -105,7 +105,24 @@
         </div>
     </div>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
-    <script src="../../public/Comment/js/flexible.js"></script>
+    <script>
+        function displayWindowSize() {
+            // 获取窗口的宽度和高度，不包括滚动条
+            var w = document.documentElement.clientWidth;
+            var h = document.documentElement.clientHeight;
+            console.log(w, h);
+            return w;
+        }
+        // 将事件侦听器函数附加到窗口的resize事件
+        window.addEventListener("resize", displayWindowSize);
+        // 第一次调用该函数
+        displayWindowSize();
+        // $('body').css("-webkit-transform", `scale(1)`);
+        // $('body').css("-webkit-transform", `scale(${displayWindowSize() / 1920})`);
+        $('a').css("-webkit-transform", `scale(${displayWindowSize() / 1920})`);
+        $('div').css("-webkit-transform", `scale(${displayWindowSize() / 1920})`);
+    </script>
+    <!-- <script src="../../public/Comment/js/flexible.js"></script> -->
     <!-- <script src="../../public/Comment/js/fontMin.js"></script> -->
 </body>
 
