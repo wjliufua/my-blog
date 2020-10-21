@@ -12,6 +12,21 @@ function displayWindowSize() {
 window.addEventListener("resize", displayWindowSize);
 // 第一次调用该函数
 displayWindowSize();
-$('body').css("-webkit-transform", `scale(${displayWindowSize() / 1920})`);
+$('span').css("-webkit-transform", `scale(${displayWindowSize() / 1920})`);
+
+function count() {
+    var change = 1920 - displayWindowSize();
+    if (change < 400) {
+        var laji = 0.1 + (change - 400) / 100 * 0.006;
+    } else if (change > 400) {
+        var laji = 0.1 - (change - 400) / 100 * 0.006;
+    } else {
+        var laji = 0.1
+    }
+
+    return laji * (1920 - displayWindowSize());
+}
+$('.details_title span').css("margin-left", `-${count()}px`);
+// $('.article_title').css("-webkit-transform", `scale(${displayWindowSize() / 1920})`);
 // body.setAttribute("-webkit-transform", `scale(${displayWindowSize() / 1920})`);
 // })();

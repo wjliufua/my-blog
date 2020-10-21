@@ -1,0 +1,105 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+input,
+button {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-user-select: none;
+    -moz-user-focus: none;
+    -moz-user-select: none;
+    -webkit-appearance: none;
+    outline: none;
+    border: none;
+}
+
+.left_img {
+    width: 500px;
+    position: absolute;
+    left: 20%;
+    top: 50%;
+    transform: translate(0, -50%);
+    box-shadow: 10px 10px 5px #ccc;
+
+    img {
+        width: 100%;
+        vertical-align: middle;
+    }
+}
+
+// 登录/注册
+.login_register {
+
+    // 登录注册切换
+    .switch {
+        text-align: center;
+        width: 500px;
+        margin: 180px auto 120px auto;
+        font-size: 22px;
+
+        span {
+            display: inline-block;
+            padding: 17px;
+        }
+
+        span:hover {
+            color: #00B9E7;
+            cursor: pointer;
+        }
+    }
+
+    // 登录表单
+    .login_from {
+        width: 500px;
+        position: relative;
+        padding: 111px 0 20px 0;
+        margin: 0 auto;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #FFFEFE;
+
+        // 用户头像
+        .head_portrait {
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            top: 0px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 2px solid #ccc;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 5px 5px #ccc;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        // 用户输入框
+        .login_input {
+            width: 80%;
+            height: 27px;
+            padding: 6px 10px;
+            margin: 0 auto 20px auto;
+            display: block;
+            font-size: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        // 登录按钮
+        .login_button {
+            width: 150px;
+            padding: 8px 0px;
+            margin: 0 auto;
+            display: block;
+            font-size: 15px;
+            border: 1px solid #ccc;
+            background-color: rgb(0, 153, 203);
+            color: #fff;
+            border-radius: 5px;
+        }
+    }
+}

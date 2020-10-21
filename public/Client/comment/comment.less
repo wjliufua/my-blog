@@ -1,54 +1,15 @@
 html {
     background-color: rgb(245, 246, 247);
 
-    .header {
-        width: 100%;
-        height: 0.229167rem;
-        line-height: 0.229167rem;
-        background-color: #fff;
-        box-shadow: 0 0.010417rem 0.010417rem 0 #EEEEEE;
-
-        ul {
-            width: 72%;
-            margin: 0 auto;
-            overflow: hidden;
-
-            li {
-                float: left;
-                height: 0.229167rem;
-                vertical-align: middle;
-
-                a {
-                    display: block;
-                    height: 0.229167rem;
-                    padding: 0 0.104167rem;
-                    font-size: 0.104167rem;
-                    align-items: center;
-                    color: #555555;
-
-                    i {
-                        margin-right: 0.026042rem;
-                        font-size: 0.114583rem;
-                    }
-                }
-            }
-
-            a:hover {
-                background-color: #dddddd;
-                color: #D75A5A;
-            }
-        }
-    }
-
+    // 标签样式
     .label {
-
-        // height: 0.104167rem;
         a {
             display: line-block;
-            padding: 0.026042rem 0.036458rem;
-            margin-right: 0.083333rem;
-            margin-bottom: 0.083333rem;
-            border-radius: 0.026042rem;
+            padding: 5px 7px;
+            margin-right: 16px;
+            margin-bottom: 16px;
+            border-radius: 5px;
+            font-size: 13px;
         }
 
         .blue {
@@ -76,30 +37,100 @@ html {
         }
     }
 
+    // 超链接下划线
+    .a_underline:hover {
+        text-decoration: underline;
+    }
+
+    // 头部导航栏
+    .header {
+        width: 100%;
+        height: 44px;
+        line-height: 44px;
+        background-color: #fff;
+        box-shadow: 0 2px 2px 0 #EEEEEE;
+
+        .header_center {
+            display: flex;
+            justify-content: space-between;
+            width: 1382.5px;
+            margin: 0 auto;
+
+            .lg {
+                position: relative;
+                width: 70px;
+                height: 70px;
+                overflow: hidden;
+                border-radius: 50%;
+
+                img {
+                    position: absolute;
+                    top: -20px;
+                    width: 100%;
+                }
+            }
+
+            ul {
+                overflow: hidden;
+
+                li {
+                    float: left;
+                    height: 44px;
+                    vertical-align: middle;
+
+                    a {
+                        display: block;
+                        height: 44px;
+                        padding: 0 20px;
+                        font-size: 18px;
+                        align-items: center;
+                        color: #555555;
+
+                        i {
+                            margin-right: 5px;
+                            font-size: 18px;
+                        }
+                    }
+                }
+
+                a:hover {
+                    background-color: #dddddd;
+                    color: #D75A5A;
+                }
+            }
+        }
+    }
+
+    // 博客主体内容
     .content {
         display: flex;
         justify-content: space-between;
-        width: 72%;
-        margin: 0.260417rem auto;
-        // border: 1px solid #ccc;
+        width: 1382.5px;
+        margin: 50px auto;
 
+        // 文章列表
         .article {
             width: 72%;
-            // margin: 0 1% 0 0;
             border-top: 1px solid #A7A7A7;
             border-left: 1px solid #A7A7A7;
             border-right: 1px solid #A7A7A7;
             border-radius: 5px;
 
+            // 文章列表标题
             .article_title {
-                padding: 0.078125rem 0.104167rem;
-                font-size: 0.09375rem;
+                padding: 15px 30px;
+                overflow: hidden;
+                font-size: 17px;
                 border-bottom: 2px solid #23985B;
                 color: #555555;
 
-                i {
-                    margin-right: 7px;
-                    font-size: 0.09375rem;
+                span {
+                    float: left;
+
+                    i {
+                        margin-right: 7px;
+                        font-size: 17px;
+                    }
                 }
             }
 
@@ -107,16 +138,16 @@ html {
                 &>li {
                     display: flex;
                     align-items: center;
-                    height: 1.5625rem;
-                    padding: 0.14rem 0.16rem;
+                    padding: 27px 31px;
                     border-bottom: 1px solid #ccc;
 
+                    // 博客展示图片
                     .content_img {
                         display: flex;
                         align-items: center;
                         overflow: hidden;
-                        width: 1.8rem;
-                        height: 100%;
+                        width: 350px;
+                        height: 290px;
                         border-radius: 5px;
                         border: 1px solid #E3E3E3;
 
@@ -125,61 +156,57 @@ html {
                         }
                     }
 
+                    // 博客展示内容
                     .content_details {
                         flex: 1;
-                        width: 2.723958rem;
-                        height: 100%;
-                        padding: 0.15625rem 0.104167rem 0 0.364583rem;
+                        width: 520px;
+                        padding: 27px 20px 0 70px;
                         box-sizing: border-box;
 
+                        // 博客展示内容标题
                         .details_title {
-                            width: 100%;
                             white-space: nowrap;
                             text-overflow: ellipsis;
                             overflow: hidden;
-                            margin-bottom: 0.140625rem;
-                            font-size: 0.104167rem;
+                            width: 100%;
+                            margin-bottom: 25px;
+                            font-size: 20px;
 
                             a {
                                 color: #383838;
 
                                 i {
-                                    font-size: 0.104167rem;
-                                    margin-right: 0.036458rem;
+                                    font-size: 20px;
+                                    margin-right: 7px;
                                 }
-                            }
-
-                            a:hover {
-                                text-decoration: underline;
                             }
                         }
 
+                        // 博客展示内容主体
                         .details_content {
-                            height: 0.4375rem;
-                            margin-bottom: 0.140625rem;
+                            height: 84px;
+                            margin-bottom: 25px;
                             overflow: hidden;
                             text-overflow: ellipsis;
                             display: -webkit-box;
                             -webkit-box-orient: vertical;
                             -webkit-line-clamp: 4;
-                            font-size: 0.083333rem;
+                            font-size: 15px;
 
                             a {
                                 color: #383838;
                             }
-
-                            a:hover {
-                                text-decoration: underline;
-                            }
                         }
 
+                        // 作者信息
                         .author {
                             display: flex;
                             align-items: center;
-                            margin-bottom: 0.15625rem;
+                            margin-bottom: 25px;
 
+                            // 作者头像
                             .details_authorPhoto {
-                                width: 0.197917rem;
+                                width: 38px;
                                 overflow: hidden;
                                 border: 1px solid #DBDBDB;
                                 border-radius: 50%;
@@ -189,111 +216,117 @@ html {
                                 }
                             }
 
+                            // 作者昵称
                             .details_authorName {
-                                margin: 0 0.078125rem;
-                                font-size: 0.078125rem;
+                                margin: 0 15px;
+                                font-size: 14px;
 
                                 a {
                                     color: #3DA0CE;
                                 }
-
-                                a:hover {
-                                    text-decoration: underline;
-                                }
                             }
 
+                            // 发布日期
+                            span {
+                                font-size: 14px;
+                            }
+
+                            // 点赞、评论、浏览次数
                             .details_order {
                                 display: flex;
                                 align-items: center;
-                                padding: 0 0.078125rem;
+                                padding: 0 15px;
 
                                 a {
-                                    margin: 0 0.036458rem;
+                                    margin: 0 6px;
                                     color: #555555;
+                                    font-size: 14px;
 
                                     i {
-                                        padding: 0 0.026042rem;
-                                        font-size: 0.078125rem;
+                                        padding: 0 5px;
+                                        font-size: 14px;
                                     }
-                                }
-
-                                a:hover {
-                                    text-decoration: underline;
                                 }
                             }
                         }
-
-                        // .label {
-
-                        //     // height: 0.104167rem;
-                        //     a {
-                        //         display: line-block;
-                        //         padding: 0.026042rem 0.036458rem;
-                        //         margin-right: 0.083333rem;
-                        //         border-radius: 0.026042rem;
-                        //     }
-
-                        //     .blue {
-                        //         border: 2px solid #0099E0;
-                        //         background-color: #89FDFF;
-                        //         color: #2794C7;
-                        //     }
-
-                        //     .green {
-                        //         border: 2px solid #00AD5C;
-                        //         background-color: #7FFFDA;
-                        //         color: #3AB18F;
-                        //     }
-
-                        //     .red {
-                        //         border: 2px solid #FF1A1A;
-                        //         background-color: #FFC8C8;
-                        //         color: #FF2323;
-                        //     }
-
-                        //     .yellow {
-                        //         border: 2px solid #D6DB00;
-                        //         background-color: #FEFFCA;
-                        //         color: #BFC330;
-                        //     }
-                        // }
                     }
                 }
             }
         }
 
-        .sort_list {
+        // 右侧导航列表
+        .list {
+            display: flex;
+            flex-direction: column;
             width: 26%;
-            border: 1px solid #ccc;
 
-            .sort_title {
+            // 标题共用
+            .com_title {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                padding: 0.0625rem 0.104167rem;
+                padding: 11px 20px;
                 color: #fff;
-                background-color: #FF6969;
-                font-size: 0.09375rem;
-                border-bottom: 1px solid #FF3E3E;
+                font-size: 16px;
 
                 i {
-                    margin-right: 0.036458rem;
-                    font-size: 0.09375rem;
+                    margin-right: 7px;
+                    font-size: 16px;
                 }
 
                 a {
                     color: #fff;
                 }
+            }
 
-                a:hover {
-                    text-decoration: underline;
+            // 分类列表
+            .sort_list {
+                height: 162px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                margin-bottom: 25px;
+
+                // 分类标题
+                .sort_title {
+                    background-color: #FF6969;
+                    border-bottom: 1px solid #FF3E3E;
+                }
+
+                // 分类标签
+                .sort_label {
+                    display: flex;
+                    flex-wrap: wrap;
+                    padding: 20px 20px 4px 20px;
                 }
             }
 
-            .sort_label {
-                display: flex;
-                flex-wrap: wrap;
-                padding: 0.104167rem;
+            // 最近查看列表
+            .browse_list {
+                border: 1px solid #ccc;
+                border-radius: 5px;
+
+                // 最近查看标题
+                .browse_title {
+                    background-color: #00ECF7;
+                    border-bottom: 1px solid #00B5CA;
+                }
+
+                // 最近查看内容
+                .browse_content {
+                    ul {
+                        li {
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                            padding: 11px 20px;
+                            border-bottom: 1px solid #ccc;
+
+                            a {
+                                color: #7E7E7E;
+                            }
+                        }
+                    }
+                }
             }
         }
     }
