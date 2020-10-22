@@ -24,28 +24,56 @@ button {
   width: 100%;
   vertical-align: middle;
 }
+.login_register button:hover {
+  cursor: pointer;
+}
+.login_register .comtent_from {
+  width: 500px;
+  position: relative;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #FFFEFE;
+}
+.login_register .user_input {
+  width: 80%;
+  height: 27px;
+  padding: 6px 10px;
+  margin: 0 auto 20px auto;
+  display: block;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.login_register .submit_button {
+  width: 150px;
+  padding: 8px 0px;
+  margin: 0 auto;
+  display: block;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  background-color: #0099cb;
+  color: #fff;
+  border-radius: 5px;
+}
 .login_register .switch {
   text-align: center;
   width: 500px;
-  margin: 180px auto 120px auto;
+  margin: 130px auto 0 auto;
   font-size: 22px;
+}
+.login_register .switch .click {
+  color: red;
 }
 .login_register .switch span {
   display: inline-block;
   padding: 17px;
 }
 .login_register .switch span:hover {
-  color: #00B9E7;
   cursor: pointer;
 }
 .login_register .login_from {
-  width: 500px;
-  position: relative;
   padding: 111px 0 20px 0;
-  margin: 0 auto;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #FFFEFE;
+  margin: 90px auto 0 auto;
 }
 .login_register .login_from .head_portrait {
   width: 150px;
@@ -62,24 +90,33 @@ button {
 .login_register .login_from .head_portrait img {
   width: 100%;
 }
-.login_register .login_from .login_input {
-  width: 80%;
-  height: 27px;
-  padding: 6px 10px;
-  margin: 0 auto 20px auto;
-  display: block;
-  font-size: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-.login_register .login_from .login_button {
-  width: 150px;
-  padding: 8px 0px;
+.login_register .register_from {
+  padding: 40px 0 20px 0;
   margin: 0 auto;
+}
+.login_register .register_from span {
   display: block;
-  font-size: 15px;
-  border: 1px solid #ccc;
-  background-color: #0099cb;
-  color: #fff;
+  text-align: center;
+  margin-bottom: 22px;
+  color: #0099cb;
+  font-size: 17px;
+}
+.login_register .register_from .verification {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 84%;
+  margin: 0 auto 20px auto;
+}
+.login_register .register_from .verification .verification_input {
+  width: 70%;
+  margin: 0;
+}
+.login_register .register_from .verification button {
+  height: 33px;
+  padding: 0 22px;
   border-radius: 5px;
+  background-color: #006672;
+  color: #fff;
+  font-size: 14px;
 }

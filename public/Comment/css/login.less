@@ -31,12 +31,55 @@ button {
 // 登录/注册
 .login_register {
 
+    // 按钮变小手
+    button:hover {
+        cursor: pointer;
+    }
+
+    // 表单
+    .comtent_from {
+        width: 500px;
+        position: relative;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #FFFEFE;
+    }
+
+    // 用户输入框
+    .user_input {
+        width: 80%;
+        height: 27px;
+        padding: 6px 10px;
+        margin: 0 auto 20px auto;
+        display: block;
+        font-size: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    // 登录按钮
+    .submit_button {
+        width: 150px;
+        padding: 8px 0px;
+        margin: 0 auto;
+        display: block;
+        font-size: 15px;
+        border: 1px solid #ccc;
+        background-color: rgb(0, 153, 203);
+        color: #fff;
+        border-radius: 5px;
+    }
+
     // 登录注册切换
     .switch {
         text-align: center;
         width: 500px;
-        margin: 180px auto 120px auto;
+        margin: 130px auto 0 auto;
         font-size: 22px;
+
+        .click {
+            color: red;
+        }
 
         span {
             display: inline-block;
@@ -44,20 +87,14 @@ button {
         }
 
         span:hover {
-            color: #00B9E7;
             cursor: pointer;
         }
     }
 
     // 登录表单
     .login_from {
-        width: 500px;
-        position: relative;
         padding: 111px 0 20px 0;
-        margin: 0 auto;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        background-color: #FFFEFE;
+        margin: 90px auto 0 auto;
 
         // 用户头像
         .head_portrait {
@@ -76,30 +113,42 @@ button {
                 width: 100%;
             }
         }
+    }
 
-        // 用户输入框
-        .login_input {
-            width: 80%;
-            height: 27px;
-            padding: 6px 10px;
-            margin: 0 auto 20px auto;
+    // 注册表单
+    .register_from {
+        padding: 40px 0 20px 0;
+        margin: 0 auto;
+
+        span {
             display: block;
-            font-size: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            text-align: center;
+            margin-bottom: 22px;
+            color: rgb(0, 153, 203);
+            font-size: 17px;
         }
 
-        // 登录按钮
-        .login_button {
-            width: 150px;
-            padding: 8px 0px;
-            margin: 0 auto;
-            display: block;
-            font-size: 15px;
-            border: 1px solid #ccc;
-            background-color: rgb(0, 153, 203);
-            color: #fff;
-            border-radius: 5px;
+        // 注册验证
+        .verification {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 84%;
+            margin: 0 auto 20px auto;
+
+            .verification_input {
+                width: 70%;
+                margin: 0;
+            }
+
+            button {
+                height: 33px;
+                padding: 0 22px;
+                border-radius: 5px;
+                background-color: #006672;
+                color: #fff;
+                font-size: 14px;
+            }
         }
     }
 }

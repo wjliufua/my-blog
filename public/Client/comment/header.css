@@ -1,0 +1,49 @@
+.header {
+  width: 100%;
+  height: 44px;
+  line-height: 44px;
+  background-color: #fff;
+  box-shadow: 0 2px 2px 0 #EEEEEE;
+}
+.header .header_center {
+  display: flex;
+  justify-content: space-between;
+  width: 1382.5px;
+  margin: 0 auto;
+}
+.header .header_center .lg {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.header .header_center .lg img {
+  position: absolute;
+  top: -20px;
+  width: 100%;
+}
+.header .header_center ul {
+  overflow: hidden;
+}
+.header .header_center ul li {
+  float: left;
+  height: 44px;
+  vertical-align: middle;
+}
+.header .header_center ul li a {
+  display: block;
+  height: 44px;
+  padding: 0 20px;
+  font-size: 18px;
+  align-items: center;
+  color: #555555;
+}
+.header .header_center ul li a i {
+  margin-right: 5px;
+  font-size: 18px;
+}
+.header .header_center ul a:hover {
+  background-color: #dddddd;
+  color: #D75A5A;
+}
