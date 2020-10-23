@@ -1,0 +1,37 @@
+.opinion {
+  width: 45%;
+  margin: 0 auto;
+  padding: 70px 0;
+}
+.opinion ul li {
+  padding: 20px 30px;
+}
+.opinion ul li .opinion_content {
+  display: flex;
+  align-items: center;
+}
+.opinion ul li .opinion_content > a {
+  height: 100%;
+  margin-right: 11px;
+}
+.opinion ul li .opinion_content > a img {
+  display: block;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.opinion ul li .opinion_content .comment {
+  flex: 1;
+  font-size: 14px;
+}
+.opinion ul li .opinion_content .comment .comment_box > a:hover {
+  text-decoration: underline;
+}
+.opinion ul li .opinion_content .comment .comment_box .colon {
+  padding: 0 7px;
+}
+.opinion ul li .opinion_content .comment .comment_box .date {
+  padding: 0 10px;
+}
