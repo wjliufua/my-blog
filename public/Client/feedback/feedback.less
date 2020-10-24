@@ -1,25 +1,22 @@
-.opinion {
-    width: 45%;
-    margin: 0 auto;
-    padding: 70px 0;
+body {
+    background-color: #fff;
 
-    ul {
-        li {
-            padding: 20px 30px;
+    .opinion {
+        width: 45%;
+        margin: 0 auto;
+        padding: 70px 0;
 
-            .opinion_content {
-                display: flex;
-                align-items: center;
+        ul {
+            li {
+                padding: 20px 30px;
+                background-color: #FAFAFA;
 
-                &>a {
-                    height: 100%;
-                    margin-right: 11px;
+                .opinion_content {
+                    display: flex;
+                    vertical-align: middle;
 
-                    // span {
-                    //     display: inline-block;
-                    //     overflow: hidden;
-                    //     width: 35px;
-                    //     // height: 35px;
+                    &>a {
+                        margin-right: 11px;
 
                         img {
                             display: block;
@@ -29,29 +26,124 @@
                             border: 1px solid #ccc;
                             box-sizing: border-box;
                         }
-                    // }
+                    }
+
+                    .comment {
+                        display: flex;
+                        align-items: center;
+                        font-size: 14px;
+
+                        .comment_box {
+                            & a {
+                                color: #00E0FA;
+                            }
+
+                            &>a img {
+                                max-height: 19px;
+                                max-width: 100%;
+                                vertical-align: top;
+                            }
+
+                            .colon {
+                                padding: 0 7px;
+                            }
+
+                            .new-comment {}
+
+                            .comment_operate {
+                                display: flex;
+                                justify-content: flex-end;
+
+                                .date {
+                                    padding: 0 10px;
+                                }
+
+                                .reply_button {}
+                            }
+                        }
+                    }
                 }
 
-                .comment {
-                    flex: 1;
+                .reply {
+                    padding-left: 20px;
                     font-size: 14px;
 
-                    .comment_box {
-                        &>a:hover {
-                            text-decoration: underline;
+                    .reply_news {
+                        // display: flex;
+                        // align-items: center;
+                        // align-items: baseline;
+                        // vertical-align: middle;
+                        // overflow: hidden;
+
+                        .news_content {
+                            // display: block;
+                            // float: left;
+                            display: inline-block;
+
+                            .concrete_content {
+                                display: flex;
+                                align-items: center;
+
+                                .reply_autor {
+                                    display: flex;
+                                    align-items: center;
+
+                                    .reply_ph {
+                                        display: inline-block;
+                                        overflow: hidden;
+                                        width: 35px;
+                                        height: 35px;
+                                        border-radius: 50%;
+                                        border: 1px solid #ccc;
+
+                                        a {
+                                            img {
+                                                max-width: 100%;
+                                                max-height: 100%;
+                                            }
+                                        }
+                                    }
+
+                                    .reply_name {
+                                        margin: 0 9px;
+                                    }
+
+                                    .reply_label {
+                                        display: inline-block;
+                                        height: 19px;
+                                        // margin-right: 7px;
+
+                                        a {
+                                            img {
+                                                max-width: 100%;
+                                                max-height: 100%;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .reply_text {
+                                    margin: 0 9px;
+                                }
+
+                                .reply_colon {
+                                    margin-right: 9px;
+                                }
+                            }
                         }
 
-                        .colon {
-                            padding: 0 7px;
+                        .reply_content {
+                            // display: block;
+                            // float: left;
+                            // align-self: center;
+                            // flex: 1;
+                            // display: inline-block;
+                            // height: 59px;
+                            // line-height: 20px;
+                            // display: flex;
+                            // align-items: center;
+                            // margin-top: -10px;
                         }
-
-                        .new-comment {}
-
-                        .date {
-                            padding: 0 10px;
-                        }
-
-                        .reply {}
                     }
                 }
             }

@@ -1,20 +1,23 @@
-.opinion {
+body {
+  background-color: #fff;
+}
+body .opinion {
   width: 45%;
   margin: 0 auto;
   padding: 70px 0;
 }
-.opinion ul li {
+body .opinion ul li {
   padding: 20px 30px;
+  background-color: #FAFAFA;
 }
-.opinion ul li .opinion_content {
+body .opinion ul li .opinion_content {
   display: flex;
-  align-items: center;
+  vertical-align: middle;
 }
-.opinion ul li .opinion_content > a {
-  height: 100%;
+body .opinion ul li .opinion_content > a {
   margin-right: 11px;
 }
-.opinion ul li .opinion_content > a img {
+body .opinion ul li .opinion_content > a img {
   display: block;
   width: 35px;
   height: 35px;
@@ -22,16 +25,70 @@
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
-.opinion ul li .opinion_content .comment {
-  flex: 1;
+body .opinion ul li .opinion_content .comment {
+  display: flex;
+  align-items: center;
   font-size: 14px;
 }
-.opinion ul li .opinion_content .comment .comment_box > a:hover {
-  text-decoration: underline;
+body .opinion ul li .opinion_content .comment .comment_box a {
+  color: #00E0FA;
 }
-.opinion ul li .opinion_content .comment .comment_box .colon {
+body .opinion ul li .opinion_content .comment .comment_box > a img {
+  max-height: 19px;
+  max-width: 100%;
+  vertical-align: top;
+}
+body .opinion ul li .opinion_content .comment .comment_box .colon {
   padding: 0 7px;
 }
-.opinion ul li .opinion_content .comment .comment_box .date {
+body .opinion ul li .opinion_content .comment .comment_box .comment_operate {
+  display: flex;
+  justify-content: flex-end;
+}
+body .opinion ul li .opinion_content .comment .comment_box .comment_operate .date {
   padding: 0 10px;
+}
+body .opinion ul li .reply {
+  padding-left: 20px;
+  font-size: 14px;
+}
+body .opinion ul li .reply .reply_news .news_content {
+  display: inline-block;
+}
+body .opinion ul li .reply .reply_news .news_content .concrete_content {
+  display: flex;
+  align-items: center;
+}
+body .opinion ul li .reply .reply_news .news_content .concrete_content .reply_autor {
+  display: flex;
+  align-items: center;
+}
+body .opinion ul li .reply .reply_news .news_content .concrete_content .reply_autor .reply_ph {
+  display: inline-block;
+  overflow: hidden;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+}
+body .opinion ul li .reply .reply_news .news_content .concrete_content .reply_autor .reply_ph a img {
+  max-width: 100%;
+  max-height: 100%;
+}
+body .opinion ul li .reply .reply_news .news_content .concrete_content .reply_autor .reply_name {
+  margin: 0 9px;
+}
+body .opinion ul li .reply .reply_news .news_content .concrete_content .reply_autor .reply_label {
+  display: inline-block;
+  height: 19px;
+}
+body .opinion ul li .reply .reply_news .news_content .concrete_content .reply_autor .reply_label a img {
+  max-width: 100%;
+  max-height: 100%;
+}
+body .opinion ul li .reply .reply_news .news_content .concrete_content .reply_text {
+  margin: 0 9px;
+}
+body .opinion ul li .reply .reply_news .news_content .concrete_content .reply_colon {
+  margin-right: 9px;
 }
