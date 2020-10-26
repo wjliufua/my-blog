@@ -1,0 +1,42 @@
+.side {
+    color: #fff;
+    background-color: #333333;
+
+    &>span {
+        display: inline-block;
+        width: 100%;
+        padding: 22px 0;
+        border-bottom: 1px solid #000;
+        text-align: center;
+    }
+
+    ul {
+        padding: 0 60px;
+
+        li {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+
+            a {
+                padding-left: 7px;
+                flex: 1;
+                color: #fff;
+            }
+
+            span {
+                display: inline-block;
+                width: 0;
+                height: 0;
+                border-top: 30px;
+                border-width: 6px;
+                border-color: #fff transparent transparent;
+                border-style: solid dashed dashed;
+            }
+        }
+
+        li:hover {
+            cursor: pointer;
+        }
+    }
+}

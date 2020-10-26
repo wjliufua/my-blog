@@ -24,6 +24,12 @@ button {
   width: 100%;
   vertical-align: middle;
 }
+.login_register {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -80%);
+}
 .login_register button:hover {
   cursor: pointer;
 }
@@ -58,7 +64,7 @@ button {
 .login_register .switch {
   text-align: center;
   width: 500px;
-  margin: 130px auto 0 auto;
+  margin: 0 auto 0 auto;
   font-size: 22px;
 }
 .login_register .switch .click {

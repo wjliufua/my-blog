@@ -1,0 +1,7 @@
+body {
+  background-color: #eeeeee;
+}
+body .all {
+  display: flex;
+  justify-content: space-between;
+}
