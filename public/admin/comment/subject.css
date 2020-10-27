@@ -1,0 +1,55 @@
+.subject {
+  flex: 1;
+}
+.subject .header {
+  display: flex;
+  justify-content: space-between;
+  padding: 17px;
+  background-color: #fff;
+  box-shadow: 5px 5px 5px #E0E0E0;
+}
+.subject .header a {
+  color: #6D6D6D;
+}
+.subject .header .header_left {
+  display: flex;
+  flex-direction: row;
+  font-size: 15px;
+}
+.subject .header .header_left li {
+  height: 100%;
+  padding: 0 13px;
+}
+.subject .header .header_left li a {
+  height: 100%;
+}
+.subject .header .header_right {
+  display: flex;
+  flex-direction: row;
+  font-size: 15px;
+}
+.subject .header .header_right li {
+  padding: 0 13px;
+}
+.subject .header .header_right li a cite {
+  font-style: normal;
+}
+.subject .header .header_right li a span {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: 30px;
+  border-width: 6px;
+  border-color: #6D6D6D transparent transparent;
+  border-style: solid dashed dashed;
+}
+.subject .body {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px 0;
+}
+.subject .body .chart span {
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+}

@@ -9,32 +9,123 @@
     <link rel="stylesheet" href="../../public/Comment/css/comment.css">
     <!-- 公共字体(全体通用) -->
     <link rel="stylesheet" href="../../public/Comment/css/font.css">
-    <!-- 客户端头部 -->
-    <link rel="stylesheet" href="../../public/admin/comment/header.css">
+    <!-- 客户端主体内容 -->
+    <link rel="stylesheet" href="../../public/admin/comment/subject.css">
     <!-- 客户端侧边栏 -->
     <link rel="stylesheet" href="../../public/admin/comment/side.css">
     <!-- 管理页面样式 -->
     <link rel="stylesheet" href="../../public/admin/index/index.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/echarts/2.1.10/echarts-all.js"></script> -->
+    <script src="../../public/Comment/js/echarts.js"></script>
 </head>
 
 <body>
     <div class="all">
         <!-- 侧边 -->
         <div class="side">
-            <span>my-blog博客管理后台</span>
+            <div>
+                <span class="kong"></span>
+                <span>my-blog博客管理后台</span>
+                <span class="kong"></span>
+            </div>
             <ul>
                 <li>
                     <i class="iconfont icon-daohangshouye"></i>
-                    <a href="javascript">主页</a>
+                    <a href="javascript:;">主页</a>
+                    <!-- <span></span> -->
+                </li>
+                <li>
+                    <i class="iconfont icon--yemianliebiao"></i>
+                    <a href="javascript:;">页面</a>
+                    <span></span>
+                </li>
+                <li>
+                    <i class="iconfont icon-yonghu"></i>
+                    <a href="javascript:;">用户</a>
+                    <span></span>
+                </li>
+                <li>
+                    <i class="iconfont icon-daohangshouye"></i>
+                    <a href="javascript:;">主页</a>
+                    <!-- <span></span> -->
+                </li>
+                <li>
+                    <i class="iconfont icon-daohangshouye"></i>
+                    <a href="javascript:;">主页</a>
+                    <!-- <span></span> -->
+                </li>
+                <li>
+                    <i class="iconfont icon-daohangshouye"></i>
+                    <a href="javascript:;">主页</a>
+                    <!-- <span></span> -->
+                </li>
+                <li>
+                    <i class="iconfont icon-shezhi"></i>
+                    <a href="javascript:;">设置</a>
                     <span></span>
                 </li>
             </ul>
         </div>
-        <!-- 头部 -->
-        <div class="header">
-
+        <!-- 主体内容 -->
+        <div class="subject">
+            <!-- 头部 -->
+            <div class="header">
+                <ul class="header_left">
+                    <li>
+                        <a href="javascript:;"><i class="iconfont icon-backward-a"></i></a>
+                    </li>
+                    <li>
+                        <a href="javascript:;"><i class="iconfont icon-hulianwang"></i></a>
+                    </li>
+                    <li>
+                        <a href="javascript:;"><i class="iconfont icon-shuaxin"></i></a>
+                    </li>
+                </ul>
+                <ul class="header_right">
+                    <li>
+                        <a href="javascript:;"><i class="iconfont icon-beijingtupian"></i></a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <cite>富婆</cite>
+                            <span></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="body">
+                <div class="chart">
+                    <span>网站访问量</span>
+                    <div id="main" style="width: 600px;height:400px;"></div>
+                </div>
+            </div>
         </div>
     </div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        option = {
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [{
+                data: [820, 932, 901, 934, 1290, 1330, 1320],
+                type: 'line',
+                areaStyle: {}
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
 </body>
 
 </html>

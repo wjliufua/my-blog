@@ -1,42 +1,62 @@
-.side {
-    color: #fff;
-    background-color: #333333;
+html,
+body {
+    height: 100%;
 
-    &>span {
-        display: inline-block;
-        width: 100%;
-        padding: 22px 0;
-        border-bottom: 1px solid #000;
-        text-align: center;
-    }
+    .all {
+        height: 100%;
 
-    ul {
-        padding: 0 60px;
+        .side {
+            height: 100%;
+            color: #fff;
+            font-size: 15px;
+            background-color: #333333;
 
-        li {
-            display: flex;
-            align-items: center;
-            padding: 12px 20px;
+            & div {
+                width: 100%;
+                padding: 17px 0;
+                text-align: center;
+                border-bottom: 1px solid #000;
 
-            a {
-                padding-left: 7px;
-                flex: 1;
-                color: #fff;
+                span {
+                    display: inline-block;
+                }
+
+                .kong {
+                    width: 50px;
+                }
             }
 
-            span {
-                display: inline-block;
-                width: 0;
-                height: 0;
-                border-top: 30px;
-                border-width: 6px;
-                border-color: #fff transparent transparent;
-                border-style: solid dashed dashed;
-            }
-        }
+            ul {
+                padding: 0 22px;
 
-        li:hover {
-            cursor: pointer;
+                li {
+                    display: flex;
+                    align-items: center;
+                    padding: 22px 0;
+
+                    a {
+                        padding-left: 17px;
+                        flex: 1;
+                        color: #fff;
+                    }
+
+                    span {
+                        display: inline-block;
+                        width: 0;
+                        height: 0;
+                        border-top: 30px;
+                        border-width: 6px;
+                        padding-top: -4px;
+                        border-color: #fff transparent transparent;
+                        border-style: solid dashed dashed;
+                    }
+                }
+
+                li:hover {
+                    cursor: pointer;
+                }
+
+            }
         }
     }
 }
