@@ -45,11 +45,132 @@
 }
 .subject .body {
   display: flex;
+  align-items: flex-start;
   flex-wrap: wrap;
-  padding: 20px 0;
 }
-.subject .body .chart span {
+.subject .body .essential_information {
+  display: flex;
+  width: 100%;
+  padding: 50px 0;
+}
+.subject .body .essential_information .comment {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 17px 46px;
+  margin: 0 50px;
+  border-radius: 5px;
+  background-color: #fff;
+}
+.subject .body .essential_information .comment i {
+  font-size: 36px;
+}
+.subject .body .essential_information .comment span {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.subject .body .essential_information .comment span a {
+  font-size: 16px;
+  color: #646464;
+  text-align: center;
+}
+.subject .body .essential_information .comment span > a:nth-child(1) {
+  margin-bottom: 11px;
+}
+.subject .body .essential_information .comment span > a:nth-child(2) {
+  font-weight: 600;
+}
+.subject .body .essential_information .comment:hover {
+  cursor: pointer;
+}
+.subject .body .essential_information .cumulative_user i {
+  color: #DB3333;
+}
+.subject .body .essential_information .cumulative_opinion i {
+  color: #00C3D3;
+}
+.subject .body .essential_information .cumulative_article i {
+  color: #00D39D;
+}
+.subject .body .essential_information .cumulative_visits i {
+  color: #FFA721;
+}
+.subject .body .statistics {
+  width: 100%;
+  padding: 0 30px;
+  display: flex;
+  justify-content: space-between;
+}
+.subject .body .statistics .chart_number {
+  background-color: #fff;
+}
+.subject .body .statistics .chart_number span {
   display: block;
   text-align: center;
   margin: 0 auto;
+  margin-top: 50px;
+  font-size: 30px;
+}
+.subject .body .statistics .chart_number #main {
+  width: 1000px;
+  height: 600px;
+}
+.subject .body .statistics .other #source {
+  width: 500px;
+  height: 300px;
+  padding: 18px 25px;
+  background-color: #fff;
+}
+.subject .body .statistics .other .contrast {
+  width: 500px;
+  height: 300px;
+  margin-top: 40px;
+  padding: 20px 25px;
+  background-color: #fff;
+}
+.subject .body .statistics .other .contrast > span {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  color: #444444;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #4D4D4D;
+}
+.subject .body .statistics .other .contrast p {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0;
+  padding-right: 20px;
+}
+.subject .body .statistics .other .contrast p a span {
+  display: inline-block;
+  width: 0px;
+  height: 0px;
+  border-top: 30px;
+  border-width: 6px;
+  margin-bottom: 3px;
+  margin-left: 10px;
+  border-color: transparent transparent #6D6D6D transparent;
+  border-style: solid dashed dashed;
+}
+.subject .body .statistics .other .contrast .container {
+  overflow: hidden;
+  width: 100%;
+  border-radius: 5px;
+  background-color: #ddd;
+}
+.subject .body .statistics .other .contrast .container .skills {
+  text-align: right;
+  height: 10px;
+  color: white;
+}
+.subject .body .statistics .other .contrast .container .ri {
+  width: 50%;
+  background-color: #4CAF50;
+}
+.subject .body .statistics .other .contrast .container .yue {
+  width: 80%;
+  background-color: #2196F3;
 }

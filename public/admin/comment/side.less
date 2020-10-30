@@ -1,12 +1,8 @@
 html,
 body {
-    height: 100%;
-
     .all {
-        height: 100%;
-
         .side {
-            height: 100%;
+            // height: 100vh;
             color: #fff;
             font-size: 15px;
             background-color: #333333;
@@ -18,6 +14,7 @@ body {
                 border-bottom: 1px solid #000;
 
                 span {
+                    font-size: 15px;
                     display: inline-block;
                 }
 
@@ -27,12 +24,11 @@ body {
             }
 
             ul {
-                padding: 0 22px;
-
                 li {
                     display: flex;
                     align-items: center;
-                    padding: 22px 0;
+                    box-sizing: border-box;
+                    padding: 20px 22px;
 
                     a {
                         padding-left: 17px;
@@ -54,6 +50,8 @@ body {
 
                 li:hover {
                     cursor: pointer;
+                    transition: border-left 1s;
+                    // border-left: 3px solid #fff;
                 }
 
             }
