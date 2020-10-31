@@ -4,48 +4,78 @@ body .all .side {
   font-size: 15px;
   background-color: #333333;
 }
-html .all .side div,
-body .all .side div {
-  width: 100%;
+html .all .side .side_title,
+body .all .side .side_title {
+  width: 260px;
   padding: 17px 0;
   text-align: center;
   border-bottom: 1px solid #000;
 }
-html .all .side div span,
-body .all .side div span {
+html .all .side .side_title span,
+body .all .side .side_title span {
   font-size: 15px;
   display: inline-block;
 }
-html .all .side div .kong,
-body .all .side div .kong {
-  width: 50px;
+html .all .side ul,
+body .all .side ul {
+  position: relative;
 }
-html .all .side ul li,
-body .all .side ul li {
+html .all .side ul li .sidelicenter,
+body .all .side ul li .sidelicenter {
   display: flex;
   align-items: center;
-  box-sizing: border-box;
-  padding: 20px 22px;
+  width: 75%;
+  height: 60px;
+  line-height: 60px;
+  margin: 0 auto;
 }
-html .all .side ul li a,
-body .all .side ul li a {
+html .all .side ul li .sidelicenter a,
+body .all .side ul li .sidelicenter a {
   padding-left: 17px;
   flex: 1;
   color: #fff;
 }
-html .all .side ul li span,
-body .all .side ul li span {
+html .all .side ul li .sidelicenter .side_pull,
+body .all .side ul li .sidelicenter .side_pull {
   display: inline-block;
   width: 0;
   height: 0;
-  border-top: 30px;
   border-width: 6px;
-  padding-top: -4px;
+  border: 7px;
+  transition: all 0.2s;
   border-color: #fff transparent transparent;
   border-style: solid dashed dashed;
+}
+html .all .side ul li dl,
+body .all .side ul li dl {
+  background-color: #3C3C3C;
+}
+html .all .side ul li dl dd a,
+body .all .side ul li dl dd a {
+  display: inline-block;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  padding-left: 50px;
+  box-sizing: border-box;
+  color: #fff;
+}
+html .all .side ul li dl dd:hover,
+body .all .side ul li dl dd:hover {
+  background-color: #818181;
+}
+html .all .side ul .left_animation,
+body .all .side ul .left_animation {
+  display: block;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  height: 60px;
+  width: 3px;
+  transition: all 0.2s;
+  background-color: #fff;
 }
 html .all .side ul li:hover,
 body .all .side ul li:hover {
   cursor: pointer;
-  transition: border-left 1s;
 }
