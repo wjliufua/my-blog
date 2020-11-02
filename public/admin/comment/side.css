@@ -20,6 +20,10 @@ html .all .side ul,
 body .all .side ul {
   position: relative;
 }
+html .all .side ul li,
+body .all .side ul li {
+  pointer-events: none;
+}
 html .all .side ul li .sidelicenter,
 body .all .side ul li .sidelicenter {
   display: flex;
@@ -29,11 +33,16 @@ body .all .side ul li .sidelicenter {
   line-height: 60px;
   margin: 0 auto;
 }
+html .all .side ul li .sidelicenter i,
+body .all .side ul li .sidelicenter i {
+  color: #D2D2D2;
+}
 html .all .side ul li .sidelicenter a,
 body .all .side ul li .sidelicenter a {
+  transition: all 0.2s;
   padding-left: 17px;
   flex: 1;
-  color: #fff;
+  color: #D2D2D2;
 }
 html .all .side ul li .sidelicenter .side_pull,
 body .all .side ul li .sidelicenter .side_pull {
@@ -42,12 +51,13 @@ body .all .side ul li .sidelicenter .side_pull {
   height: 0;
   border-width: 6px;
   border: 7px;
-  transition: all 0.2s;
-  border-color: #fff transparent transparent;
+  transition: all 0.3s;
+  border-color: #D2D2D2 transparent transparent;
   border-style: solid dashed dashed;
 }
 html .all .side ul li dl,
 body .all .side ul li dl {
+  display: none;
   background-color: #3C3C3C;
 }
 html .all .side ul li dl dd a,
@@ -57,12 +67,13 @@ body .all .side ul li dl dd a {
   height: 50px;
   line-height: 50px;
   padding-left: 50px;
+  transition: all 0.2s;
   box-sizing: border-box;
-  color: #fff;
+  color: #D2D2D2;
 }
-html .all .side ul li dl dd:hover,
-body .all .side ul li dl dd:hover {
-  background-color: #818181;
+html .all .side ul li dl dd:hover a,
+body .all .side ul li dl dd:hover a {
+  color: #fff;
 }
 html .all .side ul .left_animation,
 body .all .side ul .left_animation {
@@ -72,10 +83,18 @@ body .all .side ul .left_animation {
   top: 0;
   height: 60px;
   width: 3px;
-  transition: all 0.2s;
+  transition: all 0.3s;
   background-color: #fff;
 }
 html .all .side ul li:hover,
 body .all .side ul li:hover {
   cursor: pointer;
+}
+html .all .side ul li:hover .sideliTitle,
+body .all .side ul li:hover .sideliTitle {
+  color: #fff;
+}
+html .all .side ul li:hover i,
+body .all .side ul li:hover i {
+  color: #fff;
 }
