@@ -4,7 +4,9 @@
 .subject .header {
   display: flex;
   justify-content: space-between;
-  padding: 17px;
+  height: 54px;
+  line-height: 54px;
+  padding: 0 17px;
   background-color: #fff;
   box-shadow: 5px 5px 5px #E0E0E0;
 }
@@ -17,6 +19,7 @@
   font-size: 15px;
 }
 .subject .header .header_left li {
+  display: flex;
   height: 100%;
   padding: 0 13px;
 }
