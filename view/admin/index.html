@@ -302,6 +302,10 @@
         // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option1);
         pieChart.setOption(option2);
+        window.addEventListener("resize", function() {
+            myChart.resize(); //自适应
+            pieChart.resize();
+        });
     </script>
     <script src="../../public/admin/index/index.js"></script>
 </body>
