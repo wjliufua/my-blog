@@ -8,7 +8,7 @@ var sideTitle = document.getElementsByClassName('side_title');
 var sidelicenter = document.getElementsByClassName('sidelicenter');
 // 侧边栏 li 选项
 var sideli = document.getElementsByClassName('sideli');
-// 头部点击收起侧边栏图标
+// 主体头部左侧导航栏
 var headerLeft = document.getElementsByClassName('header_left');
 
 // 侧边栏下拉框默认选中样式
@@ -114,12 +114,25 @@ function sidedlpull() {
     }
 }
 
+var subject = document.getElementsByClassName('subject')[0];
+// console.log(subject);
+var header = document.getElementsByClassName('header')[0];
+// console.log(header);
+
+function headerWidth() {
+    var w = subject.clientWidth;
+    header.style.width = w + 'px';
+}
+window.addEventListener("resize", headerWidth);
+headerWidth();
+
 function sideShrink() {
     headerLeft[0].children[0].children[0].onclick = function() {
         sideOpen = !sideOpen;
         for (let i = 0; i < sidedl.length; i++) {
             if (sideOpen) {
                 side[0].style.width = '220px';
+                subject.style.marginLeft = '220px';
                 for (let j = 0; j < sideArr.length; j++) {
                     if (sideArr[j].pull && sidelicenter[j].children[2] !== undefined) {
                         sidelicenter[j].nextElementSibling.style.display = 'block';
@@ -129,6 +142,7 @@ function sideShrink() {
                 }
             } else {
                 side[0].style.width = '46px';
+                subject.style.marginLeft = '46px';
                 sidedl[i].style.display = 'none';
             }
         }
@@ -138,3 +152,41 @@ function sideShrink() {
 sideliAddress();
 sidelipull();
 sideShrink();
+
+// var headerRight = document.getElementsByClassName('header_right')[0];
+// var user = headerRight.children[1];
+// console.log(user);
+var userShow = document.getElementsByClassName('userShow')[0];
+var userTriangle = document.getElementById('userTriangle');
+// userShow.onmouseout = function() {
+//     userTriangle.style.borderColor = '#6D6D6D transparent transparent';
+// }
+// userShow.onmouseover = function() {
+//     userTriangle.style.borderColor = 'transparent transparent #6D6D6D';
+// }
+
+var headerStrip = document.getElementById('header_strip');
+// var header = document.getElementsByClassName('header')[0];
+// var header = header.children[0].children;
+// console.log($('.header li>a'));
+
+function headerStripStyle() {
+    for (let i = 0; i < $('.header li>a').length; i++) {
+        // console.log($('.header li>a')[i].offsetLeft);
+        // console.log(getLeft($('.header li>a')[i]));
+        $('.header li>a')[i].parentNode.onmouseout = function() {
+            headerStrip.style.width = '0px';
+        }
+        $('.header li>a')[i].parentNode.onmouseover = function() {
+            headerStrip.style.width = $('.header li>a')[i].offsetWidth + 'px';
+            headerStrip.style.left = getLeft($('.header li>a')[i]) - 220 + 'px';
+        }
+    }
+}
+headerStripStyle();
+
+function getLeft(e) {
+    var offset = e.offsetLeft;
+    if (e.offsetParent != null) offset += getLeft(e.offsetParent);
+    return offset;
+}

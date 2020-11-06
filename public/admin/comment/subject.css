@@ -1,13 +1,19 @@
 .subject {
+  position: relative;
   flex-shrink: 1;
   flex: 1;
+  min-width: 980px;
+  margin-left: 220px;
 }
 .subject .header {
+  position: fixed;
+  z-index: 1;
   display: flex;
   justify-content: space-between;
   height: 54px;
   line-height: 54px;
   padding: 0 17px;
+  box-sizing: border-box;
   background-color: #fff;
   box-shadow: 5px 5px 5px #E0E0E0;
 }
@@ -33,7 +39,9 @@
   font-size: 15px;
 }
 .subject .header .header_right li {
+  display: flex;
   padding: 0 13px;
+  position: relative;
 }
 .subject .header .header_right li a cite {
   font-style: normal;
@@ -42,15 +50,63 @@
   display: inline-block;
   width: 0;
   height: 0;
-  border-top: 30px;
-  border-width: 6px;
+  border-top: 1px;
+  border-width: 5px;
+  transition: all 1s;
   border-color: #6D6D6D transparent transparent;
   border-style: solid dashed dashed;
+}
+.subject .header .header_right li dd {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  z-index: 1;
+  transform: translateX(-50%);
+  width: 150%;
+}
+.subject .header .header_right li dd .userddTriangle {
+  margin: 0 auto;
+  width: 0;
+  height: 0;
+  border-width: 11px;
+  border-bottom: 10px;
+  border-color: transparent transparent #fff;
+  border-style: solid dashed dashed;
+}
+.subject .header .header_right li dd dl a {
+  background-color: #fff;
+  display: block;
+  text-align: center;
+}
+.subject .header .header_right li dd dl a:hover {
+  background-color: #ccc;
+}
+.subject .header .header_right li .user:hover + dd {
+  display: block;
+}
+.subject .header .header_right li .user:hover span {
+  border-color: transparent transparent #6D6D6D;
+}
+.subject .header .header_right li dd:hover {
+  display: block;
+}
+.subject .header .header_right li dd:hover + .user > #userTriangle {
+  border-color: transparent transparent #6D6D6D;
+}
+.subject .header #header_strip {
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 3px;
+  transition: all 0.2s;
+  background-color: #444444;
 }
 .subject .body {
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
+  margin-top: 54px;
 }
 .subject .body .essential_information {
   display: flex;

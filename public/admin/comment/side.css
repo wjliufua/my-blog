@@ -1,7 +1,9 @@
 html .all .side,
 body .all .side {
+  position: fixed;
   flex-shrink: 0;
   overflow: hidden;
+  height: 100%;
   color: #fff;
   font-size: 15px;
   background-color: #333333;

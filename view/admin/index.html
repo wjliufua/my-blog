@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <title>管理页面</title>
     <!-- 公共样式(全体通用) -->
     <link rel="stylesheet" href="../../public/Comment/css/comment.css">
@@ -156,12 +156,24 @@
                         <a href="javascript:;"><i class="iconfont icon-beijingtupian"></i></a>
                     </li>
                     <li>
-                        <a href="javascript:;">
+                        <a class="user" href="javascript:;">
                             <cite>富婆</cite>
-                            <span></span>
+                            <span id="userTriangle"></span>
                         </a>
+                        <dd class="userShow">
+                            <dl class="userddTriangle">
+                                <!-- <span></span> -->
+                            </dl>
+                            <dl><a href="#">基本资料</a></dl>
+                            <dl><a href="#">修改密码</a></dl>
+                            <dl><a href="#">退出登录</a></dl>
+                        </dd>
+                    </li>
+                    <li>
+                        <a href="javascript:;"><i class="iconfont icon-github"></i></a>
                     </li>
                 </ul>
+                <span id="header_strip"></span>
             </div>
             <div class="body">
                 <!-- 网站基本信息 -->

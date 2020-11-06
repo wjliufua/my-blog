@@ -35,6 +35,7 @@ html .a_underline:hover {
 html .content {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   width: 1382.5px;
   margin: 50px auto;
 }
@@ -200,4 +201,29 @@ html .content .list .browse_list .browse_content ul li {
 }
 html .content .list .browse_list .browse_content ul li a {
   color: #7E7E7E;
+}
+html .content .page {
+  margin: 50px 0;
+  margin-left: 350px;
+}
+html .content .page ul {
+  display: flex;
+  flex-direction: row;
+}
+html .content .page ul li {
+  margin: 0 5px;
+}
+html .content .page ul li a {
+  display: inline-block;
+  padding: 15px 22px;
+  background-color: #fff;
+  font-size: 17px;
+  color: #383838;
+  border-radius: 5px;
+}
+html .content .page ul li a:hover {
+  background-color: #ccc;
+}
+html .content .page ul li a:active {
+  background-color: #3AB18F;
 }

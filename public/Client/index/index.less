@@ -46,6 +46,7 @@ html {
     .content {
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
         width: 1382.5px;
         margin: 50px auto;
 
@@ -265,6 +266,36 @@ html {
                                 color: #7E7E7E;
                             }
                         }
+                    }
+                }
+            }
+        }
+
+        .page {
+            margin: 50px 0;
+            margin-left: 350px;
+
+            ul {
+                display: flex;
+                flex-direction: row;
+
+                li {
+                    margin: 0 5px;
+                    a {
+                        display: inline-block;
+                        padding: 15px 22px;
+                        background-color: #fff;
+                        font-size: 17px;
+                        color: #383838;
+                        border-radius: 5px;
+                    }
+
+                    a:hover {
+                        background-color: #ccc;
+                    }
+
+                    a:active {
+                        background-color: #3AB18F;
                     }
                 }
             }
