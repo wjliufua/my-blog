@@ -44,6 +44,7 @@ body .opinion ul li .opinion_content .comment .comment_box .colon {
 body .opinion ul li .opinion_content .comment .comment_box .comment_operate {
   display: flex;
   justify-content: flex-end;
+  padding: 15px 0;
 }
 body .opinion ul li .opinion_content .comment .comment_box .comment_operate .date {
   padding: 0 10px;
@@ -83,6 +84,7 @@ body .opinion ul li .reply .comment .comment_box .colon {
 body .opinion ul li .reply .comment .comment_box .comment_operate {
   display: flex;
   justify-content: flex-end;
+  padding: 15px 0;
 }
 body .opinion ul li .reply .comment .comment_box .comment_operate .date {
   padding: 0 10px;

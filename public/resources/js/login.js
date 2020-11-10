@@ -16,6 +16,7 @@ function lrChange() {
             }
             switchSpan[i].classList.add("click");
             loginRegister[i].style.display = 'block';
+            loginRegister[i].children[1].focus();
         }
     }
 }
