@@ -15,6 +15,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 // 路由模块
 // app.use('/', client);
 
+// mongoose.connect('mongodb://root:root@localhost:27017/myblog?authoSource=admin', { useNewUrlParser: true, useCreateIndex: true })
+//     .then(() => console.log('数据库无事发生'))
+//     .catch(() => console.log('数据库无'));
+
 // 监听端口
 app.listen(8000);
 console.log('能有什么问题');

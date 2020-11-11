@@ -1,6 +1,7 @@
 body {
     background-color: #fff;
 
+    // 留言主体
     .opinion {
         width: 864px;
         margin: 0 auto;
@@ -11,9 +12,7 @@ body {
                 padding: 20px 30px;
                 background-color: #FAFAFA;
 
-                .opinion_content {
-                    display: flex;
-                    vertical-align: middle;
+                .opinion_common {
 
                     &>a {
                         margin-right: 11px;
@@ -28,61 +27,7 @@ body {
                         }
                     }
 
-                    .comment {
-                        display: flex;
-                        align-items: center;
-                        font-size: 14px;
-
-                        .comment_box {
-                            & a {
-                                color: #00E0FA;
-                            }
-
-                            &>a img {
-                                max-height: 19px;
-                                max-width: 100%;
-                                vertical-align: top;
-                            }
-
-                            .colon {
-                                padding: 0 7px;
-                            }
-
-                            .new-comment {}
-
-                            .comment_operate {
-                                display: flex;
-                                justify-content: flex-end;
-                                padding: 15px 0;
-
-                                .date {
-                                    padding: 0 10px;
-                                }
-
-                                .reply_button {}
-                            }
-                        }
-                    }
-                }
-
-                .reply {
-                    display: flex;
-                    padding-left: 20px;
-                    font-size: 14px;
-
-                    &>a {
-                        margin-right: 11px;
-
-                        img {
-                            display: block;
-                            width: 35px;
-                            height: 35px;
-                            border-radius: 50%;
-                            border: 1px solid #ccc;
-                            box-sizing: border-box;
-                        }
-                    }
-
+                    // 回复人评论右侧留言信息,回复面板
                     .comment {
                         display: flex;
                         align-items: center;
@@ -93,18 +38,21 @@ body {
                                 color: #00D9F2;
                             }
 
+                            // 回复人昵称及标签
                             .author_name img {
                                 max-height: 19px;
                                 max-width: 100%;
                                 vertical-align: top;
                             }
 
+                            // 冒号
                             .colon {
                                 padding: 0 7px;
                             }
 
                             .new-comment {}
 
+                            // 对留言操作
                             .comment_operate {
                                 display: flex;
                                 justify-content: flex-end;
@@ -120,12 +68,27 @@ body {
                     }
                 }
 
+                // 留言主体内容
+                .opinion_content {
+                    display: flex;
+                    vertical-align: middle;
+                }
+
+                // 回复他人评论
+                .reply {
+                    display: flex;
+                    padding-left: 20px;
+                    font-size: 14px;
+                }
+
+                // 回复评论模块
                 .assembly {
                     padding: 20px 0 0 20px;
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
 
+                    // 输入框及按钮
                     textarea,
                     button {
                         -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
@@ -137,6 +100,7 @@ body {
                         border: none;
                     }
 
+                    // 你的狗头
                     .user_face {
                         overflow: hidden;
                         width: 35px;
@@ -150,11 +114,13 @@ body {
                         }
                     }
 
+                    // 输入框及点击按钮
                     .comments_assembly {
                         flex: 1;
                         display: flex;
                         padding-left: 30px;
 
+                        // 输入框
                         textarea {
                             flex: 1;
                             resize: none;
@@ -164,6 +130,7 @@ body {
                             border: 1px solid #B1B1B1;
                         }
 
+                        // 点击按钮
                         span {
                             display: flex;
                             align-items: center;

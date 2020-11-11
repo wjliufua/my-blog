@@ -4,7 +4,7 @@ var switchSpan = $('.switch span');
 var loginRegister = $('.login_register>div');
 // 获取输入框
 var lrInput = $('.login_register>div input');
-console.log(lrInput);
+// console.log(lrInput);
 
 // 点击切换登录注册表单功能
 function lrChange() {
@@ -21,3 +21,23 @@ function lrChange() {
     }
 }
 lrChange();
+// 邮箱验证按钮
+var checking = document.getElementById('checking');
+
+checking.addEventListener('click', setTime);
+// console.log(checking);
+var countdown = 5;
+
+function setTime() {
+    if (countdown == 0) {
+        checking.removeAttribute('disabled');
+        checking.innerHTML = "点击获取验证码";
+        countdown = 60;
+        return;
+    } else {
+        checking.setAttribute('disabled', 'true');
+        checking.innerHTML = "(" + countdown + "s)后重新发送";
+        countdown--;
+    }
+    setTimeout(function() { setTime() }, 1000);
+}

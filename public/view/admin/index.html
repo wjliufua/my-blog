@@ -3,20 +3,16 @@
 
 <head>
     <meta charset="UTF-8">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <title>管理页面</title>
     <!-- 公共样式(全体通用) -->
-    <link rel="stylesheet" href="../../resources/css/comment.css">
+    <link rel="stylesheet" href="../../resources/css/common.css">
     <!-- 公共字体(全体通用) -->
     <link rel="stylesheet" href="../../resources/css/font.css">
-    <!-- 客户端主体内容 -->
-    <link rel="stylesheet" href="../../resources/css/admin/subject/subject.css">
-    <!-- 客户端侧边栏 -->
-    <link rel="stylesheet" href="../../resources/css/admin/side/side.css">
+    <!-- 管理页面公共样式 -->
+    <link rel="stylesheet" href="../../resources/css/admin/common/adminCommon.css">
     <!-- 管理页面样式 -->
     <link rel="stylesheet" href="../../resources/css/admin/index/index.css">
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
-    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/echarts/2.1.10/echarts-all.js"></script> -->
     <script src="../../resources/js/admin/echarts.js"></script>
 </head>
 
@@ -39,7 +35,7 @@
                         <!-- 该条内容文字描述 -->
                         <a class="sideliTitle side_default" href="javascript:;">主页</a>
                         <!-- 点击下拉小三角 -->
-                        <span class="side_pull"></span>
+                        <span class="side_pull triangle"></span>
                     </div>
                     <!-- 侧边栏下拉框 -->
                     <dl class="sidedl">
@@ -57,7 +53,7 @@
                         <!-- 该条内容文字描述 -->
                         <a class="sideliTitle side_default" href="javascript:;">页面</a>
                         <!-- 点击下拉小三角 -->
-                        <span class="side_pull"></span>
+                        <span class="side_pull triangle"></span>
                     </div>
                     <!-- 侧边栏下拉框 -->
                     <dl class="sidedl">
@@ -73,16 +69,8 @@
                         <!-- 该条内容图标描述 -->
                         <i class="iconfont icon-yonghu side_default"></i>
                         <!-- 该条内容文字描述 -->
-                        <a class="sideliTitle side_default" href="javascript:;">用户</a>
-                        <!-- 点击下拉小三角 -->
-                        <span class="side_pull"></span>
+                        <a href="./user.html" class="sideliTitle side_default" href="javascript:;">用户</a>
                     </div>
-                    <!-- 侧边栏下拉框 -->
-                    <dl class="sidedl">
-                        <!-- 侧边栏下拉框内容选项 -->
-                        <dd><a href="#">后台管理主页</a></dd>
-                        <dd><a href="#">客户端主页</a></dd>
-                    </dl>
                 </li>
                 <!-- 侧边栏选项 -->
                 <li class="sideli">
@@ -123,7 +111,7 @@
                         <!-- 该条内容文字描述 -->
                         <a class="sideliTitle side_default" href="javascript:;">设置</a>
                         <!-- 点击下拉小三角 -->
-                        <span class="side_pull"></span>
+                        <span class="side_pull triangle"></span>
                     </div>
                     <!-- 侧边栏下拉框 -->
                     <dl class="sidedl">
@@ -140,6 +128,7 @@
         <div class="subject">
             <!-- 头部 -->
             <div class="header" id="header">
+                <!-- 头部左侧导航 -->
                 <ul class="header_left">
                     <li>
                         <a href="javascript:;"><i class="iconfont icon-backward-a"></i></a>
@@ -151,18 +140,20 @@
                         <a href="#"><i class="iconfont icon-shuaxin"></i></a>
                     </li>
                 </ul>
+                <!-- 头部右侧导航 -->
                 <ul class="header_right">
                     <li>
                         <a href="javascript:;"><i class="iconfont icon-beijingtupian"></i></a>
                     </li>
+                    <!-- 用户昵称 -->
                     <li>
                         <a class="user" href="javascript:;">
                             <cite>富婆</cite>
-                            <span id="userTriangle"></span>
+                            <span id="userTriangle" class="triangle"></span>
                         </a>
+                        <!-- 用户下拉框 -->
                         <dd class="userShow">
                             <dl class="userddTriangle">
-                                <!-- <span></span> -->
                             </dl>
                             <dl><a href="#">基本资料</a></dl>
                             <dl><a href="#">修改密码</a></dl>
@@ -211,6 +202,7 @@
                         </span>
                     </div>
                 </div>
+                <!-- 图表统计 -->
                 <div class="statistics">
                     <!-- 访问量图表 -->
                     <div class="chart_number">
@@ -219,20 +211,26 @@
                     </div>
                     <!-- 其他 -->
                     <div class="other">
+                        <!-- 统计用户来源(浏览器)饼图 -->
                         <div id="source"></div>
+                        <!-- 网站流量对比 -->
                         <div class="contrast">
                             <span>网站访问量比较</span>
+                            <!-- 对比昨日 -->
                             <p>
                                 <span class="describe">相比昨日</span>
                                 <a>50%<span></span></a>
                             </p>
+                            <!-- 进度条 -->
                             <div class="container">
                                 <div class="skills ri"></div>
                             </div>
+                            <!-- 对比上月 -->
                             <p>
                                 <span class="describe">相比上月</span>
                                 <a>80%<span></span></a>
                             </p>
+                            <!-- 进度条 -->
                             <div class="container">
                                 <div class="skills yue"></div>
                             </div>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>留言反馈</title>
     <!-- 公共样式(全体通用) -->
-    <link rel="stylesheet" href="../../resources/css/comment.css">
+    <link rel="stylesheet" href="../../resources/css/common.css">
     <!-- 公共字体(全体通用) -->
     <link rel="stylesheet" href="../../resources/css/font.css">
     <!-- 客户端头部 -->
@@ -47,18 +47,29 @@
         <ul>
             <li>
                 <!-- 留言内容 -->
-                <div class="opinion_content">
+                <div class="opinion_content opinion_common">
+                    <!-- 用户头像 -->
                     <a href="#">
                         <img src="../../resources/images/1.jpg" alt="你的头">
                     </a>
+                    <!-- 右侧留言信息,回复面板 -->
                     <div class="comment">
+                        <!-- 回复信息盒子 -->
                         <div class="comment_box">
+                            <!-- 用户昵称及标签 -->
+                            <span class="author_name">
+                                <span><a href="#">富婆富婆</a></span>
+                            <a href="#"><img src="../../resources/images/富婆标签.png" alt=""></a>
+                            <!-- </span>
                             <a href="#">
                                 <span>富婆富婆</span>
                                 <img src="../../resources/images/富婆标签.png" alt="">
-                            </a>
+                            </a> -->
+                            <!-- 冒号 -->
                             <span class="colon">:</span>
-                            <span class="new-comment">我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁</span>
+                            <!-- 用户留言 -->
+                            <span class="new_comment">我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁</span>
+                            <!-- 对此留言操作 -->
                             <div class="comment_operate">
                                 <span class="date">0秒前</span>
                                 <span class="reply_button">
@@ -69,22 +80,29 @@
                     </div>
                 </div>
                 <!-- 评论回复 -->
-                <div class="reply">
+                <div class="reply opinion_common">
+                    <!-- 回复人头像 -->
                     <a href="#">
                         <img src="../../resources/images/1.jpg" alt="你的头">
                     </a>
+                    <!-- 回复人评论右侧留言信息,回复面板 -->
                     <div class="comment">
                         <div class="comment_box">
+                            <!-- 用户昵称及标签 -->
                             <span class="author_name">
                                 <span><a href="#">富婆富婆</a></span>
                             <a href="#"><img src="../../resources/images/富婆标签.png" alt=""></a>
                             </span>
+                            <!-- 冒号 -->
                             <span class="colon">:</span>
+                            <!-- 回复人昵称及标签 -->
                             <span class="author_name">
                                 <span><a href="#">富婆富婆</a></span>
                             <a href="#"><img src="../../resources/images/富婆标签.png" alt=""></a>
                             </span>
-                            <span class="new-comment">我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁</span>
+                            <!-- 回复人具体评论内容 -->
+                            <span class="new_comment">我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁</span>
+                            <!-- 对回复人进行操作 -->
                             <div class="comment_operate">
                                 <span class="date">0秒前</span>
                                 <span class="reply_button">
@@ -94,6 +112,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- 回复评论模块 -->
                 <div class="assembly">
                     <!-- 你的狗头 -->
                     <div class="user_face"><img src="../../resources/images/1.jpg" alt=""></div>

@@ -1,0 +1,326 @@
+.all .triangle {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  transition: all 0.3s;
+  border-style: solid dashed dashed;
+}
+.all .side {
+  position: fixed;
+  flex-shrink: 0;
+  overflow: hidden;
+  height: 100%;
+  color: #fff;
+  font-size: 15px;
+  background-color: #333333;
+}
+.all .side .side_title {
+  width: 220px;
+  padding: 17px 0;
+  text-align: center;
+  border-bottom: 1px solid #000;
+}
+.all .side .side_title span {
+  font-size: 15px;
+  display: inline-block;
+}
+.all .side ul {
+  position: relative;
+}
+.all .side ul li .sidelicenter {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  height: 54px;
+  line-height: 54px;
+  box-sizing: border-box;
+  padding: 0 15px;
+}
+.all .side ul li .sidelicenter i {
+  color: #D2D2D2;
+}
+.all .side ul li .sidelicenter a {
+  transition: all 0.2s;
+  padding-left: 17px;
+  flex: 1;
+  color: #D2D2D2;
+}
+.all .side ul li .sidelicenter .side_pull {
+  border-width: 6px;
+  border-color: #D2D2D2 transparent transparent;
+}
+.all .side ul li dl {
+  display: none;
+  background-color: #3C3C3C;
+}
+.all .side ul li dl dd a {
+  display: inline-block;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  padding-left: 50px;
+  transition: all 0.2s;
+  box-sizing: border-box;
+  color: #D2D2D2;
+}
+.all .side ul li dl dd:hover a {
+  color: #fff;
+}
+.all .side ul .left_animation {
+  display: block;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  height: 54px;
+  width: 4px;
+  transition: all 0.3s;
+  background-color: #fff;
+}
+.all .side ul li:hover {
+  cursor: pointer;
+}
+.all .side ul li:hover .sideliTitle {
+  color: #fff;
+}
+.all .side ul li:hover i {
+  color: #fff;
+}
+.all .subject {
+  position: relative;
+  flex-shrink: 1;
+  flex: 1;
+  min-width: 980px;
+  margin-left: 220px;
+}
+.all .subject .header {
+  position: fixed;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  height: 54px;
+  line-height: 54px;
+  padding: 0 17px;
+  box-sizing: border-box;
+  background-color: #fff;
+  box-shadow: 5px 5px 5px #E0E0E0;
+}
+.all .subject .header a {
+  color: #6D6D6D;
+}
+.all .subject .header .header_left {
+  display: flex;
+  flex-direction: row;
+  font-size: 15px;
+}
+.all .subject .header .header_left li {
+  display: flex;
+  height: 100%;
+  padding: 0 13px;
+}
+.all .subject .header .header_left li a {
+  height: 100%;
+}
+.all .subject .header .header_right {
+  display: flex;
+  flex-direction: row;
+  font-size: 15px;
+}
+.all .subject .header .header_right li {
+  display: flex;
+  padding: 0 13px;
+  position: relative;
+}
+.all .subject .header .header_right li a cite {
+  font-style: normal;
+}
+.all .subject .header .header_right li a span {
+  border-width: 5px;
+  border-color: #6D6D6D transparent transparent;
+}
+.all .subject .header .header_right li dd {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  z-index: 1;
+  transform: translateX(-50%);
+  width: 150%;
+}
+.all .subject .header .header_right li dd .userddTriangle {
+  margin: 0 auto;
+  width: 0;
+  height: 0;
+  border-width: 11px;
+  border-bottom: 10px;
+  border-color: transparent transparent #fff;
+  border-style: solid dashed dashed;
+}
+.all .subject .header .header_right li dd dl a {
+  background-color: #fff;
+  display: block;
+  text-align: center;
+}
+.all .subject .header .header_right li dd dl a:hover {
+  background-color: #ccc;
+}
+.all .subject .header .header_right li .user:hover + dd {
+  display: block;
+}
+.all .subject .header .header_right li .user:hover span {
+  border-color: transparent transparent #6D6D6D;
+}
+.all .subject .header .header_right li dd:hover {
+  display: block;
+}
+.all .subject .header .header_right li dd:hover + .user > #userTriangle {
+  border-color: transparent transparent #6D6D6D;
+}
+.all .subject .header #header_strip {
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 3px;
+  transition: all 0.2s;
+  background-color: #444444;
+}
+.all .subject .body {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-top: 54px;
+}
+.all .subject .body .essential_information {
+  display: flex;
+  width: 100%;
+  padding: 50px 0;
+}
+.all .subject .body .essential_information .comment {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1% 4%;
+  margin: 0 2%;
+  border-radius: 5px;
+  background-color: #fff;
+}
+.all .subject .body .essential_information .comment i {
+  font-size: 36px;
+}
+.all .subject .body .essential_information .comment span {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.all .subject .body .essential_information .comment span a {
+  font-size: 16px;
+  color: #646464;
+  text-align: center;
+}
+.all .subject .body .essential_information .comment span > a:nth-child(1) {
+  margin-bottom: 11px;
+}
+.all .subject .body .essential_information .comment span > a:nth-child(2) {
+  font-weight: 600;
+}
+.all .subject .body .essential_information .comment:hover {
+  cursor: pointer;
+}
+.all .subject .body .essential_information .cumulative_user i {
+  color: #DB3333;
+}
+.all .subject .body .essential_information .cumulative_opinion i {
+  color: #00C3D3;
+}
+.all .subject .body .essential_information .cumulative_article i {
+  color: #00D39D;
+}
+.all .subject .body .essential_information .cumulative_visits i {
+  color: #FFA721;
+}
+.all .subject .body .statistics {
+  width: 100%;
+  padding: 0 30px;
+  display: flex;
+  justify-content: space-between;
+}
+.all .subject .body .statistics .chart_number {
+  overflow: hidden;
+  width: 60%;
+  background-color: #fff;
+}
+.all .subject .body .statistics .chart_number span {
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 50px;
+  font-size: 30px;
+}
+.all .subject .body .statistics .chart_number #main {
+  width: 100%;
+  height: 600px;
+}
+.all .subject .body .statistics .other {
+  width: 37%;
+}
+.all .subject .body .statistics .other #source {
+  width: 100%;
+  height: 300px;
+  padding: 5% 3%;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+.all .subject .body .statistics .other .contrast {
+  width: 100%;
+  height: 300px;
+  margin-top: 15%;
+  padding: 11% 5%;
+  padding-top: 0;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+.all .subject .body .statistics .other .contrast > span {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  color: #444444;
+  padding: 20px 0;
+  border-bottom: 1px solid #4D4D4D;
+}
+.all .subject .body .statistics .other .contrast p {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0;
+  padding-right: 20px;
+}
+.all .subject .body .statistics .other .contrast p a span {
+  display: inline-block;
+  width: 0px;
+  height: 0px;
+  border-top: 30px;
+  border-width: 6px;
+  margin-bottom: 3px;
+  margin-left: 10px;
+  border-color: transparent transparent #6D6D6D transparent;
+  border-style: solid dashed dashed;
+}
+.all .subject .body .statistics .other .contrast .container {
+  overflow: hidden;
+  width: 100%;
+  border-radius: 5px;
+  background-color: #ddd;
+}
+.all .subject .body .statistics .other .contrast .container .skills {
+  text-align: right;
+  height: 10px;
+  color: white;
+}
+.all .subject .body .statistics .other .contrast .container .ri {
+  width: 50%;
+  background-color: #4CAF50;
+}
+.all .subject .body .statistics .other .contrast .container .yue {
+  width: 80%;
+  background-color: #2196F3;
+}

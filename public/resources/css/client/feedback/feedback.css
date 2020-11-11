@@ -10,14 +10,10 @@ body .opinion ul li {
   padding: 20px 30px;
   background-color: #FAFAFA;
 }
-body .opinion ul li .opinion_content {
-  display: flex;
-  vertical-align: middle;
-}
-body .opinion ul li .opinion_content > a {
+body .opinion ul li .opinion_common > a {
   margin-right: 11px;
 }
-body .opinion ul li .opinion_content > a img {
+body .opinion ul li .opinion_common > a img {
   display: block;
   width: 35px;
   height: 35px;
@@ -25,69 +21,38 @@ body .opinion ul li .opinion_content > a img {
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
-body .opinion ul li .opinion_content .comment {
+body .opinion ul li .opinion_common .comment {
   display: flex;
   align-items: center;
   font-size: 14px;
 }
-body .opinion ul li .opinion_content .comment .comment_box a {
-  color: #00E0FA;
+body .opinion ul li .opinion_common .comment .comment_box a {
+  color: #00D9F2;
 }
-body .opinion ul li .opinion_content .comment .comment_box > a img {
+body .opinion ul li .opinion_common .comment .comment_box .author_name img {
   max-height: 19px;
   max-width: 100%;
   vertical-align: top;
 }
-body .opinion ul li .opinion_content .comment .comment_box .colon {
+body .opinion ul li .opinion_common .comment .comment_box .colon {
   padding: 0 7px;
 }
-body .opinion ul li .opinion_content .comment .comment_box .comment_operate {
+body .opinion ul li .opinion_common .comment .comment_box .comment_operate {
   display: flex;
   justify-content: flex-end;
   padding: 15px 0;
 }
-body .opinion ul li .opinion_content .comment .comment_box .comment_operate .date {
+body .opinion ul li .opinion_common .comment .comment_box .comment_operate .date {
   padding: 0 10px;
+}
+body .opinion ul li .opinion_content {
+  display: flex;
+  vertical-align: middle;
 }
 body .opinion ul li .reply {
   display: flex;
   padding-left: 20px;
   font-size: 14px;
-}
-body .opinion ul li .reply > a {
-  margin-right: 11px;
-}
-body .opinion ul li .reply > a img {
-  display: block;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
-body .opinion ul li .reply .comment {
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-}
-body .opinion ul li .reply .comment .comment_box a {
-  color: #00D9F2;
-}
-body .opinion ul li .reply .comment .comment_box .author_name img {
-  max-height: 19px;
-  max-width: 100%;
-  vertical-align: top;
-}
-body .opinion ul li .reply .comment .comment_box .colon {
-  padding: 0 7px;
-}
-body .opinion ul li .reply .comment .comment_box .comment_operate {
-  display: flex;
-  justify-content: flex-end;
-  padding: 15px 0;
-}
-body .opinion ul li .reply .comment .comment_box .comment_operate .date {
-  padding: 0 10px;
 }
 body .opinion ul li .assembly {
   padding: 20px 0 0 20px;

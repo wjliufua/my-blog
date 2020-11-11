@@ -1,0 +1,466 @@
+// 博客管理内容
+.all {
+    .triangle {
+        display: inline-block;
+        width: 0;
+        height: 0;
+        transition: all .3s;
+        border-style: solid dashed dashed;
+    }
+
+    // 侧边栏
+    .side {
+        position: fixed;
+        flex-shrink: 0;
+        overflow: hidden;
+        height: 100%;
+        color: #fff;
+        font-size: 15px;
+        background-color: #333333;
+
+        // 侧边栏标题
+        .side_title {
+            width: 220px;
+            padding: 17px 0;
+            text-align: center;
+            border-bottom: 1px solid #000;
+
+            // 侧边栏标题文字部分
+            span {
+                font-size: 15px;
+                display: inline-block;
+            }
+        }
+
+        // 侧边栏主体
+        ul {
+            position: relative;
+
+            // 侧边栏每个内容
+            li {
+
+                // 侧边栏内容居中显示
+                .sidelicenter {
+                    display: flex;
+                    align-items: center;
+                    overflow: hidden;
+                    width: 100%;
+                    height: 54px;
+                    line-height: 54px;
+                    box-sizing: border-box;
+                    padding: 0 15px;
+
+                    i {
+                        color: #D2D2D2;
+                    }
+
+                    a {
+                        transition: all .2s;
+                        padding-left: 17px;
+                        flex: 1;
+                        color: #D2D2D2;
+                    }
+
+                    // 侧边栏小三角
+                    .side_pull {
+                        border-width: 6px;
+                        // border: 7px;
+                        border-color: #D2D2D2 transparent transparent;
+                    }
+                }
+
+                // 侧边栏下拉框
+                dl {
+                    display: none;
+                    background-color: #3C3C3C;
+
+                    // 侧边栏下拉框每个选项
+                    dd {
+                        a {
+                            display: inline-block;
+                            width: 100%;
+                            height: 50px;
+                            line-height: 50px;
+                            padding-left: 50px;
+                            transition: all .2s;
+                            box-sizing: border-box;
+                            color: #D2D2D2;
+                        }
+                    }
+
+                    dd:hover a {
+                        color: #fff;
+                    }
+                }
+            }
+
+            // 侧边栏左侧动画条形效果
+            .left_animation {
+                display: block;
+                opacity: 0;
+                position: absolute;
+                top: 0;
+                height: 54px;
+                width: 4px;
+                transition: all .3s;
+                background-color: #fff;
+            }
+
+            // 鼠标经过侧边栏选项时产生的效果
+            li:hover {
+                cursor: pointer;
+            }
+
+            // 
+            li:hover .sideliTitle {
+                color: #fff;
+            }
+
+            li:hover i {
+                color: #fff;
+            }
+        }
+    }
+
+
+
+
+    
+    // 右侧主体内容
+    .subject {
+        position: relative;
+        flex-shrink: 1;
+        flex: 1;
+        min-width: 980px;
+        margin-left: 220px;
+
+        // 头部
+        .header {
+            position: fixed;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            height: 54px;
+            line-height: 54px;
+            padding: 0 17px;
+            box-sizing: border-box;
+            background-color: #fff;
+            box-shadow: 5px 5px 5px #E0E0E0;
+
+            a {
+                color: #6D6D6D;
+            }
+
+            // 头部左侧导航栏
+            .header_left {
+                display: flex;
+                flex-direction: row;
+                font-size: 15px;
+
+                li {
+                    display: flex;
+                    height: 100%;
+                    padding: 0 13px;
+
+                    a {
+                        height: 100%;
+                    }
+                }
+            }
+
+            // 头部右侧导航栏
+            .header_right {
+                display: flex;
+                flex-direction: row;
+                font-size: 15px;
+
+                li {
+                    display: flex;
+                    padding: 0 13px;
+                    position: relative;
+
+                    a {
+
+                        // 斜体标签
+                        cite {
+                            // 取消字体样式(把斜体标签的字体变正)
+                            font-style: normal;
+                        }
+
+                        // 小三角
+                        span {
+                            // border-top: 5px;
+                            border-width: 5px;
+                            border-color: #6D6D6D transparent transparent;
+                        }
+                    }
+
+                    // 用户昵称处下拉框
+                    dd {
+                        display: none;
+                        position: absolute;
+                        top: 100%;
+                        left: 50%;
+                        z-index: 1;
+                        transform: translateX(-50%);
+                        width: 150%;
+
+                        // 用户昵称处下拉框气泡特效小三角
+                        .userddTriangle {
+                            margin: 0 auto;
+                            width: 0;
+                            height: 0;
+                            border-width: 11px;
+                            border-bottom: 10px;
+                            border-color: transparent transparent #fff;
+                            border-style: solid dashed dashed;
+                        }
+
+                        dl {
+                            a {
+                                background-color: #fff;
+                                display: block;
+                                text-align: center;
+                            }
+
+                            a:hover {
+                                background-color: #ccc;
+                            }
+                        }
+                    }
+
+                    // 鼠标移动至用户昵称 用户昵称处下拉框显示
+                    .user:hover+dd {
+                        display: block;
+                    }
+
+                    // 鼠标移动至用户昵称 小三角样式改变
+                    .user:hover span {
+                        border-color: transparent transparent #6D6D6D;
+                    }
+
+                    // 鼠标移动至用户昵称处下拉框 用户昵称处下拉框显示
+                    dd:hover {
+                        display: block;
+                    }
+
+                    dd:hover+.user>#userTriangle {
+                        border-color: transparent transparent #6D6D6D;
+                    }
+                }
+            }
+
+            // 移动条特效
+            #header_strip {
+                position: absolute;
+                top: 0;
+                width: 0;
+                height: 3px;
+                transition: all .2s;
+                background-color: #444444;
+            }
+        }
+
+        // 该页面显示内容样式文件
+        .body {
+            display: flex;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin-top: 54px;
+
+            // 网站基本信息
+            .essential_information {
+                display: flex;
+                width: 100%;
+                padding: 50px 0;
+
+                // 网站基本信息模块公共样式
+                .comment {
+                    flex: 1;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 1% 4%;
+                    margin: 0 2%;
+                    border-radius: 5px;
+                    background-color: #fff;
+
+                    // 网站基本信息左侧图标部分
+                    i {
+                        font-size: 36px;
+                    }
+
+                    // 网站基本信息右侧文字部分
+                    span {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+
+                        a {
+                            font-size: 16px;
+                            color: #646464;
+                            text-align: center;
+                        }
+
+                        &>a:nth-child(1) {
+                            margin-bottom: 11px;
+                        }
+
+                        // 网站基本信息数量字体加粗
+                        &>a:nth-child(2) {
+                            font-weight: 600;
+                        }
+                    }
+                }
+
+                .comment:hover {
+                    cursor: pointer;
+                }
+
+                // 网站基本信息 1 左侧图标颜色
+                .cumulative_user {
+                    i {
+                        color: #DB3333;
+                    }
+                }
+
+                // 网站基本信息 2 左侧图标颜色
+                .cumulative_opinion {
+                    i {
+                        color: #00C3D3;
+                    }
+                }
+
+                // 网站基本信息 3 左侧图标颜色
+                .cumulative_article {
+                    i {
+                        color: #00D39D;
+                    }
+                }
+
+                // 网站基本信息 4 左侧图标颜色
+                .cumulative_visits {
+                    i {
+                        color: #FFA721;
+                    }
+                }
+            }
+
+            // 网站图表统计
+            .statistics {
+                width: 100%;
+                padding: 0 30px;
+                display: flex;
+                justify-content: space-between;
+
+                // 访问量图表
+                .chart_number {
+                    overflow: hidden;
+                    width: 60%;
+                    background-color: #fff;
+
+                    // 访问量图表标题
+                    span {
+                        display: block;
+                        text-align: center;
+                        margin: 0 auto;
+                        margin-top: 50px;
+                        font-size: 30px;
+                    }
+
+                    #main {
+                        width: 100%;
+                        height: 600px;
+                    }
+                }
+
+                // 网站其他统计信息
+                .other {
+                    width: 37%;
+
+                    // 饼图(用户浏览器来源)
+                    #source {
+                        width: 100%;
+                        height: 300px;
+                        padding: 5% 3%;
+                        box-sizing: border-box;
+                        background-color: #fff;
+                    }
+
+                    // 网站访问量比较
+                    .contrast {
+                        width: 100%;
+                        height: 300px;
+                        margin-top: 15%;
+                        padding: 11% 5%;
+                        padding-top: 0;
+                        box-sizing: border-box;
+                        background-color: #fff;
+
+                        // 网站访问量比较标题
+                        &>span {
+                            display: block;
+                            font-size: 18px;
+                            font-weight: 600;
+                            color: #444444;
+                            padding: 20px 0;
+                            border-bottom: 1px solid #4D4D4D;
+                        }
+
+                        p {
+                            display: flex;
+                            justify-content: space-between;
+                            padding: 15px 0;
+                            padding-right: 20px;
+
+                            .describe {}
+
+                            a {
+
+                                // 比较小三角(上升或下降)
+                                span {
+                                    display: inline-block;
+                                    width: 0px;
+                                    height: 0px;
+                                    border-top: 30px;
+                                    border-width: 6px;
+                                    margin-bottom: 3px;
+                                    margin-left: 10px;
+                                    border-color: transparent transparent #6D6D6D transparent;
+                                    border-style: solid dashed dashed;
+                                }
+                            }
+                        }
+
+                        // 比较进度条(100%包括灰色进度)
+                        .container {
+                            overflow: hidden;
+                            width: 100%;
+                            border-radius: 5px;
+                            background-color: #ddd;
+
+                            // 比较进度条(不包括灰色进度)
+                            .skills {
+                                text-align: right;
+                                height: 10px;
+                                color: white;
+                            }
+
+                            // 对比昨日进度样式
+                            .ri {
+                                width: 50%;
+                                background-color: #4CAF50;
+                            }
+
+                            // 对比上月进度样式
+                            .yue {
+                                width: 80%;
+                                background-color: #2196F3;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

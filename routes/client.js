@@ -1,6 +1,6 @@
 const express = require('express');
 const client = express.Router();
 
-client.get('/', require('./client/index'));
+client.get('/', require('/client/index.html'));
 
 module.exports = client;
