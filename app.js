@@ -10,10 +10,11 @@ const app = express();
 // 开放静态资源文件
 app.use(express.static(path.join(__dirname, 'public')));
 
-// const client = require('./routes/client')
+const client = require('./routes/client');
 
 // 路由模块
-// app.use('/', client);
+app.use('/', client);
+// require('./routes')(app);
 
 // mongoose.connect('mongodb://root:root@localhost:27017/myblog?authoSource=admin', { useNewUrlParser: true, useCreateIndex: true })
 //     .then(() => console.log('数据库无事发生'))

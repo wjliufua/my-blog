@@ -1,3 +1,6 @@
-module.exports = (req, res) => {
-    res.render('view/Client/index.html'), {}
-}
+const express = require('express');
+const client = express.Router();
+
+client.get('/email', require('../nodemailer'));
+
+module.exports = client;
