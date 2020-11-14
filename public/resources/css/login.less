@@ -97,6 +97,7 @@ button {
 
     // 登录表单
     .login_from {
+        display: block;
         padding: 111px 0 20px 0;
         margin: 90px auto 0 auto;
 
@@ -121,11 +122,12 @@ button {
 
     // 注册表单
     .register_from {
+        display: none;
         padding: 40px 0 20px 0;
         margin: 0 auto;
 
         .pwd_warning {
-            display: block;
+            display: none;
             position: absolute;
             left: 94%;
             z-index: 9;
@@ -153,7 +155,9 @@ button {
 
                 .warning_content {
                     // display: inline-block;
-                    max-height: 42px;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
                     margin-left: 10px;
                     padding: 10px 20px;
                     background-color: #fff;

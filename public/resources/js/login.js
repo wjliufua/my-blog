@@ -27,14 +27,26 @@ var registrationPwd = document.getElementById('registration_pwd');
 var confirmPwd = document.getElementById('confirm_pwd');
 var pwdWarning = document.getElementsByClassName('pwd_warning')[0];
 var warningContent = document.getElementsByClassName('warning_content')[0];
-// confirmPwd.addEventListener('focus', passwordVerification);
-confirmPwd.addEventListener('input', debounce(passwordVerification, 1000));
-confirmPwd.addEventListener('focus', tips);
+
+// confirmPwd.addEventListener('input', debounce(passwordVerification, 500));
+confirmPwd.addEventListener('blur', passwordVerification);
+registrationPwd.addEventListener('blur', passwordVerification);
 
 function tips() {
     pwdWarning.style.display = 'block';
-    warningContent.innerHTML = '两次输入的密码不一样啊，叼毛';
-    var boxLocation = confirmPwd.offsetTop - pwdWarning.clientHeigh;
+    warningContent.innerHTML = `
+    两次输入的密码不一样啊，叼毛
+    </br>
+    两次输入的密码不一样啊，叼毛
+    </br>
+    两次输入的密码不一样啊，叼毛
+    </br>
+    两次输入的密码不一样啊，叼毛
+    </br>
+    两次输入的密码不一样啊，叼毛
+    `;
+    console.log(pwdWarning.clientHeight);
+    var boxLocation = confirmPwd.offsetTop - pwdWarning.clientHeight / 2 + confirmPwd.clientHeight / 2;
     pwdWarning.style.top = boxLocation + 'px';
 }
 
@@ -47,12 +59,24 @@ function debounce(fn, wait) {
 }
 // 密码验证(注册输入两次密码是否一致)
 function passwordVerification() {
-    if (confirmPwd.value.trim() === '') {
-        console.log('确认密码啊，叼毛');
-    } else if (registrationPwd.value.trim() !== confirmPwd.value.trim()) {
-        console.log('两次输入的密码不一样啊，叼毛');
+    if (confirmPwd.value.trim() !== '' && registrationPwd.value.trim() !== confirmPwd.value.trim()) {
+        tips();
+    } else if (registrationPwd.value.trim() === confirmPwd.value.trim()) {
+        pwdWarning.style.display = 'none';
     } else {
-        console.log('艸');
+        pwdWarning.style.display = 'none';
+    }
+}
+
+
+var registeredEmail = document.getElementById('registered_email');
+// registeredEmail.addEventListener('blur', emailRegex);
+
+function emailRegex() {
+    var email = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+    if (!email.test(registeredEmail) && registeredEmail.value.trim() !== '') {
+        alert('来点阳间的邮箱地址');
+        return false;
     }
 }
 
@@ -79,10 +103,10 @@ function setTimeSend() {
     //         }
     //     });
     // }
-    console.log(document.getElementById('registered_email').value);
+    console.log(registeredEmail.value);
     if (countdown == 5) {
         axios.post("/email/sendEmail", {
-            email: document.getElementById('registered_email').value
+            email: registeredEmail.value
         }).then((response) => {
             let res = response.data;
             alert(res.msg);
@@ -111,7 +135,7 @@ var pwd = registerInput[2].value;
 // console.log(submitRegister);
 // 获取用户输入值
 function register() {
-    for (let i = 1; i < (registerFrom.children.length - 2); i++) {
+    for (let i = 1; i < (registerFrom.children.length - 3); i++) {
         if (registerFrom.children[i].value.trim() === '') {
             return alert('请输入完整的注册信息')
         }

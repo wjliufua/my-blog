@@ -18,7 +18,7 @@
             <span class="click">登录</span>/<span>注册</span>
         </p>
         <!-- 登录提交表单 -->
-        <div class="comtent_from login_from" style="display: block;">
+        <div class="comtent_from login_from">
             <!-- 用户头像 -->
             <div class="head_portrait">
                 <img src="../resources/images/1.jpg" alt="登录头像">
@@ -31,13 +31,7 @@
             <button class="submit_button">登录</button>
         </div>
         <!-- 注册提交表单 -->
-        <div class="comtent_from register_from" id="registerFrom" style="display: none;">
-            <div class="pwd_warning">
-                <div class="pwd_warning_box">
-                    <span class="warning_triangle"></span>
-                    <div class="warning_content"></div>
-                </div>
-            </div>
+        <div class="comtent_from register_from" id="registerFrom">
             <span class="registered_title">是兄弟就注册淦我</span>
             <!-- 用户邮箱地址 -->
             <input class="user_input" id="registered_email" type="text" placeholder="请输入邮箱地址">
@@ -52,6 +46,12 @@
             </div>
             <!-- 注册按钮 -->
             <button class="submit_button" id="submitRegister" onclick="register()">注册</button>
+            <div class="pwd_warning">
+                <div class="pwd_warning_box">
+                    <span class="warning_triangle"></span>
+                    <div class="warning_content"></div>
+                </div>
+            </div>
         </div>
     </div>
     <script src="../resources/js/login.js"></script>
