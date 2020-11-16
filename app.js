@@ -18,8 +18,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // const client = require('./routes/client');
 const sendEmail = require('./routes/sendEmail');
+const register = require('./routes/register');
 
 app.use('/email', sendEmail);
+app.use('/register', register);
 
 // 路由模块
 // app.use('/', client);

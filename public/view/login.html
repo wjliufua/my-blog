@@ -33,12 +33,15 @@
         <!-- 注册提交表单 -->
         <div class="comtent_from register_from" id="registerFrom">
             <span class="registered_title">是兄弟就注册淦我</span>
+            <!-- 用户昵称 -->
+            <input value="博客用户" name="nickName" id="nickName" type="hidden" placeholder="请输入邮箱地址">
             <!-- 用户邮箱地址 -->
-            <input class="user_input" id="registered_email" type="text" placeholder="请输入邮箱地址">
+            <input class="user_input" name="registerEmail" id="registered_email" type="text" placeholder="请输入邮箱地址">
             <!-- 用户密码 -->
-            <input class="user_input" id="registration_pwd" type="password" placeholder="请输入密码">
+            <input class="user_input" name="registerPwd" id="registration_pwd" type="password" onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" onkeydown="if(event.keyCode==13)event.keyCode=9"
+                placeholder="请输入密码">
             <!-- 用户确认密码 -->
-            <input class="user_input" id="confirm_pwd" type="password" placeholder="请确认密码">
+            <input class="user_input" name="confirm_pwd" id="confirm_pwd" type="password" placeholder="请确认密码">
             <!-- 用户邮箱验证 -->
             <div class="verification">
                 <input class="user_input verification_input" placeholder="请输入邮箱验证码">
