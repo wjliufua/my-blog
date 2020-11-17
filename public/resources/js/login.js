@@ -25,52 +25,48 @@ lrChange();
 var registrationPwd = document.getElementById('registration_pwd');
 // 注册确认密码框
 var confirmPwd = document.getElementById('confirm_pwd');
-var pwdWarning = document.getElementsByClassName('pwd_warning')[0];
-var warningContent = document.getElementsByClassName('warning_content')[0];
+// 确认密码警告框
+var pwdWarning = document.getElementById('pwd_warning');
+// 输入密码警告框
+var pwdTips = document.getElementById('pwd_tips');
+// 确认密码警告框内容显示框
+var warningContent1 = document.getElementById('warningContent1');
+// 输入密码警告框内容显示框
+var warningContent2 = document.getElementById('warningContent2');
 
-// confirmPwd.addEventListener('input', debounce(passwordVerification, 500));
+// 注册确认密码框焦点离开监听事件
+confirmPwd.addEventListener('blur', passwordVerification);
 
-// confirmPwd.addEventListener('blur', function() { passwordVerification() }, false);
-// confirmPwd.addEventListener('focus', function() { inputTips() }, false);
-// registrationPwd.addEventListener('blur', function() { passwordVerification() }, false);
-// registrationPwd.addEventListener('focus', function() { inputTips(0) }, false);
+// 注册密码框焦点获取监听事件
+registrationPwd.onfocus = function() {
+    inputTips(1, `密码由数字和字母组成</br>长度为8-20位`);
+}
 
-confirmPwd.addEventListener('blur', passwordVerification());
-confirmPwd.addEventListener('focus', inputTips());
-registrationPwd.addEventListener('blur', passwordVerification());
-registrationPwd.addEventListener('focus', inputTips(0));
+// 注册密码框焦点离开监听事件
+registrationPwd.onblur = function() {
+    inputTips(0, '');
+    pwdLength();
+}
 
-// confirmPwd.onfocus = function() {
-//     inputTips();
-// }
-// confirmPwd.onblur = function() {
-//     passwordVerification();
-// }
-// registrationPwd.onfocus = function() {
-//     inputTips();
-// }
-// registrationPwd.onblur = function() {
-//     passwordVerification();
-// }
-
+// 确认密码警告框弹出
 function tips() {
     pwdWarning.style.display = 'block';
-    warningContent.innerHTML = `
-    两次输入的密码不一样啊，叼毛
-    </br>
-    两次输入的密码不一样啊，叼毛
-    </br>
-    两次输入的密码不一样啊，叼毛
-    </br>
-    两次输入的密码不一样啊，叼毛
-    </br>
-    两次输入的密码不一样啊，叼毛
+    warningContent1.innerHTML = `
+        两次输入的密码不一样啊，叼毛
+        </br>
+        两次输入的密码不一样啊，叼毛
+        </br>
+        两次输入的密码不一样啊，叼毛
+        </br>
+        两次输入的密码不一样啊，叼毛
+        </br>
+        两次输入的密码不一样啊，叼毛
     `;
-    // console.log(pwdWarning.clientHeight);
     var boxLocation = confirmPwd.offsetTop - pwdWarning.clientHeight / 2 + confirmPwd.clientHeight / 2;
     pwdWarning.style.top = boxLocation + 'px';
 }
 
+// 密码警告框弹出
 function debounce(fn, wait) {
     var timeout = null;
     return function() {
@@ -79,18 +75,31 @@ function debounce(fn, wait) {
     }
 }
 
-// 输入前提示
-function inputTips(data) {
-    console.log('进来了');
-    console.log(data);
+// 密码提示框弹出
+function inputTips(operation, message) {
+    if (operation == 0) {
+        pwdTips.style.display = 'none';
+    } else {
+        pwdTips.style.display = 'block';
+        warningContent2.innerHTML = `${message}`;
+        var boxLocation = registrationPwd.offsetTop - pwdTips.clientHeight / 2 + registrationPwd.clientHeight / 2;
+        pwdTips.style.top = boxLocation + 'px';
+    }
+}
+var pwdFlag = false;
+// 判断密码输入是否长度是否符合
+function pwdLength() {
+    if (registrationPwd.value.trim().length == 0) {
+        return false;
+    } else if (registrationPwd.value.trim().length < 8 || registrationPwd.value.trim().length > 20) {
+        inputTips(1, `密码长度不对,是不是要我淦你啊`);
+    } else {
+        pwdFlag = !pwdFlag;
+    }
 }
 
 // 密码验证(注册输入两次密码是否一致)
-function passwordVerification(s) {
-    console.log(this);
-    // if (s = 0) {
-    // inputTips();
-    // } else {
+function passwordVerification() {
     if (confirmPwd.value.trim() !== '' && registrationPwd.value.trim() !== confirmPwd.value.trim()) {
         tips();
     } else if (registrationPwd.value.trim() === confirmPwd.value.trim()) {
@@ -98,35 +107,27 @@ function passwordVerification(s) {
     } else {
         pwdWarning.style.display = 'none';
     }
-    // }
-    // if (confirmPwd.value.trim() !== '' && registrationPwd.value.trim() !== confirmPwd.value.trim()) {
-    //     tips();
-    // } else if (registrationPwd.value.trim() === confirmPwd.value.trim()) {
-    //     pwdWarning.style.display = 'none';
-    // } else {
-    //     pwdWarning.style.display = 'none';
-    // }
 }
 
 
 var registeredEmail = document.getElementById('registered_email');
-// registeredEmail.addEventListener('blur', emailRegex);
 
-function emailRegex() {
-    var email = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-    if (!email.test(registeredEmail) || registeredEmail.value.trim() == '') {
-        alert('来点阳间的邮箱地址');
-        return false;
-    }
-}
+// function emailRegex() {
+//     var email = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+//     if (!email.test(registeredEmail) || registeredEmail.value.trim() == '') {
+//         alert('来点阳间的邮箱地址');
+//         return false;
+//     }
+// }
 
 
 // 邮箱验证按钮
 var checking = document.getElementById('checking');
-
+// 邮箱验证按钮点击监听事件
 checking.addEventListener('click', setTimeSend);
+// 再次获取邮件倒计时
 var countdown = 5;
-
+// 邮箱验证按钮发送邮件验证
 function setTimeSend() {
     // if (countdown == 5) {
     //     $.ajax({
@@ -143,7 +144,7 @@ function setTimeSend() {
     //         }
     //     });
     // }
-    console.log(registeredEmail.value);
+    // console.log(registeredEmail.value);
     if (countdown == 5) {
         axios.post("/email/sendEmail", {
             email: registeredEmail.value
@@ -169,53 +170,87 @@ function setTimeSend() {
 var registerFrom = document.getElementById('registerFrom');
 // 获取注册按钮
 var submitRegister = document.getElementById('submitRegister');
+// 获取注册表单输入框
 var registerInput = registerFrom.children;
-// var email = registerInput[1].value;
-// var pwd = registerInput[2].value;
+// 获取隐藏域用户昵称
 var nickName = document.getElementById('nickName');
+// 用户注册信息拼接
 var registerValue = '';
-var nickNames = ``;
-// console.log(submitRegister);
+// var nickNames = ``;
+// 注册按钮防抖
+function debounce() {
+    register();
+}
+console.log(document.getElementsByClassName('verification_input')[0]);
 // 获取用户输入值
 function register() {
-    for (let i = 1; i < (registerFrom.children.length - 3); i++) {
-        if (registerFrom.children[i].value.trim() === '') {
-            return alert('请输入完整的注册信息')
+    if (!pwdFlag) {
+        return alert('我丢')
+    } else {
+        for (let i = 1; i < (registerFrom.children.length - 4); i++) {
+            if (registerFrom.children[i].value.trim() === '') {
+                return alert('请输入完整的注册信息')
+            }
+            if (i > 1 && i < 4) {
+                registerValue += registerFrom.children[i].getAttribute('name') + '=' + registerFrom.children[i].value + '&';
+            }
         }
-        // nickNames = nickName.value + registerInput[1].value;
-        // nickName.value += nickName.value + registerInput[1].value
-        // console.log(nickName.value);
-        if (i > 1 && i < 4) {
-            registerValue += registerFrom.children[i].getAttribute('name') + '=' + registerFrom.children[i].value + '&';
-            // console.log(registerValue.length);
+        registerValue = '';
+        nickName.value = nickName.value + registerInput[2].value;
+        registerValue = registerValue + 'nickName=' + nickName.value;
+        console.log(registerValue);
+        if (registerFrom.children[5].children[0].value.trim() === '') {
+            return alert('请输入邮箱验证码')
         }
+        var code = document.getElementsByClassName('verification_input')[0].value;
+        $.ajax({
+            type: 'post',
+            url: '/email/confirm',
+            data: {
+                code: code
+            },
+            success: function(data) {
+                if (data.status == 1) {
+                    return alert('验证码错误')
+                } else {
+                    console.log('成功');
+                    // $.ajax({
+                    //     type: 'post',
+                    //     url: '/register',
+                    //     data: {
+                    //         registerValue
+                    //     },
+                    //     success: function(data) {
+                    //         // location.href = '/view/login.html'
+                    //         let { message, aaa } = data;
+                    //         console.log(message);
+                    //         console.log(aaa);
+                    //     },
+                    //     error: function(err) {
+                    //         console.log(err);
+                    //     }
+                    // });
+                }
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
+        //         $.ajax({
+        //             type: 'post',
+        //             url: '/register',
+        //             data: {
+        //                 registerValue
+        //             },
+        //             success: function(data) {
+        //                 // location.href = '/view/login.html'
+        //                 let { message, aaa } = data;
+        //                 console.log(message);
+        //                 console.log(aaa);
+        //             },
+        //             error: function(err) {
+        //                 console.log(err);
+        //             }
+        //         });
     }
-    // console.log(nickNames);
-    // registerValue = registerValue.slice(1, registerValue.length - 1);
-    // console.log(registerValue);
-    nickName.value = nickName.value + registerInput[2].value;
-    registerValue = registerValue + 'nickName=' + nickName.value;
-    console.log(registerValue);
-    // console.log(nickName.value);
-    if (registerFrom.children[5].children[0].value.trim() === '') {
-        return alert('请输入邮箱验证码')
-    }
-    $.ajax({
-        type: 'post',
-        url: '/register',
-        data: {
-            registerValue
-        },
-        success: function(data) {
-            // location.href = '/view/login.html'
-            let { message, aaa } = data;
-            console.log(message);
-            console.log(aaa);
-        },
-        error: function(err) {
-            console.log(err);
-        }
-    })
 }
-// var random = String(Math.random());
-// console.log(random.slice(2, 7));

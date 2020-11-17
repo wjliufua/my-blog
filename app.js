@@ -23,6 +23,10 @@ const register = require('./routes/register');
 app.use('/email', sendEmail);
 app.use('/register', register);
 
+app.use(sendEmail, (err, req, res, next) => {
+    console.log(next.msg);
+});
+
 // 路由模块
 // app.use('/', client);
 // require('./routes')(app);

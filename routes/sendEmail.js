@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const sendMail = require('./nodemailer')
+const sendMail = require('./nodemailer');
+const time = require('./timeFormat');
+
 let code = "";
 router.post("/sendEmail", (req, res) => {
     let email = req.body.email;
@@ -26,6 +28,10 @@ router.post("/sendEmail", (req, res) => {
 });
 router.post("/confirm", (req, res, next) => {
     let userCode = req.body.code;
+    let date = time;
+    console.log(date);
+    // console.log(router);
+    // console.log(code);
     if (code != userCode) {
         res.json({
             status: '1',

@@ -30,8 +30,8 @@ function mail(to, title, content, callback) {
             from: 'wdnmd<18420116994@163.com>', //发送方昵称和邮箱
             to: to,
             subject: title,
-            text: content,
-            html: '<a href="http://www.gov.cn/">祖国统一</a>' // text和html任选其一即可
+            text: content
+                //html: '<a href="http://www.gov.cn/">祖国统一</a>' // text和html任选其一即可
         }
         //发送邮件
     transporter.sendMail(info, (err, data) => {

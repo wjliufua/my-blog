@@ -38,7 +38,7 @@
             <!-- 用户邮箱地址 -->
             <input class="user_input" name="registerEmail" id="registered_email" type="text" placeholder="请输入邮箱地址">
             <!-- 用户密码 -->
-            <input class="user_input" name="registerPwd" id="registration_pwd" type="password" onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" onkeydown="if(event.keyCode==13)event.keyCode=9"
+            <input class="user_input" name="registerPwd" maxlength="20" id="registration_pwd" type="password" onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" onkeydown="if(event.keyCode==13)event.keyCode=9"
                 placeholder="请输入密码">
             <!-- 用户确认密码 -->
             <input class="user_input" name="confirm_pwd" id="confirm_pwd" type="password" placeholder="请确认密码">
@@ -48,11 +48,19 @@
                 <button id="checking">点击获取验证码</button>
             </div>
             <!-- 注册按钮 -->
-            <button class="submit_button" id="submitRegister" onclick="register()">注册</button>
-            <div class="pwd_warning">
+            <button class="submit_button" id="submitRegister" onclick="debounce()">注册</button>
+            <!-- 确认密码错误提示框 -->
+            <div class="pwd_warning" id="pwd_warning">
                 <div class="pwd_warning_box">
                     <span class="warning_triangle"></span>
-                    <div class="warning_content"></div>
+                    <div class="warning_content" id="warningContent1"></div>
+                </div>
+            </div>
+            <!-- 输入提示框 -->
+            <div class="pwd_warning" id="pwd_tips">
+                <div class="pwd_warning_box">
+                    <span class="warning_triangle"></span>
+                    <div class="warning_content" id="warningContent2"></div>
                 </div>
             </div>
         </div>
