@@ -31,9 +31,9 @@ app.use(sendEmail, (err, req, res, next) => {
 // app.use('/', client);
 // require('./routes')(app);
 
-// mongoose.connect('mongodb://root:root@localhost:27017/myblog?authoSource=admin', { useNewUrlParser: true, useCreateIndex: true })
-//     .then(() => console.log('数据库无事发生'))
-//     .catch(() => console.log('数据库无'));
+mongoose.connect('mongodb://root:root@localhost:27017/myblog?authSource=admin', { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
+    .then(() => console.log('数据库连接成功'))
+    .catch(() => console.log('数据库连接失败'));
 
 // 监听端口
 app.listen(8000);

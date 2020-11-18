@@ -196,6 +196,7 @@ function register() {
             }
         }
         registerValue = '';
+        nickName.value = '';
         nickName.value = nickName.value + registerInput[2].value;
         registerValue = registerValue + 'nickName=' + nickName.value;
         console.log(registerValue);
