@@ -1,4 +1,4 @@
-function timeFormat() {
+function TimeFormat() {
     let date = new Date();
     // let Y = date.getFullYear();
     // let M = date.getDate();
@@ -15,12 +15,15 @@ function timeFormat() {
     // nt.setTime(t_s + 1000 * 60 * 60); //设置新时间比旧时间多一小时
     // nt.setTime(t_s + 1000 * 60 * 60 * 24); //设置新时间比旧时间多一天
     let dateOpend = date.getTime();
-    let dateEnd = setTime(dateOpend + 1000 * 60);
-    // return dateOpend, dateEnd;
+    return dateOpend;
 }
 
-module.exports = (req, res) => {
-    let date = new Date();
-    let dateOpend = date.getTime();
-    let dateEnd = setTime(dateOpend + 1000 * 60);
+module.exports = function() {
+    return function() {
+        let dateOpend = date.getTime();
+    }
 }
+
+// module.exports = {
+//     TimeFormat
+// }

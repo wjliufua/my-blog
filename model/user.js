@@ -41,7 +41,7 @@ const UserSchema = new Schema({
         required: true
     },
     time: {
-        type: Date
+        type: Number
     }
 });
 
