@@ -146,12 +146,27 @@ function setTimeSend() {
     // }
     // console.log(registeredEmail.value);
     if (countdown == 5) {
-        axios.post("/email/sendEmail", {
-            email: registeredEmail.value
+        for (let i = 1; i < (registerFrom.children.length - 4); i++) {
+            if (registerFrom.children[i].value.trim() === '') {
+                return alert('请输入完整的注册信息')
+            }
+            if (i > 1 && i < 4) {
+                registerValue += registerFrom.children[i].getAttribute('name') + '=' + registerFrom.children[i].value + '&';
+            }
+        }
+        // nickName.value = '';
+        var date = Date.parse(new Date());
+        // console.log(date);
+        nickName.value = nickName.value + registerInput[2].value;
+        registerValue = registerValue + 'nickName=博客用户' + registeredEmail.value + '&time=' + +date;
+        console.log(registerValue);
+        axios.post("/email", {
+            registerValue
         }).then((response) => {
             let res = response.data;
             alert(res.msg);
         });
+        registerValue = '';
     }
     if (countdown == 0) {
         checking.removeAttribute('disabled');
@@ -173,7 +188,7 @@ var submitRegister = document.getElementById('submitRegister');
 // 获取注册表单输入框
 var registerInput = registerFrom.children;
 // 获取隐藏域用户昵称
-var nickName = document.getElementById('nickName');
+// var nickName = document.getElementById('nickName');
 // 用户注册信息拼接
 var registerValue = '';
 // var nickNames = ``;
@@ -184,83 +199,86 @@ function debounce() {
 console.log(document.getElementsByClassName('verification_input')[0]);
 // 获取用户输入值
 function register() {
-    // if (!pwdFlag) {
-    //     return alert('我丢')
-    // } else {
-    for (let i = 1; i < (registerFrom.children.length - 4); i++) {
-        // if (registerFrom.children[i].value.trim() === '') {
-        //     return alert('请输入完整的注册信息')
-        // }
-        if (i > 1 && i < 4) {
-            registerValue += registerFrom.children[i].getAttribute('name') + '=' + registerFrom.children[i].value + '&';
+    if (!pwdFlag) {
+        return alert('我丢')
+    } else {
+        for (let i = 1; i < (registerFrom.children.length - 4); i++) {
+            if (registerFrom.children[i].value.trim() === '') {
+                return alert('请输入完整的注册信息')
+            }
+            if (i > 1 && i < 4) {
+                registerValue += registerFrom.children[i].getAttribute('name') + '=' + registerFrom.children[i].value + '&';
+            }
         }
-    }
-    nickName.value = '';
-    var date = Date.parse(new Date());
-    // console.log(date);
-    nickName.value = nickName.value + registerInput[2].value;
-    registerValue = registerValue + 'nickName=' + nickName.value + '&time=' + +date;
-    console.log(registerValue);
-    if (registerFrom.children[5].children[0].value.trim() === '') {
-        return alert('请输入邮箱验证码')
-    }
-    var code = document.getElementsByClassName('verification_input')[0].value;
-    // $.ajax({
-    //     type: 'post',
-    //     url: '/email/confirm',
-    //     data: {
-    //         code: code
-    //     },
-    //     success: function(data) {
-    //         if (data.status == 1) {
-    //             return alert('验证码错误')
-    //         } else {
-    //             console.log('成功');
-    //             console.log(registerValue);
-    //             $.ajax({
-    //                 type: 'post',
-    //                 url: '/register',
-    //                 contentType: 'application/x-www-form-urlencoded',
-    //                 data: {
-    //                     registerValue
-    //                 },
-    //                 success: function(data) {
-    //                     registerValue = '';
-    //                     // location.href = '/view/login.html'
-    //                     let { message, reqParameter } = data;
-    //                     console.log(message);
-    //                     console.log(reqParameter);
-    //                 },
-    //                 error: function(err) {
-    //                     registerValue = '';
-    //                     console.log(err);
-    //                 }
-    //             });
-    //         }
-    //     },
-    //     error: function(err) {
-    //         console.log(err);
-    //     }
-    // });
-    $.ajax({
-        type: 'post',
-        url: '/register',
-        data: {
-            registerValue
-        },
-        success: function(data) {
-            registerValue = '';
-            // location.href = '/view/login.html'
-            let { message, reqParameter } = data;
-            console.log(message);
-            console.log(reqParameter);
-        },
-        error: function(err) {
-            registerValue = '';
-            console.log(err);
+        // nickName.value = '';
+        var date = Date.parse(new Date());
+        // console.log(date);
+        // console.log(registerValue);
+        // registerValue = '';
+        nickName.value = nickName.value + registerInput[2].value;
+        registerValue = registerValue + 'nickName=博客用户' + registeredEmail.value + '&time=' + +date;
+        console.log(registerValue);
+        if (registerFrom.children[5].children[0].value.trim() === '') {
+            return alert('请输入邮箱验证码')
         }
-    });
-    // }
+        var code = document.getElementsByClassName('verification_input')[0].value;
+        // $.ajax({
+        //     type: 'post',
+        //     url: '/email',
+        //     data: {
+        //         registerValue
+        //     },
+        //     success: function(data) {
+        //         // if (data.status == 1) {
+        //         //     return alert('验证码错误');
+        //         //     registerValue = '';
+        //         // } else {
+        //         console.log('成功');
+        //         console.log(registerValue);
+        //         $.ajax({
+        //             type: 'post',
+        //             url: '/register',
+        //             contentType: 'application/x-www-form-urlencoded',
+        //             data: {
+        //                 registerValue
+        //             },
+        //             success: function(data) {
+        //                 registerValue = '';
+        //                 // location.href = '/view/login.html'
+        //                 let { message, reqParameter } = data;
+        //                 console.log(message);
+        //                 console.log(reqParameter);
+        //             },
+        //             error: function(err) {
+        //                 registerValue = '';
+        //                 console.log(err);
+        //             }
+        //         });
+        //         // }
+        //     },
+        //     error: function(err) {
+        //         console.log(err);
+        //     }
+        // });
+        $.ajax({
+            type: 'post',
+            url: '/register',
+            data: {
+                registerValue
+            },
+            success: function(data) {
+                registerValue = '';
+                // location.href = '/view/login.html'
+                let { message, reqParameter } = data;
+                console.log(message);
+                console.log(reqParameter);
+            },
+            error: function(err) {
+                registerValue = '';
+                console.log(err);
+            }
+        });
+    }
 }
 
 function req(type, url, data) {

@@ -31,7 +31,7 @@ app.use(sendEmail, (err, req, res, next) => {
 // app.use('/', client);
 // require('./routes')(app);
 
-mongoose.connect('mongodb://root:root@localhost:27017/myblog?authSource=admin', { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://root:root@localhost:27017/myblog?authSource=admin', { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false })
     .then(() => console.log('数据库连接成功'))
     .catch(() => console.log('数据库连接失败'));
 
