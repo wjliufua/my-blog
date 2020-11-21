@@ -47,9 +47,12 @@ const { User } = require('../model/user');
 // });
 // module.exports = router;
 module.exports = async(req, res) => {
+    let empty = '传入数据为空';
+    if (req.body.registerValue === undefined) {
+        return empty;
+    }
+    console.log(req.body.registerValue);
     let code = "";
-    // let email = req.body.email;
-    // console.log(req.body);
     code = "";
     // 随机生成六位验证码
     for (let i = 0; i < 6; i++) {
@@ -71,19 +74,14 @@ module.exports = async(req, res) => {
     }
     for (let j = 0; j < parameterArr.length; j++) {
         parameters.push(parameterArr[j][1]);
-        // let [parameterArr[j][0]] = parameterArr[j][1];
     }
-    // console.log(parameters);
     let [registerEmail, registerPwd, nickName, time] = parameters;
     userTesting(registerEmail, registerPwd, nickName, time);
 
     async function userTesting(registerEmail, registerPwd, nickName, time) {
         let userFlag = await User.findOne({ email: registerEmail });
-        let registerFlag = await User.find({ 'email': registerEmail, 'register': 'blankState' });
-        // console.log(userFlag);
+        let registerFlag = await User.findOne({ email: registerEmail, register: 'blankState' });
         if (userFlag == null) {
-            // let registerFlag = await User.find({ 'email': registerEmail, 'register': 'blankState' });
-            // console.log(registerFlag);
             User.create({
                 usernmae: nickName,
                 email: registerEmail,
@@ -100,34 +98,25 @@ module.exports = async(req, res) => {
                 code: code,
                 time: time
             });
-        } else if (userFlag !== null && registerFlag == 'blankState') {
-            // let registerFlag = await User.find({ 'email': registerEmail, 'register': 'blankState' });
-            User.findByIdAndUpdate(registerEmail, { code: code }, function(err) {
+            sendMail.mail(parameters[0], "博客注册验证码", code, (err, data) => {
                 if (err) {
-                    console.log('验证码更新失败');
+                    res.json({
+                        status: '1',
+                        msg: err.message
+                    });
                 } else {
-                    console.log('验证码更新成功');
+                    res.json({
+                        status: '0',
+                        msg: "验证码已发送"
+                    });
                 }
             });
-            // res.status(400).send('请点击获取验证码');
-        } else {
-            res.send({
-                msg: '报错了'
+        } else if (userFlag !== null && registerFlag !== null) {
+            User.updateOne({ email: registerEmail }, { code: code }, function(err) {
+                err ? console.log('验证码更新失败') : console.log('验证码更新成功');
             });
+        } else {
+            return res.send({ msg: '此邮箱已注册' });
         }
     }
-    // }
-    sendMail.mail(parameters[0], "博客注册验证码", code, (err, data) => {
-        if (err) {
-            res.json({
-                status: '1',
-                msg: err.message
-            });
-        } else {
-            res.json({
-                status: '0',
-                msg: "验证码已发送"
-            });
-        }
-    });
 }

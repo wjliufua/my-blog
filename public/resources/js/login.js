@@ -127,6 +127,44 @@ var checking = document.getElementById('checking');
 checking.addEventListener('click', setTimeSend);
 // 再次获取邮件倒计时
 var countdown = 5;
+
+// checking.onclick = function() {
+//     if (countdown == 5) {
+//         for (let i = 1; i < (registerFrom.children.length - 4); i++) {
+//             if (registerFrom.children[i].value.trim() === '') {
+//                 return alert('请输入完整的注册信息')
+//             }
+//             if (i > 1 && i < 4) {
+//                 registerValue += registerFrom.children[i].getAttribute('name') + '=' + registerFrom.children[i].value + '&';
+//             }
+//         }
+//         // nickName.value = '';
+//         var date = Date.parse(new Date());
+//         // console.log(date);
+//         nickName.value = nickName.value + registerInput[2].value;
+//         registerValue = registerValue + 'nickName=博客用户' + registeredEmail.value + '&time=' + +date;
+//         console.log(registerValue);
+//         axios.post("/email", {
+//             registerValue
+//         }).then((response) => {
+//             let res = response.data;
+//             alert(res.msg);
+//         });
+//         registerValue = '';
+//     }
+//     if (countdown == 0) {
+//         checking.removeAttribute('disabled');
+//         checking.innerHTML = "点击获取验证码";
+//         countdown = 5;
+//         return;
+//     } else {
+//         checking.setAttribute('disabled', 'true');
+//         checking.innerHTML = "(" + countdown + "s)后重新发送";
+//         countdown--;
+//     }
+//     setTimeout(function() { setTimeSend() }, 1000);
+// }
+
 // 邮箱验证按钮发送邮件验证
 function setTimeSend() {
     // if (countdown == 5) {
@@ -196,12 +234,13 @@ var registerValue = '';
 function debounce() {
     register();
 }
-console.log(document.getElementsByClassName('verification_input')[0]);
+// console.log(document.getElementsByClassName('verification_input')[0]);
 // 获取用户输入值
 function register() {
     if (!pwdFlag) {
         return alert('我丢')
     } else {
+        registerValue = '';
         for (let i = 1; i < (registerFrom.children.length - 4); i++) {
             if (registerFrom.children[i].value.trim() === '') {
                 return alert('请输入完整的注册信息')
@@ -216,7 +255,7 @@ function register() {
         // console.log(registerValue);
         // registerValue = '';
         nickName.value = nickName.value + registerInput[2].value;
-        registerValue = registerValue + 'nickName=博客用户' + registeredEmail.value + '&time=' + +date;
+        registerValue = registerValue + 'nickName=博客用户' + registeredEmail.value + '&time=' + date + '&code=' + document.getElementsByClassName('verification_input')[0].value.trim();
         console.log(registerValue);
         if (registerFrom.children[5].children[0].value.trim() === '') {
             return alert('请输入邮箱验证码')
@@ -269,9 +308,9 @@ function register() {
             success: function(data) {
                 registerValue = '';
                 // location.href = '/view/login.html'
-                let { message, reqParameter } = data;
-                console.log(message);
-                console.log(reqParameter);
+                // let { msg } = data;
+                // console.log(msg);
+                // console.log(reqParameter);
             },
             error: function(err) {
                 registerValue = '';
