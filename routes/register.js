@@ -1,4 +1,3 @@
-// const { timeFormat } = require('./timeFormat');
 const { User } = require('../model/user');
 
 module.exports = async(req, res, next) => {
@@ -16,22 +15,17 @@ module.exports = async(req, res, next) => {
     for (let j = 0; j < parameterArr.length; j++) {
         parameters.push(parameterArr[j][1]);
     }
-    // console.log(parameters);
     let [registerEmail, registerPwd, nickName, time, code] = parameters;
-    // time = time - 1000 * 20;
-    // await User.findOne({ registerEmail: registerEmail, register: 'blankState', code: code, time: time }, function(err, data) {
-    //     return data == null ? res.send({ msg: '验证码已过期' }) : console.log('验证码还活着')
-    // });
-    console.log(registerEmail);
-    await User.findOne({ registerEmail: registerEmail }, function(err, data) {
-        console.log(data);
-        console.log('----');
-    });
-    let fullState = await User.findOne({ registerEmail: registerEmail, register: 'blankState', code: code }, function(err, res) {
-        console.log(res);
-        return res
-    });
-    console.log(fullState);
+    time = parseInt(time);
+    time = time - 1000 * 20;
+    let verificationTime = await User.findOne({ email: registerEmail, register: 'blankState', code: code });
+    if (verificationTime !== null) {
+        let mongooseTime = verificationTime.time;
+        mongooseTime = parseInt(mongooseTime);
+        let timeFlag = time <= mongooseTime + 1000 * 20 ? true : false;
+        if (!timeFlag) return res.send({ msg: '验证码已过期,请重新获取' });
+    }
+    let fullState = await User.findOne({ email: registerEmail, register: 'blankState', code: code });
     if (fullState !== null) {
         User.updateOne({ email: registerEmail }, { registerPwd: registerPwd, register: "fullState" }, function(err, data) {
             if (err) {
@@ -42,13 +36,11 @@ module.exports = async(req, res, next) => {
                 console.log('未查找到相关数据');
             } else {
                 console.log('注册状态更新成功');
+                res.send({ msg: '用户注册成功', state: 0 });
             }
         });
     } else {
         console.log('验证码不正确或已注册');
-        // res.send({
-        //     message: '成功失败',
-        //     reqParameter: reqParameter
-        // });
+        res.send({ msg: '验证码不正确或已注册' });
     }
 }

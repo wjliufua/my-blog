@@ -1,51 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const sendMail = require('./nodemailer');
-const time = require('./timeFormat');
 const { User } = require('../model/user');
 
-// let code = "";
-// router.post("/sendEmail", (req, res) => {
-//     let email = req.body.email;
-//     console.log(req.body);
-//     code = "";
-//     // 随机生成六位验证码
-//     for (let i = 0; i < 6; i++) {
-//         code += Math.floor(Math.random() * 10);
-//     }
-//     sendMail.mail(email, "博客注册验证码", code, (err, data) => {
-//         if (err) {
-//             res.json({
-//                 status: '1',
-//                 msg: err.message
-//             });
-//         } else {
-//             res.json({
-//                 status: '0',
-//                 msg: "验证码已发送"
-//             });
-//         }
-//     });
-// });
-// router.post("/confirm", (req, res, next) => {
-//     let userCode = req.body.code;
-//     let date = time;
-//     console.log(date);
-//     // console.log(router);
-//     // console.log(code);
-//     if (code != userCode) {
-//         res.json({
-//             status: '1',
-//             msg: '验证码错误'
-//         });
-//     } else {
-//         res.json({
-//             status: '0',
-//             msg: '验证成功'
-//         });
-//     }
-// });
-// module.exports = router;
+
 module.exports = async(req, res) => {
     let empty = '传入数据为空';
     if (req.body.registerValue === undefined) {
@@ -113,7 +71,26 @@ module.exports = async(req, res) => {
             });
         } else if (userFlag !== null && registerFlag !== null) {
             User.updateOne({ email: registerEmail }, { code: code }, function(err) {
-                err ? console.log('验证码更新失败') : console.log('验证码更新成功');
+                if (err) {
+                    res.json({
+                        status: '0',
+                        msg: "验证码发送失败"
+                    });
+                } else {
+                    sendMail.mail(parameters[0], "博客注册验证码", code, (err, data) => {
+                        if (err) {
+                            res.json({
+                                status: '1',
+                                msg: err.message
+                            });
+                        } else {
+                            res.json({
+                                status: '0',
+                                msg: "验证码已发送"
+                            });
+                        }
+                    });
+                }
             });
         } else {
             return res.send({ msg: '此邮箱已注册' });

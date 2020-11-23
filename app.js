@@ -6,22 +6,39 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 // 引入路径处理模块
 const path = require('path');
+// 引入session模块
+var session = require('express-session');
+// 引入cookie模块
+var cookieParser = require('cookie-parser');
 // 创建网站服务器
 const app = express();
+
+// 开放静态资源文件
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(cookieParser());
+
+app.use(session({
+    secret: 'wdnmd',
+    cookie: { maxAge: 120 * 1000 },
+    resave: false,
+    saveUninitialized: false
+}));
 
 // req.body需要使用
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// 开放静态资源文件
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/admin', require('./routes/loginGuard'));
 
 // const client = require('./routes/client');
 const sendEmail = require('./routes/sendEmail');
 const register = require('./routes/register');
+const login = require('./routes/login');
 
 app.use('/email', sendEmail);
 app.use('/register', register);
+app.use('/login', login);
 
 app.use(sendEmail, (err, req, res, next) => {
     console.log(next.msg);
