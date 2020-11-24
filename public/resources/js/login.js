@@ -231,8 +231,11 @@ function login() {
         },
         success: function(data) {
             console.log(data);
-            let { msg } = data;
-            console.log(msg);
+            // let { msg } = data;
+            if (data.msg) {
+                console.log(msg);
+                alert(msg);
+            }
             if (data.href) {
                 location.href = '/';
             }

@@ -29,7 +29,27 @@ app.use(session({
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use('/admin', require('./routes/loginGuard'));
+// app.use('/view/admin', require('./routes/loginGuard'));
+app.disable('view cache');
+app.use(function(req, res, next) {
+    // 登录拦截
+    if (req.session.username == undefined) {
+        res.setHeader('Cache-Control', 'no-cache');
+        res.redirect(301, '/view/login.html');
+    } else {
+        // 如果用户是登录状态 并且是一个普通用户
+        if (req.session.role !== 'admin' && req.url == '/view/admin') {
+            console.log(req.session.username);
+            // 让它跳转到博客首页  阻止程序向下执行
+            return res.redirect('/');
+            // return res.send('location.href = ' / '');
+            // var form = fs.readFileSync('public/index.html', { encoding: 'utf8' });
+            // res.send(form);
+        }
+        // 用户是登录状态  将请求放行
+        next();
+    }
+});
 
 // const client = require('./routes/client');
 const sendEmail = require('./routes/sendEmail');
