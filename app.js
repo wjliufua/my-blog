@@ -30,18 +30,31 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // app.use('/view/admin', require('./routes/loginGuard'));
-app.disable('view cache');
-app.use(function(req, res, next) {
+// app.disable('view cache');
+
+app.use((req, res, next) => {
     // 登录拦截
-    if (req.session.username == undefined) {
-        res.setHeader('Cache-Control', 'no-cache');
-        res.redirect(301, '/view/login.html');
+    if (!req.session.username) {
+        // res.setHeader('Cache-Control', 'no-cache');
+        // res.redirect(301, '/view/login.html');
+        res.redirect('http://localhost:8000/view/login.html');
+        // res.end();
+        // res.status(302);
+        // res.setHeader("Location", 'https://www.baidu.com/');
+        // res.writeHead(302, { Location: 'https://www.baidu.com/' });
+        // res.setHeader("Refresh", "URL=http://www.baidu.com");
+        res.end();
+        // res.send(`
+        // <script>window.location.href = 'https://www.baidu.com/'</script>
+        // `);
+        // res.get('https://www.baidu.com/');
+        // res.set('https://www.baidu.com/');
     } else {
         // 如果用户是登录状态 并且是一个普通用户
         if (req.session.role !== 'admin' && req.url == '/view/admin') {
-            console.log(req.session.username);
+            // console.log(req.session.username);
             // 让它跳转到博客首页  阻止程序向下执行
-            return res.redirect('/');
+            // return res.redirect('/');
             // return res.send('location.href = ' / '');
             // var form = fs.readFileSync('public/index.html', { encoding: 'utf8' });
             // res.send(form);
@@ -60,9 +73,9 @@ app.use('/email', sendEmail);
 app.use('/register', register);
 app.use('/login', login);
 
-app.use(sendEmail, (err, req, res, next) => {
-    console.log(next.msg);
-});
+// app.use(sendEmail, (err, req, res, next) => {
+//     console.log(next.msg);
+// });
 
 // 路由模块
 // app.use('/', client);
