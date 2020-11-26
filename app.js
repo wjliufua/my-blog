@@ -6,6 +6,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 // 引入路径处理模块
 const path = require('path');
+// 引入http模块
+const htpp = require('http');
 // 引入session模块
 var session = require('express-session');
 // 引入cookie模块
@@ -32,38 +34,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // app.use('/view/admin', require('./routes/loginGuard'));
 // app.disable('view cache');
 
-app.use((req, res, next) => {
-    // 登录拦截
-    if (!req.session.username) {
-        // res.setHeader('Cache-Control', 'no-cache');
-        // res.redirect(301, '/view/login.html');
-        res.redirect('http://localhost:8000/view/login.html');
-        // res.end();
-        // res.status(302);
-        // res.setHeader("Location", 'https://www.baidu.com/');
-        // res.writeHead(302, { Location: 'https://www.baidu.com/' });
-        // res.setHeader("Refresh", "URL=http://www.baidu.com");
-        res.end();
-        // res.send(`
-        // <script>window.location.href = 'https://www.baidu.com/'</script>
-        // `);
-        // res.get('https://www.baidu.com/');
-        // res.set('https://www.baidu.com/');
-    } else {
-        // 如果用户是登录状态 并且是一个普通用户
-        if (req.session.role !== 'admin' && req.url == '/view/admin') {
-            // console.log(req.session.username);
-            // 让它跳转到博客首页  阻止程序向下执行
-            // return res.redirect('/');
-            // return res.send('location.href = ' / '');
-            // var form = fs.readFileSync('public/index.html', { encoding: 'utf8' });
-            // res.send(form);
-        }
-        // 用户是登录状态  将请求放行
-        next();
-    }
-});
-
 // const client = require('./routes/client');
 const sendEmail = require('./routes/sendEmail');
 const register = require('./routes/register');
@@ -84,6 +54,27 @@ app.use('/login', login);
 mongoose.connect('mongodb://root:root@localhost:27017/myblog?authSource=admin', { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false })
     .then(() => console.log('数据库连接成功'))
     .catch(() => console.log('数据库连接失败'));
+
+app.use((req, res, next) => {
+    let url = req.url;
+    console.log(url);
+    // 登录拦截
+    if (!req.session.username) {
+        return res.redirect(301, '/view/login.html');
+    } else {
+        // 如果用户是登录状态 并且是一个普通用户
+        if (req.session.role !== 'admin' && req.url == '/view/admin') {
+            // console.log(req.session.username);
+            // 让它跳转到博客首页  阻止程序向下执行
+            // return res.redirect('/');
+            // return res.send('location.href = ' / '');
+            // var form = fs.readFileSync('public/index.html', { encoding: 'utf8' });
+            // res.send(form);
+        }
+        // 用户是登录状态  将请求放行
+        next();
+    }
+});
 
 // 监听端口
 app.listen(8000);
