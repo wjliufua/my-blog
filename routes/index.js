@@ -1,6 +1,13 @@
 module.exports = app => {
-    // 客户端首页
-    app.use('/', require('./client'));
-    // 用户
-    app.use('/users', require('/user'));
-}
+    // // 用户
+    // app.use('/users', require('/user'));
+
+    // 功能请求
+    // 发送邮件请求
+    app.use('/email', require('./sendEmail'));
+    // 注册请求
+    app.use('/register', require('./register'));
+    // 登录请求
+    app.use('/login', require('./login'));
+    // app.use('/view/admin/', require('./loginGuard'));
+};

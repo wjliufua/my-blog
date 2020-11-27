@@ -1,7 +1,8 @@
 // 注册登录切换
 var switchSpan = $('.switch span');
 // 登录注册表单获取
-var loginRegister = $('.login_register>div');
+var loginRegister = $('.comtent_from');
+// console.log($('.comtent_from'));
 // 获取输入框
 var lrInput = $('.login_register>div input');
 
@@ -237,7 +238,12 @@ function login() {
                 alert(msg);
             }
             if (data.href) {
-                location.href = '/';
+                // console.log(data.username);
+                // console.log(data.role);
+                // sessionStorage.setItem("username", data.username);
+                // sessionStorage.setItem("role", data.role);
+                location.href = data.href;
+                // console.log(data.href);
             }
         },
         error: function(err) {
