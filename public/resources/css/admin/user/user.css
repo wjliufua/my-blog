@@ -1,0 +1,21 @@
+.body {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-top: 54px;
+}
+.body .user_search {
+  padding: 22px 0;
+}
+.body .user_search input {
+  outline: none;
+  margin-left: 7px;
+  border-radius: 5px;
+  padding: 11px 15px;
+  font-size: 14px;
+  border: 1px solid #B6B6B6;
+}
+.body .user_search .user_name label {
+  font-size: 14px;
+  color: #565656;
+}

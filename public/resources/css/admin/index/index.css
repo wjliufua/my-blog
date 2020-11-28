@@ -5,3 +5,143 @@ body .all {
   display: flex;
   justify-content: space-between;
 }
+body .all .body {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-top: 54px;
+}
+body .all .body .essential_information {
+  display: flex;
+  width: 100%;
+  padding: 50px 0;
+}
+body .all .body .essential_information .comment {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1% 4%;
+  margin: 0 2%;
+  border-radius: 5px;
+  background-color: #fff;
+}
+body .all .body .essential_information .comment i {
+  font-size: 36px;
+}
+body .all .body .essential_information .comment span {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+body .all .body .essential_information .comment span a {
+  font-size: 16px;
+  color: #646464;
+  text-align: center;
+}
+body .all .body .essential_information .comment span > a:nth-child(1) {
+  margin-bottom: 11px;
+}
+body .all .body .essential_information .comment span > a:nth-child(2) {
+  font-weight: 600;
+}
+body .all .body .essential_information .comment:hover {
+  cursor: pointer;
+}
+body .all .body .essential_information .cumulative_user i {
+  color: #DB3333;
+}
+body .all .body .essential_information .cumulative_opinion i {
+  color: #00C3D3;
+}
+body .all .body .essential_information .cumulative_article i {
+  color: #00D39D;
+}
+body .all .body .essential_information .cumulative_visits i {
+  color: #FFA721;
+}
+body .all .body .statistics {
+  width: 100%;
+  padding: 0 30px;
+  display: flex;
+  justify-content: space-between;
+}
+body .all .body .statistics .chart_number {
+  overflow: hidden;
+  width: 60%;
+  background-color: #fff;
+}
+body .all .body .statistics .chart_number span {
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 50px;
+  font-size: 30px;
+}
+body .all .body .statistics .chart_number #main {
+  width: 100%;
+  height: 600px;
+}
+body .all .body .statistics .other {
+  width: 37%;
+}
+body .all .body .statistics .other #source {
+  width: 100%;
+  height: 300px;
+  padding: 5% 3%;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+body .all .body .statistics .other .contrast {
+  width: 100%;
+  height: 300px;
+  margin-top: 15%;
+  padding: 11% 5%;
+  padding-top: 0;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+body .all .body .statistics .other .contrast > span {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  color: #444444;
+  padding: 20px 0;
+  border-bottom: 1px solid #4D4D4D;
+}
+body .all .body .statistics .other .contrast p {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0;
+  padding-right: 20px;
+}
+body .all .body .statistics .other .contrast p a span {
+  display: inline-block;
+  width: 0px;
+  height: 0px;
+  border-top: 30px;
+  border-width: 6px;
+  margin-bottom: 3px;
+  margin-left: 10px;
+  border-color: transparent transparent #6D6D6D transparent;
+  border-style: solid dashed dashed;
+}
+body .all .body .statistics .other .contrast .container {
+  overflow: hidden;
+  width: 100%;
+  border-radius: 5px;
+  background-color: #ddd;
+}
+body .all .body .statistics .other .contrast .container .skills {
+  text-align: right;
+  height: 10px;
+  color: white;
+}
+body .all .body .statistics .other .contrast .container .ri {
+  width: 50%;
+  background-color: #4CAF50;
+}
+body .all .body .statistics .other .contrast .container .yue {
+  width: 80%;
+  background-color: #2196F3;
+}

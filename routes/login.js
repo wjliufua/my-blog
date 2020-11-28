@@ -15,7 +15,7 @@ module.exports = async(req, res) => {
     // console.log(userLogin.role);
     req.session.username = userLogin.email;
     req.session.role = userLogin.role;
-    // console.log(req.session);
+    console.log(req.session);
     // res.redirect(301, '/');
     // res.send({ href: '/', username: userLogin.email, role: userLogin.role });
     res.send({ href: 'http://localhost:8000/' });
