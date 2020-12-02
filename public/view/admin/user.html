@@ -175,7 +175,15 @@
                         </div>
                         <div class="user_email">
                             <label>用户邮箱</label>
-                            <input type="text" placeholder="请输入用户昵称">
+                            <input type="text" placeholder="请输入用户邮箱">
+                        </div>
+                        <div class="user_role">
+                            <label>用户状态</label>
+                            <select name="role">
+                                <option value="0">不限</option>
+                                <option value="1">管理员</option>
+                                <option value="2">普通用户</option>
+                            </select>
                         </div>
                         <div class="user_state">
                             <label>用户状态</label>
@@ -190,22 +198,73 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>id</th>
+                                <td style="width: 45px;"><input type="checkbox" id="allChecked"></td>
+                                <th style="width: 30%;">id</th>
                                 <th>昵称</th>
                                 <th>邮箱</th>
-                                <th>角色</th>
-                                <th>状态</th>
-                                <th>操作</th>
+                                <th class="th_center">角色</th>
+                                <th class="th_center">状态</th>
+                                <th style="text-align: center;width: 180px;">操作</th>
                             </tr>
                         </thead>
-                        <tbody></tbody>
+                        <tbody>
+                            <tr>
+                                <td><input type="checkbox" class="checked"></td>
+                                <td>1234567890</td>
+                                <td>wdnmd</td>
+                                <td>123456789</td>
+                                <td class="th_center">管理员</td>
+                                <td class="th_center">禁用</td>
+                                <td class="operation">
+                                    <div class="operation_center">
+                                        <a class="modify" href="#"><i class="iconfont icon-xiugai"></i>编辑</a>
+                                        <a class="delete" href="#"><i class="iconfont icon-shanchu"></i>删除</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="checked"></td>
+                                <td>123456789012345678901234567890</td>
+                                <td>wdnmdwdnmd</td>
+                                <td>123456789012345678901234567890</td>
+                                <td>普通用户</td>
+                                <td class="th_center">启用</td>
+                                <td class="operation">
+                                    <div class="operation_center">
+                                        <a class="modify" href="#"><i class="iconfont icon-xiugai"></i>编辑</a>
+                                        <a class="delete" href="#"><i class="iconfont icon-shanchu"></i>删除</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
+                    <div class="user_page" id="user_page">
+                        <ul id="pg">
+                            <li><a href="javascript:;" class="userPageL" id="userPageL"><i class="iconfont icon-tubiaozhizuo-"></i></a></li>
+                            <li><a href="javascript:;">1</a></li>
+                            <li><a href="javascript:;">2</a></li>
+                            <li><a href="javascript:;">3</a></li>
+                            <li id="pageEllipsis"><span>...</span></li>
+                            <li><a href="javascript:;">7</a></li>
+                            <li><a href="javascript:;" class="userPageR" id="userPageR"><i class="iconfont icon-tubiaozhizuo-1"></i></a></li>
+                        </ul>
+                        <span class="userPageNum">跳转到<input type="text" value="1">页<button>跳转</button></span>
+                        <span class="total">共100条</span>
+                        <select>
+                            <option value="5">5条/页</option>
+                            <option value="10">10条/页</option>
+                            <option value="15">15条/页</option>
+                            <option value="20">20条/页</option>
+                            <option value="25">25条/页</option>
+                        </select>
+                    </div>
                 </div>
                 <div style="width: 100%;height: 500px;"></div>
             </div>
         </div>
     </div>
     <script src="../../resources/js/admin/index.js"></script>
+    <script src="../../resources/js/admin/user.js"></script>
 </body>
 
 </html>

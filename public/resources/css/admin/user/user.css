@@ -6,15 +6,17 @@
 }
 .body .user_search {
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   margin-top: 40px;
   padding-left: 30px;
 }
 .body .user_search input {
   outline: none;
+  width: 100px;
   margin-left: 11px;
   border-radius: 5px;
-  padding: 9px 15px;
+  padding: 7px 15px;
   font-size: 14px;
   border: 1px solid #898989;
 }
@@ -26,26 +28,24 @@
   outline: none;
   font-size: 14px;
   margin-left: 11px;
-  padding: 9px 11px;
+  padding: 7px 11px;
   border-radius: 5px;
   border: 1px solid #898989;
 }
-.body .user_search .user_name {
-  margin-left: 30px;
-}
-.body .user_search .user_email {
-  margin-left: 30px;
-}
+.body .user_search .user_email,
+.body .user_search .user_role,
 .body .user_search .user_state {
+  display: flex;
+  align-items: center;
   margin-left: 30px;
 }
 .body .user_search .search_button {
   outline: 0;
   border: 1px solid #00B4C9;
   border-radius: 5px;
-  padding: 7px 30px;
+  padding: 5px 25px;
   margin-left: 50px;
-  background-color: #00C6DE;
+  background-color: #00B0E3;
 }
 .body .user_search .search_button i {
   color: #fff;
@@ -58,8 +58,121 @@
   width: 100%;
   margin: 50px 30px 0 30px;
   box-sizing: border-box;
-  border: 1px solid #6A6A6A;
+  border-collapse: collapse;
+  border-spacing: 0px;
+  table-layout: fixed;
 }
-.body table tr th {
+.body table tr th,
+.body table tr td {
+  position: relative;
   text-align: left;
+  box-sizing: border-box;
+  color: #5E5E5E;
+  font-size: 14px;
+  padding: 7px 11px;
+  border: 1px solid #BBBBBB;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.body table tr th input,
+.body table tr td input {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 18px;
+  width: 18px;
+}
+.body table tr .th_center {
+  width: 80px;
+  text-align: center;
+}
+.body table tr .operation {
+  align-items: center;
+}
+.body table tr .operation .operation_center {
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+}
+.body table tr .operation .operation_center a {
+  border-radius: 5px;
+  padding: 6px 9px;
+  font-size: 12px;
+  color: #fff;
+}
+.body table tr .operation .operation_center a i {
+  font-size: 12px;
+  margin-right: 5px;
+}
+.body table tr .operation .operation_center .modify {
+  background-color: #1e9fff;
+}
+.body table tr .operation .operation_center .delete {
+  margin-left: 10px;
+  background-color: #ff5722;
+}
+.body table thead tr {
+  background-color: #EEEEEE;
+}
+.body .user_page {
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+  margin-top: 20px;
+}
+.body .user_page ul li {
+  float: left;
+  display: flex;
+  color: #313131;
+}
+.body .user_page ul li a {
+  padding: 5px 11px;
+  color: #313131;
+}
+.body .user_page ul li .aDisable {
+  pointer-events: none;
+  cursor: default;
+}
+.body .user_page ul li span {
+  display: inline-block;
+  padding: 5px 11px;
+}
+.body .user_page ul li .userPageL,
+.body .user_page ul li .userPageR {
+  color: #444444;
+}
+.body .user_page .userPageNum {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+.body .user_page .userPageNum input {
+  outline: none;
+  text-align: center;
+  width: 20px;
+  padding: 3px 5px;
+  margin: 0 9px;
+  font-size: 12px;
+  border: 1px solid #ccc;
+}
+.body .user_page .userPageNum button {
+  outline: 0;
+  margin-left: 11px;
+  padding: 2px 7px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
+.body .user_page .userPageNum button:hover {
+  cursor: pointer;
+}
+.body .user_page .total {
+  margin-right: 20px;
+  font-size: 14px;
+}
+.body .user_page select {
+  outline: none;
+  border: 1px solid #898989;
 }
