@@ -177,21 +177,31 @@
                             <label>用户邮箱</label>
                             <input type="text" placeholder="请输入用户邮箱">
                         </div>
+                        <!-- 用户角色下拉框 -->
                         <div class="user_role">
-                            <label>用户状态</label>
-                            <select name="role">
-                                <option value="0">不限</option>
-                                <option value="1">管理员</option>
-                                <option value="2">普通用户</option>
-                            </select>
+                            <label>用户角色</label>
+                            <div class="select_role" onselectstart="return false;">
+                                <span id="role_text">不限</span>
+                                <em class="arrow_role"><i class="iconfont icon-xiasanjiaoxing"></i></em>
+                            </div>
+                            <ul id="role_ul" onselectstart="return false;">
+                                <li>不限</li>
+                                <li>管理员</li>
+                                <li>普通用户</li>
+                            </ul>
                         </div>
+                        <!-- 用户状态下拉框 -->
                         <div class="user_state">
                             <label>用户状态</label>
-                            <select name="state">
-                                <option value="0">不限</option>
-                                <option value="1">启用</option>
-                                <option value="2">禁用</option>
-                            </select>
+                            <div class="select_state" onselectstart="return false;">
+                                <span id="state_text">不限</span>
+                                <em class="arrow_state"><i class="iconfont icon-xiasanjiaoxing"></i></em>
+                            </div>
+                            <ul id="state_ul" onselectstart="return false;">
+                                <li>不限</li>
+                                <li>启用</li>
+                                <li>禁用</li>
+                            </ul>
                         </div>
                         <button class="search_button"><i class="iconfont icon-sousuo"></i></button>
                     </div>

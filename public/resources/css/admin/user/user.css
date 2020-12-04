@@ -39,6 +39,79 @@
   align-items: center;
   margin-left: 30px;
 }
+.body .user_search .user_role {
+  position: relative;
+}
+.body .user_search .user_role .select_role {
+  display: flex;
+  justify-content: space-between;
+  width: 96px;
+  margin-left: 11px;
+  padding: 7px 11px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #898989;
+}
+.body .user_search .user_role .select_role em {
+  margin-left: 20px;
+}
+.body .user_search .user_role .select_role:hover {
+  cursor: pointer;
+}
+.body .user_search .user_role ul {
+  display: none;
+  position: absolute;
+  text-align: center;
+  top: 100%;
+  right: 3px;
+  z-index: 1;
+}
+.body .user_search .user_role ul li {
+  padding: 4px 24px;
+  background-color: #fff;
+  border: 1px solid #898989;
+  border-top: none;
+}
+.body .user_search .user_role ul li:hover {
+  cursor: pointer;
+  background-color: #EEEEEE;
+}
+.body .user_search .user_state {
+  position: relative;
+}
+.body .user_search .user_state .select_state {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 11px;
+  padding: 7px 11px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #898989;
+}
+.body .user_search .user_state .select_state em {
+  margin-left: 20px;
+}
+.body .user_search .user_state .select_state:hover {
+  cursor: pointer;
+}
+.body .user_search .user_state ul {
+  display: none;
+  position: absolute;
+  text-align: center;
+  top: 100%;
+  right: 3px;
+  z-index: 1;
+}
+.body .user_search .user_state ul li {
+  padding: 4px 24px;
+  background-color: #fff;
+  border: 1px solid #898989;
+  border-top: none;
+}
+.body .user_search .user_state ul li:hover {
+  cursor: pointer;
+  background-color: #EEEEEE;
+}
 .body .user_search .search_button {
   outline: 0;
   border: 1px solid #00B4C9;
@@ -132,10 +205,6 @@
   padding: 5px 11px;
   color: #313131;
 }
-.body .user_page ul li .aDisable {
-  pointer-events: none;
-  cursor: default;
-}
 .body .user_page ul li span {
   display: inline-block;
   padding: 5px 11px;
@@ -144,12 +213,24 @@
 .body .user_page ul li .userPageR {
   color: #444444;
 }
-.body .user_page .userPageNum {
+.body .user_page ul .aDisable {
+  color: #d2d2d2 !important;
+  cursor: not-allowed !important;
+}
+.body .user_page ul .pageClick {
+  color: #fff;
+  background-color: #00CFD9;
+}
+.body .user_page ul .rpageClick {
+  color: #313131;
+  background-color: #fff;
+}
+.body .userPageNum {
   display: flex;
   align-items: center;
   padding: 0 20px;
 }
-.body .user_page .userPageNum input {
+.body .userPageNum input {
   outline: none;
   text-align: center;
   width: 20px;
@@ -158,21 +239,21 @@
   font-size: 12px;
   border: 1px solid #ccc;
 }
-.body .user_page .userPageNum button {
+.body .userPageNum button {
   outline: 0;
   margin-left: 11px;
   padding: 2px 7px;
   border: 1px solid #ccc;
   background-color: #fff;
 }
-.body .user_page .userPageNum button:hover {
+.body .userPageNum button:hover {
   cursor: pointer;
 }
-.body .user_page .total {
+.body .total {
   margin-right: 20px;
   font-size: 14px;
 }
-.body .user_page select {
+.body select {
   outline: none;
   border: 1px solid #898989;
 }
