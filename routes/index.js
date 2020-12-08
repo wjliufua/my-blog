@@ -1,6 +1,6 @@
 module.exports = app => {
     // // 用户
-    // app.use('/users', require('/user'));
+    app.use('/admin/user', require('./admin/user'));
 
     // 功能请求
     // 发送邮件请求
