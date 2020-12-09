@@ -1,6 +1,9 @@
 const { User } = require('../../model/user');
 
 module.exports = async(req, res) => {
+    // console.log(req.query.thisPage + '--');
+    let thatPage = req.query.thisPage || 1;
+    thatPage = parseInt(thatPage);
     let page = req.query.page || 7;
     let pagesize = req.query.pagesize || 5;
     let count = await User.countDocuments({});
@@ -16,6 +19,7 @@ module.exports = async(req, res) => {
     // console.log(req.query.page);
     res.send({
         page,
-        total
+        total,
+        thatPage
     });
 }

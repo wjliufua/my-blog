@@ -209,14 +209,6 @@
   display: inline-block;
   padding: 5px 11px;
 }
-.body .user_page ul li .userPageL,
-.body .user_page ul li .userPageR {
-  color: #444444;
-}
-.body .user_page ul .aDisable {
-  color: #d2d2d2 !important;
-  cursor: not-allowed !important;
-}
 .body .user_page ul .pageClick {
   color: #fff;
   background-color: #00CFD9;
@@ -224,6 +216,16 @@
 .body .user_page ul .rpageClick {
   color: #313131;
   background-color: #fff;
+}
+.body .user_page .userPageL,
+.body .user_page .userPageR {
+  display: block;
+  padding: 5px 11px;
+  color: #444444;
+}
+.body .user_page .aDisable {
+  color: #d2d2d2 !important;
+  cursor: not-allowed !important;
 }
 .body .userPageNum {
   display: flex;
