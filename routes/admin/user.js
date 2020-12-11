@@ -4,7 +4,7 @@ module.exports = async(req, res) => {
     // console.log(req.query.thisPage + '--');
     let thatPage = req.query.thisPage || 1;
     thatPage = parseInt(thatPage);
-    let page = req.query.page || 7;
+    let page = req.query.page || 8;
     let pagesize = req.query.pagesize || 5;
     let count = await User.countDocuments({});
     let total = Math.ceil(count / pagesize);
@@ -20,6 +20,7 @@ module.exports = async(req, res) => {
     res.send({
         page,
         total,
+        count,
         thatPage
     });
 }

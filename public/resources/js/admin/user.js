@@ -9,8 +9,8 @@ $.ajax({
     },
     success: function(data) {
         var { page, total } = data;
-
-        // function pageButton() {
+        console.log(total);
+        document.getElementsByClassName('total')[0].children[0].innerHTML = total;
         var pageSize = ``;
         for (var i = 1; i <= page; i++) {
             if (page < 5) {
@@ -30,7 +30,6 @@ $.ajax({
         document.getElementById('pg').innerHTML = `${pageSize}`;
         pages = page;
         totals = total;
-        // }
     },
     error: function(err) {
         console.log(err);
@@ -75,69 +74,96 @@ var userPageR = document.getElementById('userPageR');
 var pageNum = document.getElementById('page_num');
 var pageFlag = false;
 
+function pageFor(thatPage, page) {
+    if (page == 1) {
+        return `<li><a href="javascript:;">1</a></li>`;
+    } else if (thatPage - 2 > 1 && thatPage + 2 < page) {
+        return `
+            <li><a href="javascript:;">1</a></li>
+            <li id="pageEllipsis"><span>...</span></li>
+            <li><a href="javascript:;">${thatPage - 1}</a></li>
+            <li><a href="javascript:;">${thatPage}</a></li>
+            <li><a href="javascript:;">${thatPage + 1}</a></li>
+            <li id="pageEllipsis"><span>...</span></li>
+            <li><a href="javascript:;">${page}</a></li>
+        `;
+    } else if (thatPage - 2 > 1 && thatPage + 2 >= page && page !== 4) {
+        if (thatPage + 2 == page) {
+            return `
+            <li><a href="javascript:;">1</a></li>
+            <li id="pageEllipsis"><span>...</span></li>
+            <li><a href="javascript:;">${thatPage - 1}</a></li>
+            <li><a href="javascript:;">${thatPage}</a></li>
+            <li><a href="javascript:;">${thatPage + 1}</a></li>
+            <li><a href="javascript:;">${page}</a></li>
+        `;
+        } else if (thatPage === page && page !== 4) {
+            return `
+            <li><a href="javascript:;">1</a></li>
+            <li id="pageEllipsis"><span>...</span></li>
+            <li><a href="javascript:;">${page - 2}</a></li>
+            <li><a href="javascript:;">${page - 1}</a></li>
+            <li><a href="javascript:;">${page}</a></li>
+        `;
+        } else if (thatPage + 2 > page) {
+            return `
+            <li><a href="javascript:;">1</a></li>
+            <li id="pageEllipsis"><span>...</span></li>
+            <li><a href="javascript:;">${thatPage - 1}</a></li>
+            <li><a href="javascript:;">${thatPage}</a></li>
+            <li><a href="javascript:;">${page}</a></li>
+        `;
+        }
+    } else if (page <= 5) {
+        var userPageF = ``;
+        for (var i = 1; i <= page; i++) {
+            userPageF += `<li><a href="javascript:;">${i}</a></li>`;
+        }
+        return userPageF;
+    } else if (page > 5 && thatPage <= 3) {
+        return `
+            <li><a href="javascript:;">1</a></li>
+            <li><a href="javascript:;">2</a></li>
+            <li><a href="javascript:;">3</a></li>
+            <li><a href="javascript:;">4</a></li>
+            <li id="pageEllipsis"><span>...</span></li>
+            <li><a href="javascript:;">${page}</a></li>
+        `;
+    }
+}
+
+function lrFlag() {
+    if (pages == 1) {
+        userPageR.classList.add('aDisable');
+        userPageL.classList.add('aDisable');
+    } else if (thisIndex == 1) {
+        if (userPageR.classList.remove('aDisable')) {
+            userPageR.classList.remove('aDisable');
+        }
+        userPageL.classList.add('aDisable');
+    } else if (thisIndex == pages) {
+        if (userPageL.classList.remove('aDisable')) {
+            userPageL.classList.remove('aDisable');
+        }
+        userPageR.classList.add('aDisable');
+    } else {
+        console.log('else');
+        userPageL.classList.remove('aDisable');
+        userPageR.classList.remove('aDisable');
+    }
+}
+
 function reqPage() {
     for (var i = 0; i < pageClick.length; i++) {
+        // console.log('2222');
         pageClick[i].index = i;
+        // console.log(pageClick[i]);
         pageClick[i].onclick = function() {
+            // console.log(this.getAttribute('id') === 'pageEllipsis' ? 1 : 0);
+            if (this.getAttribute('id') === 'pageEllipsis') { return }
+            // console.log('222');
+            // console.log(this);
             var thisPage = parseInt(this.children[0].innerHTML);
-
-            function pageFor(thatPage, page) {
-                if (page == 1) {
-                    return `<li><a href="javascript:;">1</a></li>`;
-                } else if (thatPage - 2 > 1 && thatPage + 2 < page) {
-                    return `
-                        <li><a href="javascript:;">1</a></li>
-                        <li id="pageEllipsis"><span>...</span></li>
-                        <li><a href="javascript:;">${thatPage - 1}</a></li>
-                        <li><a href="javascript:;">${thatPage}</a></li>
-                        <li><a href="javascript:;">${thatPage + 1}</a></li>
-                        <li id="pageEllipsis"><span>...</span></li>
-                        <li><a href="javascript:;">${page}</a></li>
-                    `;
-                } else if (thatPage - 2 > 1 && thatPage + 2 >= page) {
-                    if (thatPage + 2 == page) {
-                        return `
-                        <li><a href="javascript:;">1</a></li>
-                        <li id="pageEllipsis"><span>...</span></li>
-                        <li><a href="javascript:;">${thatPage - 1}</a></li>
-                        <li><a href="javascript:;">${thatPage}</a></li>
-                        <li><a href="javascript:;">${thatPage + 1}</a></li>
-                        <li><a href="javascript:;">${page}</a></li>
-                    `;
-                    } else if (thatPage === page) {
-                        return `
-                        <li><a href="javascript:;">1</a></li>
-                        <li id="pageEllipsis"><span>...</span></li>
-                        <li><a href="javascript:;">${page - 2}</a></li>
-                        <li><a href="javascript:;">${page - 1}</a></li>
-                        <li><a href="javascript:;">${page}</a></li>
-                    `;
-                    } else if (thatPage + 2 > page) {
-                        return `
-                        <li><a href="javascript:;">1</a></li>
-                        <li id="pageEllipsis"><span>...</span></li>
-                        <li><a href="javascript:;">${thatPage - 1}</a></li>
-                        <li><a href="javascript:;">${thatPage}</a></li>
-                        <li><a href="javascript:;">${page}</a></li>
-                    `;
-                    }
-                } else if (page <= 5) {
-                    var userPageF = ``;
-                    for (var i = 1; i <= page; i++) {
-                        userPageF += `<li><a href="javascript:;">${i}</a></li>`;
-                    }
-                    return userPageF;
-                } else if (page > 5 && thatPage <= 3) {
-                    return `
-                        <li><a href="javascript:;">1</a></li>
-                        <li><a href="javascript:;">2</a></li>
-                        <li><a href="javascript:;">3</a></li>
-                        <li><a href="javascript:;">4</a></li>
-                        <li id="pageEllipsis"><span>...</span></li>
-                        <li><a href="javascript:;">${page}</a></li>
-                    `;
-                }
-            }
             if (pageFlag) {
                 $.ajax({
                     type: 'get',
@@ -147,10 +173,11 @@ function reqPage() {
                         thisPage: thisPage
                     },
                     success: function(data) {
-                        var { thatPage, page, total } = data;
+                        let { thatPage, page, total } = data;
                         document.getElementById('pg').innerHTML = `${pageFor(thatPage, page)}`;
                         pages = page;
                         totals = total;
+                        // console.log('1111111111');
                         reqPage();
                     },
                     error: function(err) {
@@ -161,7 +188,11 @@ function reqPage() {
             pageFlag = true;
             pageNum.value = this.children[0].innerHTML;
             var thisIndex = parseInt(this.children[0].innerHTML);
-            if (thisIndex == 1) {
+            // lrFlag();
+            if (pages == 1) {
+                userPageR.classList.add('aDisable');
+                userPageL.classList.add('aDisable');
+            } else if (thisIndex == 1) {
                 if (userPageR.classList.remove('aDisable')) {
                     userPageR.classList.remove('aDisable');
                 }
@@ -171,17 +202,13 @@ function reqPage() {
                     userPageL.classList.remove('aDisable');
                 }
                 userPageR.classList.add('aDisable');
-            } else if (pages == 1) {
-                userPageR.classList.add('aDisable');
-                userPageL.classList.add('aDisable');
             } else {
                 console.log('else');
                 userPageL.classList.remove('aDisable');
                 userPageR.classList.remove('aDisable');
             }
             for (var j = 0; j < pageClick.length; j++) {
-                pageClick[j].children[0].classList.add('rpageClick');
-                if (this.index == j) {
+                if (parseInt(pageClick[j].children[0].innerHTML) == parseInt(this.children[0].innerHTML)) {
                     pageClick[j].children[0].classList.remove('rpageClick');
                     pageClick[j].children[0].classList.add('pageClick');
                 }
@@ -202,13 +229,43 @@ userPageL.onclick = function() {
         for (var i = 0; i < pageClick.length; i++) {
             var pageIndex = pageClick[i].children[0] == document.getElementsByClassName('pageClick')[0] ? i : 0;
             if (pageClick[i].children[0] == document.getElementsByClassName('pageClick')[0]) {
-                pageClick[pageIndex].click();
+                pageClick[pageIndex - 1].click();
                 return;
             }
         }
     }
 }
 userPageR.onclick = function() {}
+
+function jupPage() {
+    // console.log(pageNum.value);
+    $.ajax({
+        type: 'get',
+        url: '/admin/user',
+        // async: false,
+        data: {
+            thisPage: parseInt(pageNum.value)
+        },
+        success: function(data) {
+            let { thatPage, page, total } = data;
+            // console.log(data);
+            document.getElementById('pg').innerHTML = `${pageFor(thatPage, page)}`;
+            pages = page;
+            totals = total;
+            // lrFlag();
+            for (var j = 0; j < pageClick.length; j++) {
+                if (parseInt(pageClick[j].children[0].innerHTML) == thatPage) {
+                    reqPage();
+                    pageClick[j].click();
+                }
+            }
+            // reqPage();
+        },
+        error: function(err) {
+            console.log(err);
+        }
+    });
+}
 
 // 用户角色
 var selectRole = document.getElementsByClassName('select_role')[0];
