@@ -218,8 +218,8 @@
                                 <th style="text-align: center;width: 180px;">操作</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
+                        <tbody id="tbody">
+                            <!-- <tr>
                                 <td><input type="checkbox" class="checked"></td>
                                 <td>1234567890</td>
                                 <td>wdnmd</td>
@@ -246,7 +246,7 @@
                                         <a class="delete" href="#"><i class="iconfont icon-shanchu"></i>删除</a>
                                     </div>
                                 </td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                     <div class="user_page" id="user_page">
@@ -276,6 +276,53 @@
             </div>
         </div>
     </div>
+    <div class="tips">
+        <div class="tips_title">编辑用户</div>
+        <i class="iconfont icon-icon-cross-squre" id="iconFont"></i>
+        <div class="tips_content">
+            <!-- 提示框的每一行 -->
+            <div class="tips_row" id="tips_row">
+                <!-- 该行内容的描述 -->
+                <label id="tips_explain">昵称：</label>
+                <!-- 该行内容的输入框 -->
+                <div class="tips_input">
+                    <input type="text" placeholder="请输入你想要的昵称">
+                </div>
+            </div>
+            <div class="tips_row" id="tips_row">
+                <!-- 该行内容的描述 -->
+                <label id="tips_explain">角色：</label>
+                <!-- 选择下拉框 -->
+                <div class="tips_select">
+                    <span>管理员</span>
+                    <i class="iconfont icon-xiasanjiaoxing"></i>
+                    <div class="select_box">
+                        <div class="select_children">
+                            <div>管理员</div>
+                            <div>普通用户</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tips_row" id="tips_row">
+                <!-- 该行内容的描述 -->
+                <label id="tips_explain">状态：</label>
+                <!-- 选择下拉框 -->
+                <div class="tips_select">
+                    <span>启用</span>
+                    <i class="iconfont icon-xiasanjiaoxing"></i>
+                    <div class="select_box">
+                        <div class="select_children">
+                            <div>启用</div>
+                            <div>禁用</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tips_button"><button>确定</button></div>
+        </div>
+    </div>
+    <div class="tips_background"></div>
     <script src="../../resources/js/admin/index.js"></script>
     <script src="../../resources/js/admin/user.js"></script>
 </body>

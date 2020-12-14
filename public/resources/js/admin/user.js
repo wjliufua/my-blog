@@ -1,5 +1,6 @@
 var pages = new Number();
-var totals = new Number();
+var count = new Number();
+var tbodyContent = ``;
 $.ajax({
     type: 'get',
     url: '/admin/user',
@@ -8,28 +9,47 @@ $.ajax({
         // page: 5
     },
     success: function(data) {
-        var { page, total } = data;
-        console.log(total);
-        document.getElementsByClassName('total')[0].children[0].innerHTML = total;
+        var { totalPage, count, users } = data;
+        document.getElementsByClassName('total')[0].children[0].innerHTML = count;
         var pageSize = ``;
-        for (var i = 1; i <= page; i++) {
-            if (page < 5) {
+        for (var i = 1; i <= totalPage; i++) {
+            if (totalPage < 5) {
                 pageSize += `<li><a href="javascript:;">${i}</a></li>`;
-            } else if (page == 5) {
+            } else if (totalPage == 5) {
                 pageSize += `<li><a href="javascript:;">${i}</a></li>`;
             } else {
                 if (i <= 3) {
                     pageSize += `<li><a href="javascript:;">${i}</a></li>`;
-                } else if (i == page) {
+                } else if (i == totalPage) {
                     pageSize += `<li id="pageEllipsis"><span>...</span></li><li><a href="javascript:;">${i}</a></li>`;
                 } else {
                     continue
                 }
             }
         }
+        for (var x = 0; x < users.length; x++) {
+            tbodyContent += `
+                <tr>
+                    <td><input type="checkbox" class="checked"></td>
+                    <td>${users[x]._id}</td>
+                    <td>${users[x].usernmae}</td>
+                    <td>${users[x].email}</td>
+                    <td class="th_center">${users[x].role == 'admin' ? '管理员' : '普通用户'}</td>
+                    <td class="th_center">${users[x].state == 0 ? '启用' : '禁用'}</td>
+                    <td class="operation">
+                        <div class="operation_center">
+                            <a class="modify" href="#"><i class="iconfont icon-xiugai"></i>编辑</a>
+                            <a class="delete" href="#"><i class="iconfont icon-shanchu"></i>删除</a>
+                        </div>
+                    </td>
+                </tr>
+            `;
+        }
+        document.getElementById('tbody').innerHTML = tbodyContent;
+        // console.log(document.getElementById('tbody'));
         document.getElementById('pg').innerHTML = `${pageSize}`;
-        pages = page;
-        totals = total;
+        pages = totalPage;
+        count = count;
     },
     error: function(err) {
         console.log(err);
@@ -173,10 +193,30 @@ function reqPage() {
                         thisPage: thisPage
                     },
                     success: function(data) {
-                        let { thatPage, page, total } = data;
-                        document.getElementById('pg').innerHTML = `${pageFor(thatPage, page)}`;
-                        pages = page;
-                        totals = total;
+                        let { thatPage, totalPage, users } = data;
+                        tbodyContent = ``;
+                        for (var x = 0; x < users.length; x++) {
+                            tbodyContent += `
+                                <tr>
+                                    <td><input type="checkbox" class="checked"></td>
+                                    <td>${users[x]._id}</td>
+                                    <td>${users[x].usernmae}</td>
+                                    <td>${users[x].email}</td>
+                                    <td class="th_center">${users[x].role == 'admin' ? '管理员' : '普通用户'}</td>
+                                    <td class="th_center">${users[x].state == 0 ? '启用' : '禁用'}</td>
+                                    <td class="operation">
+                                        <div class="operation_center">
+                                            <a class="modify" href="#"><i class="iconfont icon-xiugai"></i>编辑</a>
+                                            <a class="delete" href="#"><i class="iconfont icon-shanchu"></i>删除</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            `;
+                        }
+                        document.getElementById('tbody').innerHTML = tbodyContent;
+                        document.getElementById('pg').innerHTML = `${pageFor(thatPage, totalPage)}`;
+                        pages = totalPage;
+                        count = count;
                         // console.log('1111111111');
                         reqPage();
                     },
@@ -247,11 +287,11 @@ function jupPage() {
             thisPage: parseInt(pageNum.value)
         },
         success: function(data) {
-            let { thatPage, page, total } = data;
+            let { thatPage, totalPage } = data;
             // console.log(data);
-            document.getElementById('pg').innerHTML = `${pageFor(thatPage, page)}`;
-            pages = page;
-            totals = total;
+            document.getElementById('pg').innerHTML = `${pageFor(thatPage, totalPage)}`;
+            pages = totalPage;
+            count = count;
             // lrFlag();
             for (var j = 0; j < pageClick.length; j++) {
                 if (parseInt(pageClick[j].children[0].innerHTML) == thatPage) {
@@ -346,3 +386,31 @@ function selectClick() {
     }
 }
 selectClick();
+
+var tipsSelect1 = document.getElementsByClassName('tips_select')[0];
+console.log(tipsSelect1);
+// var tipsSelectFlag1 = true;
+// var tipsSelectFlag2 = true;
+// var tipsSelectFlag = true;
+var tipsSelectArr = [];
+
+function tipsEdit() {
+    for (var y = 0; y < document.getElementsByClassName('tips_select').length; y++) {
+        document.getElementsByClassName('tips_select')[y].y = y;
+        // var tipsSelectNum = 'tipsSelectFlag' + y;
+        // window[tipsSelectNum] = true;
+        // tipsSelectArr[y] = 'tipsSelectFlag' + y;tipsSelectArr
+        tipsSelectArr[y] = true;
+        document.getElementsByClassName('tips_select')[y].onclick = function() {
+            if (tipsSelectArr[this.y] === true) {
+                this.children[1].setAttribute('class', 'iconfont icon-shangsanjiaoxing');
+                this.children[2].style.display = 'block';
+            } else {
+                this.children[1].setAttribute('class', 'iconfont icon-xiasanjiaoxing');
+                this.children[2].style.display = 'none';
+            }
+            tipsSelectArr[this.y] = !tipsSelectArr[this.y];
+        }
+    }
+}
+tipsEdit();
