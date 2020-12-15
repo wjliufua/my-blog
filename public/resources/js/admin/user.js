@@ -93,6 +93,8 @@ var userPageR = document.getElementById('userPageR');
 // 跳转第几页输入框
 var pageNum = document.getElementById('page_num');
 var pageFlag = false;
+var pageReq = false;
+var pageTotal = '';
 
 function pageFor(thatPage, page) {
     if (page == 1) {
@@ -184,12 +186,14 @@ function reqPage() {
             // console.log('222');
             // console.log(this);
             var thisPage = parseInt(this.children[0].innerHTML);
-            if (pageFlag) {
+            if (pageFlag && pageReq) {
+                console.log(111);
                 $.ajax({
                     type: 'get',
                     url: '/admin/user',
                     async: false,
                     data: {
+                        pagesize: pageTotal,
                         thisPage: thisPage
                     },
                     success: function(data) {
@@ -225,6 +229,7 @@ function reqPage() {
                     }
                 });
             }
+            pageReq = true;
             pageFlag = true;
             pageNum.value = this.children[0].innerHTML;
             var thisIndex = parseInt(this.children[0].innerHTML);
@@ -388,20 +393,27 @@ function selectClick() {
 selectClick();
 
 var tipsSelect1 = document.getElementsByClassName('tips_select')[0];
-console.log(tipsSelect1);
-// var tipsSelectFlag1 = true;
-// var tipsSelectFlag2 = true;
-// var tipsSelectFlag = true;
+var tipsBg = document.getElementsByClassName('tips_background')[0];
+var tips = document.getElementsByClassName('tips')[0];
+var iconFont = document.getElementById('iconFont');
+var userModify = document.getElementsByClassName('modify');
+// var tipsRow = document.getElementsByClassName('tips_row');
+var tipsInput = document.getElementsByClassName('tips_input')[0];
+// console.log(userModify);
+
+
+// console.log(tipsBg);
+// console.log(iconFont);
+
 var tipsSelectArr = [];
 
-function tipsEdit() {
+function tipsSelect() {
     for (var y = 0; y < document.getElementsByClassName('tips_select').length; y++) {
         document.getElementsByClassName('tips_select')[y].y = y;
-        // var tipsSelectNum = 'tipsSelectFlag' + y;
-        // window[tipsSelectNum] = true;
-        // tipsSelectArr[y] = 'tipsSelectFlag' + y;tipsSelectArr
         tipsSelectArr[y] = true;
-        document.getElementsByClassName('tips_select')[y].onclick = function() {
+        document.getElementsByClassName('tips_select')[y].onclick = function(event) {
+            // console.log(event);
+            event.stopPropagation();
             if (tipsSelectArr[this.y] === true) {
                 this.children[1].setAttribute('class', 'iconfont icon-shangsanjiaoxing');
                 this.children[2].style.display = 'block';
@@ -413,4 +425,129 @@ function tipsEdit() {
         }
     }
 }
+
+var thCenter = document.getElementsByClassName('th_center');
+var tipsSelects = document.getElementsByClassName('tips_select');
+// console.log(document.getElementById('tbody').children[0].document.getElementsByClassName('tips_select'));
+
+function tipsEdit() {
+    tipsSelect();
+    tips.onclick = function() {
+        tipsSelectArr[0] = true;
+        tipsSelectArr[1] = true;
+        document.getElementsByClassName('tips_select')[0].children[1].setAttribute('class', 'iconfont icon-xiasanjiaoxing');
+        document.getElementsByClassName('tips_select')[0].children[2].style.display = 'none';
+        document.getElementsByClassName('tips_select')[1].children[1].setAttribute('class', 'iconfont icon-xiasanjiaoxing');
+        document.getElementsByClassName('tips_select')[1].children[2].style.display = 'none';
+        // console.log(tipsSelectArr);
+    }
+    for (var i = 0; i < userModify.length; i++) {
+        userModify[i].index = i;
+        userModify[i].onclick = function() {
+            // console.log(this.parentNode.parentNode.parentNode.children[2].innerHTML);
+            tipsInput.children[0].value = document.getElementById('tbody').children[this.index].children[2].innerHTML;
+            for (var j = 0; j < 2; j++) {
+                // console.log(tipsSelects[j]);
+                // console.log(document.getElementById('tbody').children[this.index].children[j + 4]);
+                tipsSelects[j].children[0].innerHTML = document.getElementById('tbody').children[this.index].children[j + 4].innerHTML;
+            }
+            tipsBg.style.display = 'block';
+            tips.style.display = 'block';
+        }
+    }
+    iconFont.onclick = function() {
+        tipsBg.style.display = 'none';
+        tips.style.display = 'none';
+    }
+    tipsBg.onclick = function() {
+        tipsBg.style.display = 'none';
+        tips.style.display = 'none';
+    }
+}
 tipsEdit();
+
+var selectChildren = document.getElementsByClassName('select_children');
+// console.log(selectChildren);
+
+function selectContent() {
+    for (var i = 0; i < selectChildren.length; i++) {
+        // console.log(selectChildren[i]);
+        for (var j = 0; j < selectChildren[i].children.length; j++) {
+            selectChildren[i].children[j].onclick = function(event) {
+                event.stopPropagation();
+                this.parentNode.parentNode.parentNode.children[0].innerHTML = this.innerHTML;
+                tipsSelectArr[0] = true;
+                tipsSelectArr[1] = true;
+                console.log(tipsSelectArr);
+                // this.parentNode.parentNode.parentNode.click();
+                document.getElementsByClassName('tips_select')[0].children[1].setAttribute('class', 'iconfont icon-xiasanjiaoxing');
+                document.getElementsByClassName('tips_select')[0].children[2].style.display = 'none';
+                document.getElementsByClassName('tips_select')[1].children[1].setAttribute('class', 'iconfont icon-xiasanjiaoxing');
+                document.getElementsByClassName('tips_select')[1].children[2].style.display = 'none';
+            }
+        }
+    }
+}
+selectContent();
+
+var dataTotal = document.getElementById('data_total');
+// console.log(dataTotal.children);
+var totalFlag = true;
+
+function userReqTotal(obj) {
+    var val = obj.options[obj.options.selectedIndex].value;
+    totalFlag = !totalFlag;
+    if (totalFlag) {
+        $.ajax({
+            type: 'get',
+            url: '/admin/user',
+            data: {
+                pagesize: val
+            },
+            success: function(data) {
+                console.log(data);
+                let { thatPage, totalPage, users } = data;
+                tbodyContent = ``;
+                for (var x = 0; x < users.length; x++) {
+                    tbodyContent += `
+                                <tr>
+                                    <td><input type="checkbox" class="checked"></td>
+                                    <td>${users[x]._id}</td>
+                                    <td>${users[x].usernmae}</td>
+                                    <td>${users[x].email}</td>
+                                    <td class="th_center">${users[x].role == 'admin' ? '管理员' : '普通用户'}</td>
+                                    <td class="th_center">${users[x].state == 0 ? '启用' : '禁用'}</td>
+                                    <td class="operation">
+                                        <div class="operation_center">
+                                            <a class="modify" href="#"><i class="iconfont icon-xiugai"></i>编辑</a>
+                                            <a class="delete" href="#"><i class="iconfont icon-shanchu"></i>删除</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            `;
+                }
+                document.getElementById('tbody').innerHTML = tbodyContent;
+                document.getElementById('pg').innerHTML = `${pageFor(thatPage, totalPage)}`;
+                pages = totalPage;
+                count = count;
+                // reqPage();
+                // console.log(pageClick);
+                // console.log(typeof(thatPage));
+                for (var j = 0; j < pageClick.length; j++) {
+                    if (parseInt(pageClick[j].children[0].innerHTML) == thatPage) {
+                        console.log(j);
+                        pageReq = false;
+                        pageTotal = val;
+                        reqPage();
+                        pageClick[j].click();
+                    }
+                }
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
+    } else {
+        return false;
+    }
+}
