@@ -1,6 +1,7 @@
 const { User } = require('../../model/user');
 
 module.exports = async(req, res) => {
+    let { username, useremail, userrole, userstate } = req.query;
     /**
      * 用户点击跳转第几页
      * 如果没有默认为 1
@@ -15,29 +16,6 @@ module.exports = async(req, res) => {
      * 如果没有默认为 5
      */
     let pagesize = parseInt(req.query.pagesize) || 5;
-    // 数据库有多少条用户数据
-    let count = await User.countDocuments({});
-    // 总页数
-    // console.log(req.query.pagesize);
-    // console.log(typeof(pagesize));
-    let totalPage = Math.ceil(count / pagesize);
-    // 页码对应的数据查询开始位置
-    let state = (thatPage - 1) * pagesize;
-    /**
-     * limit 查找多少条数据
-     * skip 从什么位置开始查找
-     */
-    let users = await User.find({ register: 'fullState' }).limit(pagesize).skip(state);
-
-    // function filterUser() {
-    //     return 
-    // }
-
-    // let usersss = await User.find({ username: '', role: 'ordinary' });
-    // console.log(usersss);
-    // console.log('---');
-
-    let { username, useremail, userrole, userstate } = req.query;
     let userObj = {
         usernmae: username,
         email: useremail,
@@ -61,12 +39,26 @@ module.exports = async(req, res) => {
         if (searchObj.state !== undefined) { searchObj.state = parseInt(searchObj.state) }
         return searchObj;
     }
+    // 数据库有多少条用户数据
+    let count = await User.countDocuments(searchUser(searchObj));
+    // 总页数
+    // console.log(req.query.pagesize);
+    // console.log(typeof(pagesize));
+    let totalPage = Math.ceil(count / pagesize);
+    // let totalPage = 1;
+    // 页码对应的数据查询开始位置
+    let state = (thatPage - 1) * pagesize;
+    /**
+     * limit 查找多少条数据
+     * skip 从什么位置开始查找
+     */
+    let users = await User.find({ register: 'fullState' }).limit(pagesize).skip(state);
     let userResult = await User.find(searchUser(searchObj));
-
     res.send({
-        users,
+        thatPage,
         totalPage,
         count,
-        thatPage
+        pagesize,
+        userResult
     });
 }

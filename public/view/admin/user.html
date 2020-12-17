@@ -171,11 +171,11 @@
                     <div class="user_search">
                         <div class="user_name">
                             <label>用户昵称</label>
-                            <input type="text" placeholder="请输入用户昵称">
+                            <input type="text" placeholder="请输入用户昵称" id="userNameInput">
                         </div>
                         <div class="user_email">
                             <label>用户邮箱</label>
-                            <input type="text" placeholder="请输入用户邮箱">
+                            <input type="text" placeholder="请输入用户邮箱" id="userEmailInput">
                         </div>
                         <!-- 用户角色下拉框 -->
                         <div class="user_role">
@@ -183,11 +183,12 @@
                             <div class="select_role" onselectstart="return false;">
                                 <span id="role_text">不限</span>
                                 <em class="arrow_role"><i class="iconfont icon-xiasanjiaoxing"></i></em>
+                                <input type="hidden" id="userRoleHidden" value='2'>
                             </div>
                             <ul id="role_ul" onselectstart="return false;">
-                                <li>不限</li>
-                                <li>管理员</li>
-                                <li>普通用户</li>
+                                <li value="2">不限</li>
+                                <li value="0">管理员</li>
+                                <li value="1">普通用户</li>
                             </ul>
                         </div>
                         <!-- 用户状态下拉框 -->
@@ -196,11 +197,12 @@
                             <div class="select_state" onselectstart="return false;">
                                 <span id="state_text">不限</span>
                                 <em class="arrow_state"><i class="iconfont icon-xiasanjiaoxing"></i></em>
+                                <input type="hidden" id="userStateHidden" value='2'>
                             </div>
                             <ul id="state_ul" onselectstart="return false;">
-                                <li>不限</li>
-                                <li>启用</li>
-                                <li>禁用</li>
+                                <li value="2">不限</li>
+                                <li value="0">启用</li>
+                                <li value="1">禁用</li>
                             </ul>
                         </div>
                         <button class="search_button"><i class="iconfont icon-sousuo"></i></button>
@@ -310,6 +312,7 @@
                 <!-- 选择下拉框 -->
                 <div class="tips_select">
                     <span>启用</span>
+                    <input type="hidden" id="userRoleHidden">
                     <i class="iconfont icon-xiasanjiaoxing"></i>
                     <div class="select_box">
                         <div class="select_children">
@@ -319,7 +322,7 @@
                     </div>
                 </div>
             </div>
-            <div class="tips_button"><button>确定</button></div>
+            <div class="tips_button"><button onclick="userEdit()">确定</button></div>
         </div>
     </div>
     <div class="tips_background"></div>

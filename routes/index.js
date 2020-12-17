@@ -1,6 +1,10 @@
 module.exports = app => {
-    // // 用户
+    // 查询用户
     app.use('/admin/user', require('./admin/user'));
+    // 修改用户
+    app.use('/admin/userEdit', require('./admin/userEdit'));
+    // 搜索用户
+    app.use('/admin/userSearch', require('./admin/userSearch'));
 
     // 功能请求
     // 发送邮件请求

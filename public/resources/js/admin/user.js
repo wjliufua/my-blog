@@ -187,7 +187,7 @@ function reqPage() {
             // console.log(this);
             var thisPage = parseInt(this.children[0].innerHTML);
             if (pageFlag && pageReq) {
-                console.log(111);
+                // console.log(111);
                 $.ajax({
                     type: 'get',
                     url: '/admin/user',
@@ -223,6 +223,7 @@ function reqPage() {
                         count = count;
                         // console.log('1111111111');
                         reqPage();
+                        tipsEdit();
                     },
                     error: function(err) {
                         console.log(err);
@@ -248,7 +249,7 @@ function reqPage() {
                 }
                 userPageR.classList.add('aDisable');
             } else {
-                console.log('else');
+                // console.log('else');
                 userPageL.classList.remove('aDisable');
                 userPageR.classList.remove('aDisable');
             }
@@ -323,6 +324,9 @@ var stateText = document.getElementById('state_text');
 var stateUl = document.getElementById('state_ul');
 var stateFlag = true;
 
+var userRoleHidden = document.getElementById('userRoleHidden');
+var userStateHidden = document.getElementById('userStateHidden');
+
 function selectClick() {
     // 用户角色下拉
     selectRole.onclick = function(e) {
@@ -349,6 +353,8 @@ function selectClick() {
     for (var i = 0; i < roleUl.children.length; i++) {
         roleUl.children[i].onclick = function() {
             roleText.innerHTML = this.innerHTML;
+            userRoleHidden.value = this.value;
+            console.log(userRoleHidden.value);
             selectRole.click();
         }
     }
@@ -386,11 +392,85 @@ function selectClick() {
     for (var i = 0; i < stateUl.children.length; i++) {
         stateUl.children[i].onclick = function() {
             stateText.innerHTML = this.innerHTML;
+            // 用户状态下拉框隐藏域value赋值
+            userStateHidden.value = this.value;
+            console.log(userStateHidden.value);
             selectState.click();
         }
     }
 }
 selectClick();
+
+var searchButton = document.getElementsByClassName('search_button')[0];
+var userNameInput = document.getElementById('userNameInput');
+var userEmailInput = document.getElementById('userEmailInput');
+
+searchButton.onclick = function() {
+    var searchNickname = userNameInput.value.trim();
+    var searchEmail = userEmailInput.value.trim();
+    var searchRole = userRoleHidden.value;
+    var searchState = userStateHidden.value;
+    // if (searchRole === '2' && searchState === '2') {}
+    $.ajax({
+        type: 'get',
+        url: '/admin/userSearch',
+        data: {
+            username: searchNickname,
+            useremail: searchEmail,
+            userrole: searchRole,
+            userstate: searchState
+        },
+        success: function(data) {
+            // console.log(data);
+            let { thatPage, totalPage, userResult, count } = data;
+            // console.log(thatPage);
+            // console.log(totalPage);
+            // console.log(userResult);
+            tbodyContent = ``;
+            for (var x = 0; x < userResult.length; x++) {
+                tbodyContent += `
+                            <tr>
+                                <td><input type="checkbox" class="checked"></td>
+                                <td>${userResult[x]._id}</td>
+                                <td>${userResult[x].usernmae}</td>
+                                <td>${userResult[x].email}</td>
+                                <td class="th_center">${userResult[x].role == 'admin' ? '管理员' : '普通用户'}</td>
+                                <td class="th_center">${userResult[x].state == 0 ? '启用' : '禁用'}</td>
+                                <td class="operation">
+                                    <div class="operation_center">
+                                        <a class="modify" href="#"><i class="iconfont icon-xiugai"></i>编辑</a>
+                                        <a class="delete" href="#"><i class="iconfont icon-shanchu"></i>删除</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        `;
+            }
+            // console.log(tbodyContent);
+            document.getElementById('tbody').innerHTML = tbodyContent;
+            document.getElementsByClassName('total')[0].children[0].innerHTML = count;
+            document.getElementById('pg').innerHTML = `${pageFor(thatPage, totalPage)}`;
+            pages = totalPage;
+            count = count;
+            // reqPage();
+            // console.log(pageClick);
+            // console.log(typeof(thatPage));
+            for (var j = 0; j < pageClick.length; j++) {
+                if (parseInt(pageClick[j].children[0].innerHTML) == thatPage) {
+                    // console.log(j);
+                    pageReq = false;
+                    // pageTotal = val;
+                    // console.log('aabb');
+                    tipsEdit();
+                    reqPage();
+                    pageClick[j].click();
+                }
+            }
+        },
+        error: function(err) {
+            console.log(err);
+        }
+    });
+}
 
 var tipsSelect1 = document.getElementsByClassName('tips_select')[0];
 var tipsBg = document.getElementsByClassName('tips_background')[0];
@@ -444,6 +524,7 @@ function tipsEdit() {
     for (var i = 0; i < userModify.length; i++) {
         userModify[i].index = i;
         userModify[i].onclick = function() {
+            // console.log(111);
             // console.log(this.parentNode.parentNode.parentNode.children[2].innerHTML);
             tipsInput.children[0].value = document.getElementById('tbody').children[this.index].children[2].innerHTML;
             for (var j = 0; j < 2; j++) {
@@ -535,7 +616,7 @@ function userReqTotal(obj) {
                 // console.log(typeof(thatPage));
                 for (var j = 0; j < pageClick.length; j++) {
                     if (parseInt(pageClick[j].children[0].innerHTML) == thatPage) {
-                        console.log(j);
+                        // console.log(j);
                         pageReq = false;
                         pageTotal = val;
                         reqPage();
@@ -550,4 +631,56 @@ function userReqTotal(obj) {
     } else {
         return false;
     }
+}
+
+function userEdit() {
+    $.ajax({
+        type: 'get',
+        url: '/admin/user',
+        data: {
+            pagesize: val
+        },
+        success: function(data) {
+            console.log(data);
+            let { thatPage, totalPage, users } = data;
+            tbodyContent = ``;
+            for (var x = 0; x < users.length; x++) {
+                tbodyContent += `
+                            <tr>
+                                <td><input type="checkbox" class="checked"></td>
+                                <td>${users[x]._id}</td>
+                                <td>${users[x].usernmae}</td>
+                                <td>${users[x].email}</td>
+                                <td class="th_center">${users[x].role == 'admin' ? '管理员' : '普通用户'}</td>
+                                <td class="th_center">${users[x].state == 0 ? '启用' : '禁用'}</td>
+                                <td class="operation">
+                                    <div class="operation_center">
+                                        <a class="modify" href="#"><i class="iconfont icon-xiugai"></i>编辑</a>
+                                        <a class="delete" href="#"><i class="iconfont icon-shanchu"></i>删除</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        `;
+            }
+            document.getElementById('tbody').innerHTML = tbodyContent;
+            document.getElementById('pg').innerHTML = `${pageFor(thatPage, totalPage)}`;
+            pages = totalPage;
+            count = count;
+            // reqPage();
+            // console.log(pageClick);
+            // console.log(typeof(thatPage));
+            for (var j = 0; j < pageClick.length; j++) {
+                if (parseInt(pageClick[j].children[0].innerHTML) == thatPage) {
+                    // console.log(j);
+                    pageReq = false;
+                    pageTotal = val;
+                    reqPage();
+                    pageClick[j].click();
+                }
+            }
+        },
+        error: function(err) {
+            console.log(err);
+        }
+    });
 }
