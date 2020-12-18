@@ -304,6 +304,7 @@
                             <div>普通用户</div>
                         </div>
                     </div>
+                    <input type="hidden" id="userTipsRole">
                 </div>
             </div>
             <div class="tips_row" id="tips_row">
@@ -312,7 +313,6 @@
                 <!-- 选择下拉框 -->
                 <div class="tips_select">
                     <span>启用</span>
-                    <input type="hidden" id="userRoleHidden">
                     <i class="iconfont icon-xiasanjiaoxing"></i>
                     <div class="select_box">
                         <div class="select_children">
@@ -320,8 +320,10 @@
                             <div>禁用</div>
                         </div>
                     </div>
+                    <input type="hidden" id="userTipsState">
                 </div>
             </div>
+            <input type="hidden" id="userId">
             <div class="tips_button"><button onclick="userEdit()">确定</button></div>
         </div>
     </div>

@@ -20,7 +20,8 @@ module.exports = async(req, res) => {
         usernmae: username,
         email: useremail,
         role: userrole,
-        state: userstate
+        state: userstate,
+        register: 'fullState'
     };
     let searchObj = {};
     for (let key in userObj) {
@@ -52,13 +53,14 @@ module.exports = async(req, res) => {
      * limit 查找多少条数据
      * skip 从什么位置开始查找
      */
-    let users = await User.find({ register: 'fullState' }).limit(pagesize).skip(state);
-    let userResult = await User.find(searchUser(searchObj));
+    // let users = await User.find({ register: 'fullState' }).limit(pagesize).skip(state);
+    // let userResult = await User.find(searchUser(searchObj)).limit(pagesize).skip(state);
+    let users = await User.find(searchUser(searchObj)).limit(pagesize).skip(state);
     res.send({
+        users,
         thatPage,
         totalPage,
         count,
-        pagesize,
-        userResult
+        pagesize
     });
 }

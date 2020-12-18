@@ -1,52 +1,29 @@
 const { User } = require('../../model/user');
 
 module.exports = async(req, res) => {
+    let { username, useremail, userrole, userstate, search } = req.query;
     /**
      * 用户点击跳转第几页
      * 如果没有默认为 1
      */
     let thatPage = req.query.thisPage || 1;
-    /**
-     * 获取用户点击页码从 String转换为Number
-     */
+    // 获取用户点击页码从 String转换为Number
     thatPage = parseInt(thatPage);
     /**
      * 页面每页显示多少条数据
      * 如果没有默认为 5
      */
     let pagesize = parseInt(req.query.pagesize) || 5;
-    // 数据库有多少条用户数据
-    let count = await User.countDocuments({});
-    // 总页数
-    // console.log(req.query.pagesize);
-    // console.log(typeof(pagesize));
-    let totalPage = Math.ceil(count / pagesize);
-    // 页码对应的数据查询开始位置
-    let state = (thatPage - 1) * pagesize;
-    /**
-     * limit 查找多少条数据
-     * skip 从什么位置开始查找
-     */
-    let users = await User.find({ register: 'fullState' }).limit(pagesize).skip(state);
-
-    // function filterUser() {
-    //     return 
-    // }
-
-    // let usersss = await User.find({ username: '', role: 'ordinary' });
-    // console.log(usersss);
-    // console.log('---');
-
-    let { username, useremail, userrole, userstate } = req.query;
     let userObj = {
         usernmae: username,
         email: useremail,
         role: userrole,
-        state: userstate
+        state: userstate,
+        register: 'fullState'
     };
     let searchObj = {};
     for (let key in userObj) {
-        if (userObj[key] === '' || userObj[key] === '2') {
+        if (userObj[key] === '' || userObj[key] === undefined || userObj[key] === '2') {
             continue
         }
         searchObj[key] = userObj[key];
@@ -61,12 +38,29 @@ module.exports = async(req, res) => {
         if (searchObj.state !== undefined) { searchObj.state = parseInt(searchObj.state) }
         return searchObj;
     }
-    let userResult = await User.find(searchUser(searchObj));
-
+    let searchArry = req.query.searchArry || [];
+    if (searchArry.length === 0 && search == true) {
+        searchArry[0] == searchUser(searchObj);
+    } else if (searchArry.length === 0) {
+        searchArry.push(searchUser(searchObj));
+    }
+    // // 数据库有多少条用户数据
+    let count = await User.countDocuments(searchArry[0]);
+    // 总页数
+    let totalPage = Math.ceil(count / pagesize);
+    // 页码对应的数据查询开始位置
+    let state = (thatPage - 1) * pagesize;
+    /**
+     * limit 查找多少条数据
+     * skip 从什么位置开始查找
+     */
+    let users = await User.find(searchArry[0]).limit(pagesize).skip(state);
     res.send({
         users,
+        thatPage,
         totalPage,
         count,
-        thatPage
+        pagesize,
+        searchArry: searchArry[0]
     });
 }
