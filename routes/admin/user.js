@@ -44,17 +44,18 @@ module.exports = async(req, res) => {
     } else if (searchArry.length === 0) {
         searchArry.push(searchUser(searchObj));
     }
+    // console.log(searchArry[0]);
     // // 数据库有多少条用户数据
     let count = await User.countDocuments(searchArry[0]);
     // 总页数
     let totalPage = Math.ceil(count / pagesize);
     // 页码对应的数据查询开始位置
-    let state = (thatPage - 1) * pagesize;
+    let start = (thatPage - 1) * pagesize;
     /**
      * limit 查找多少条数据
      * skip 从什么位置开始查找
      */
-    let users = await User.find(searchArry[0]).limit(pagesize).skip(state);
+    let users = await User.find(searchArry[0]).limit(pagesize).skip(start);
     res.send({
         users,
         thatPage,
