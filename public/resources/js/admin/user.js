@@ -85,42 +85,14 @@ $.ajax({
         pages = totalPage;
         // 查询用户数量赋值
         count = count;
+        thisDelete();
     },
     error: function(err) {
         console.log(err);
     }
 });
 
-// 用户全选复选框按钮获取
-var allChecked = document.getElementById('allChecked');
-// 用户选择复选框按钮获取
-var check = document.getElementsByClassName('checked');
 
-// 用户单个选择 及 用户全选函数
-function checkedSelect() {
-    // 用户全选复选框按钮点击
-    allChecked.onclick = function() {
-        for (var i = 0; i < check.length; i++) {
-            check[i].checked = this.checked;
-        }
-    };
-
-    // 循环获取用户点击按钮
-    for (var i = 0; i < check.length; i++) {
-        // 用户选择复选框按钮点击
-        check[i].onclick = function() {
-            var flag = true;
-            for (var j = 0; j < check.length; j++) {
-                if (!check[j].checked) {
-                    flag = false;
-                    break;
-                }
-            }
-            allChecked.checked = flag;
-        };
-    }
-}
-checkedSelect();
 
 // 获取每个页码
 var pageClick = document.getElementById('pg').children;
@@ -148,7 +120,7 @@ var pageReq = false;
 var pageTotal = '';
 
 /**
- * @method pageFor
+ * @method pageFor 返回页码模板
  * @param {Number} thatPage 当前点击跳转第几页
  * @param {Number} page 总页数
  */
@@ -335,6 +307,7 @@ function reqPage() {
                         reqPage();
                         // 重新绑定用户的修改弹窗
                         tipsEdit();
+                        thisDelete();
                     },
                     error: function(err) {
                         console.log(err);
@@ -593,6 +566,7 @@ searchButton.onclick = function() {
                     pageClick[j].click();
                 }
             }
+            thisDelete();
         },
         error: function(err) {
             console.log(err);
@@ -745,6 +719,7 @@ function userReqTotal(obj) {
                 document.getElementById('pg').innerHTML = `${pageFor(thatPage, totalPage)}`;
                 pages = totalPage;
                 count = count;
+                thisDelete();
                 for (var j = 0; j < pageClick.length; j++) {
                     if (parseInt(pageClick[j].children[0].innerHTML) == thatPage) {
                         pageReq = false;
@@ -753,6 +728,7 @@ function userReqTotal(obj) {
                         pageClick[j].click();
                     }
                 }
+                thisDelete();
             },
             error: function(err) {
                 console.log(err);
@@ -822,6 +798,7 @@ function userEdit() {
             }
             tipsBg.style.display = 'none';
             tips.style.display = 'none';
+            thisDelete();
             alert('修改成功');
         },
         error: function(err) {
@@ -830,8 +807,157 @@ function userEdit() {
     });
 }
 
-function batchDelete() {
-    for (var i = 0; i < document.getElementsByClassName('batchClick').length; i++) {
-        if (document.getElementsByClassName('batchClick')) {}
+// 用户全选复选框按钮获取
+var allChecked = document.getElementById('allChecked');
+// 用户选择复选框按钮获取
+var check = document.getElementsByClassName('checked');
+
+// 用户单个选择 及 用户全选函数
+function checkedSelect() {
+    // 用户全选复选框按钮点击
+    allChecked.onclick = function() {
+        for (var i = 0; i < check.length; i++) {
+            check[i].checked = this.checked;
+        }
+    };
+
+    // 循环获取用户点击按钮
+    for (var i = 0; i < check.length; i++) {
+        // 用户选择复选框按钮点击
+        check[i].onclick = function() {
+            var flag = true;
+            for (var j = 0; j < check.length; j++) {
+                if (!check[j].checked) {
+                    flag = false;
+                    break;
+                }
+            }
+            allChecked.checked = flag;
+        };
     }
 }
+checkedSelect();
+
+var userDeleteArr = [];
+
+function batchDelete() {
+    userDelete = [];
+    for (var i = 0; i < check.length; i++) {
+        if (check[i].checked) {
+            // console.log(check[i].parentNode.parentNode.children[1].innerHTML);
+            userDelete.push(check[i].parentNode.parentNode.children[1].innerHTML);
+            // console.log(this);
+        }
+    }
+    // console.log(userDelete);
+    $.ajax({
+        type: 'get',
+        url: '/admin/userDelete',
+        data: {
+            userDeleteArr: userDeleteArr
+        },
+        success: function(data) {
+            console.log(data);
+            let { count, thatPage, totalPage, users } = data;
+            tbodyContent = ``;
+            for (var x = 0; x < users.length; x++) {
+                tbodyContent += `
+                            <tr>
+                                <td><input type="checkbox" class="checked"></td>
+                                <td>${users[x]._id}</td>
+                                <td>${users[x].usernmae}</td>
+                                <td>${users[x].email}</td>
+                                <td class="th_center">${users[x].role == 'admin' ? '管理员' : '普通用户'}</td>
+                                <td class="th_center">${users[x].state == 0 ? '启用' : '禁用'}</td>
+                                <td class="operation">
+                                    <div class="operation_center">
+                                        <a class="modify" href="#"><i class="iconfont icon-xiugai"></i>编辑</a>
+                                        <a class="delete" href="#"><i class="iconfont icon-shanchu"></i>删除</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        `;
+            }
+            thisDelete();
+            document.getElementById('tbody').innerHTML = tbodyContent;
+            document.getElementById('pg').innerHTML = `${pageFor(thatPage, totalPage)}`;
+            pages = totalPage;
+            count = count;
+            for (var j = 0; j < pageClick.length; j++) {
+                if (parseInt(pageClick[j].children[0].innerHTML) == thatPage) {
+                    pageReq = false;
+                    reqPage();
+                    pageClick[j].click();
+                }
+            }
+            tipsBg.style.display = 'none';
+            tips.style.display = 'none';
+            thisDelete();
+            alert('批量删除成功');
+        },
+        error: function(err) {
+            console.log(err);
+        }
+    });
+}
+var userDeleteOne = '';
+
+function thisDelete() {
+    var userDelte = document.getElementsByClassName('delete');
+    // console.log(userDelte);
+    for (var d = 0; d < userDelte.length; d++) {
+        userDelte[d].onclick = function() {
+            userDeleteOne = this.parentNode.parentNode.parentNode.children[1].innerHTML;
+            // console.log(userDeleteOne);
+            $.ajax({
+                type: 'get',
+                url: '/admin/userDelete',
+                data: {
+                    userDeleteOne: userDeleteOne
+                },
+                success: function(data) {
+                    console.log(data);
+                    let { count, thatPage, totalPage, users } = data;
+                    tbodyContent = ``;
+                    for (var x = 0; x < users.length; x++) {
+                        tbodyContent += `
+                                    <tr>
+                                        <td><input type="checkbox" class="checked"></td>
+                                        <td>${users[x]._id}</td>
+                                        <td>${users[x].usernmae}</td>
+                                        <td>${users[x].email}</td>
+                                        <td class="th_center">${users[x].role == 'admin' ? '管理员' : '普通用户'}</td>
+                                        <td class="th_center">${users[x].state == 0 ? '启用' : '禁用'}</td>
+                                        <td class="operation">
+                                            <div class="operation_center">
+                                                <a class="modify" href="#"><i class="iconfont icon-xiugai"></i>编辑</a>
+                                                <a class="delete" href="#"><i class="iconfont icon-shanchu"></i>删除</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                `;
+                    }
+                    document.getElementById('tbody').innerHTML = tbodyContent;
+                    document.getElementById('pg').innerHTML = `${pageFor(thatPage, totalPage)}`;
+                    pages = totalPage;
+                    count = count;
+                    for (var j = 0; j < pageClick.length; j++) {
+                        if (parseInt(pageClick[j].children[0].innerHTML) == thatPage) {
+                            pageReq = false;
+                            reqPage();
+                            pageClick[j].click();
+                        }
+                    }
+                    tipsBg.style.display = 'none';
+                    tips.style.display = 'none';
+                    thisDelete();
+                    alert('用户删除成功');
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+        }
+    }
+}
+thisDelete();

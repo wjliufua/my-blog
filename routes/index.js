@@ -5,6 +5,8 @@ module.exports = app => {
     app.use('/admin/userEdit', require('./admin/userEdit'));
     // 搜索用户
     app.use('/admin/userSearch', require('./admin/userSearch'));
+    // 删除用户
+    app.use('/admin/userDelete', require('./admin/userDelete'));
 
     // 功能请求
     // 发送邮件请求

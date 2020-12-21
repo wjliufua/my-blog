@@ -1,5 +1,5 @@
 // 侧边栏
-var side = document.getElementsByClassName('side');
+var side = document.getElementsByClassName('side')[0];
 // 侧边栏下拉框
 var sidedl = document.getElementsByClassName('sidedl');
 // 侧边栏标题
@@ -9,7 +9,7 @@ var sidelicenter = document.getElementsByClassName('sidelicenter');
 // 侧边栏 li 选项
 var sideli = document.getElementsByClassName('sideli');
 // 主体头部左侧导航栏
-var headerLeft = document.getElementsByClassName('header_left');
+var headerLeft = document.getElementsByClassName('header_left')[0];
 
 // 侧边栏下拉框默认选中样式
 sidedl[0].children[0].style.backgroundColor = '#808080';
@@ -48,34 +48,68 @@ function sideliAddress() {
     }
 }
 
-// 点击下拉方法封装
+/**
+ * @method sidePullFunction 点击下拉方法
+ * @param {Number} i 点击一级菜单在所有一级菜单中的第几项
+ */
 function sidePullFunction(i) {
+    // 遍历一级菜单
     for (let j = 0; j < sidelicenter.length; j++) {
+
         if (i != j) {
+            // 如果当前点击一级菜单 !== 循环遍历的一级菜单
+
+            // 删除当前点击一级菜单对应的false
             sideArr[j].pull = false;
         }
+        // 改变侧边栏一级菜单的字体 和 图标颜色
         sidelicenter[j].children[0].style.color = '#D2D2D2';
         sidelicenter[j].children[1].style.color = '#D2D2D2';
+
         if (sideli[j].children[0].children[2] == undefined) {
+            // 如果一级菜单没有下拉图标
+            // 跳过此次循环
             continue
         }
+        // 改变遍历一级菜单图标样式
         sidelicenter[j].children[2].style.borderColor = '#D2D2D2 transparent transparent';
+        // 把遍历的一级菜单隐藏
         sidelicenter[j].nextElementSibling.style.display = 'none';
     }
+    // 当前点击一级菜单对应的侧边栏数组取相反值
     sideArr[i].pull = !sideArr[i].pull;
+
     if (sideArr[i].pull) {
+        // 如果当前点击一级菜单对应的的侧边栏数组为true
+        // 选中状态的一级菜单
+
+        // 改变侧边栏一级菜单的字体 和 图标颜色
         sidelicenter[i].children[0].style.color = '#fff';
         sidelicenter[i].children[1].style.color = '#fff';
+
         if (sidelicenter[i].children[2] !== undefined) {
+            // 如果当前点击的一级菜单有下拉图标
+
+            // 改变当前点击的一级菜单的下拉三角样式
+            // 上三角 二级菜单显示
             sidelicenter[i].children[2].style.borderColor = 'transparent transparent #fff';
+            // 二级菜单显示
             sidelicenter[i].nextElementSibling.style.display = 'block';
+            // 点击下拉效果
             sidedlpull();
         }
     } else {
+        // 改变侧边栏一级菜单的字体 和 图标颜色
         sidelicenter[i].children[0].style.color = '#D2D2D2';
         sidelicenter[i].children[1].style.color = '#D2D2D2';
+
         if (sidelicenter[i].children[2] !== undefined) {
+            // 如果当前点击的一级菜单有下拉图标
+
+            // 改变当前点击的一级菜单的下拉三角样式
+            // 下三角 二级菜单隐藏
             sidelicenter[i].children[2].style.borderColor = '#D2D2D2 transparent transparent';
+            // 二级菜单隐藏
             sidelicenter[i].nextElementSibling.style.display = 'none';
         }
     }
@@ -83,30 +117,49 @@ function sidePullFunction(i) {
 
 // 点击下拉效果
 function sidelipull() {
+    // 点击侧边栏第一项
     setTimeout(function() { sidelicenter[0].click() }, 0);
     for (let i = 0; i < sidelicenter.length; i++) {
+        // 为每个侧边栏 添加点击状态
         sideArr.push({ pull: false });
+        // 为每个侧边栏 一级导航栏添加点击事件
         sidelicenter[i].onclick = function() {
-            if (side[0].offsetWidth === 220) {
+            if (side.offsetWidth === 220) {
+                // 如果侧边栏当前宽度为220px
+
+                // 点击下拉方法
                 sidePullFunction(i);
             } else {
-                sideShrink(headerLeft[0].children[0].children[0].click());
+                // sideShrink(headerLeft.children[0].children[0].click());
+                // 侧边栏收缩
+                sideShrink();
+                // 点击下拉方法
                 sidePullFunction(i);
             }
         }
     }
 }
 
+// 侧边栏下拉框
 function sidedlpull() {
+    // 遍历侧边栏下拉框
     for (let i = 0; i < sidedl.length; i++) {
+        // 遍历侧边栏下拉框的各个选项
         for (let j = 0; j < sidedl[i].children.length; j++) {
+            // 为遍历侧边栏下拉框的各个选项添加点击事件
             sidedl[i].children[j].onclick = function() {
+                // 遍历侧边栏下拉框
                 for (let x = 0; x < sidedl.length; x++) {
+                    // 遍历侧边栏下拉框的各个选项
                     for (let y = 0; y < sidedl[i].children.length; y++) {
+                        // 把遍历侧边栏下拉框的各个选项的背景 和 字体颜色
+                        // 改变全部
                         sidedl[x].children[y].style.backgroundColor = '#3C3C3C';
                         sidedl[x].children[y].children[0].style.color = '#D2D2D2';
                     }
                 }
+                // 把遍历侧边栏下拉框的各个选项的背景 和 字体颜色
+                // 选中状态
                 sidedl[i].children[j].style.backgroundColor = '#808080';
                 sidedl[i].children[j].children[0].style.color = '#fff';
             }
@@ -123,15 +176,17 @@ function headerWidth() {
     var w = subject.clientWidth;
     header.style.width = w + 'px';
 }
-window.addEventListener("resize", headerWidth);
+// window.addEventListener("resize", headerWidth);
 headerWidth();
 
+// 侧边栏收缩
 function sideShrink() {
-    headerLeft[0].children[0].children[0].onclick = function() {
+    let sideFlag = false;
+    headerLeft.children[0].children[0].onclick = function() {
         sideOpen = !sideOpen;
         for (let i = 0; i < sidedl.length; i++) {
             if (sideOpen) {
-                side[0].style.width = '220px';
+                side.style.width = '220px';
                 subject.style.marginLeft = '220px';
                 for (let j = 0; j < sideArr.length; j++) {
                     if (sideArr[j].pull && sidelicenter[j].children[2] !== undefined) {
@@ -141,11 +196,14 @@ function sideShrink() {
                     }
                 }
             } else {
-                side[0].style.width = '46px';
+                side.style.width = '46px';
                 subject.style.marginLeft = '46px';
                 sidedl[i].style.display = 'none';
             }
         }
+        sideFlag = !sideFlag;
+        headerStripStyle(sideFlag);
+        headerWidth();
     }
 }
 
@@ -170,16 +228,38 @@ var headerStrip = document.getElementById('header_strip');
 // var header = header.children[0].children;
 // console.log($('.header li>a'));
 
-function headerStripStyle() {
+function headerStripStyle(sideFlag) {
     for (let i = 0; i < $('.header li>a').length; i++) {
         // console.log($('.header li>a')[i].offsetLeft);
         // console.log(getLeft($('.header li>a')[i]));
         $('.header li>a')[i].parentNode.onmouseout = function() {
-            headerStrip.style.width = '0px';
-        }
-        $('.header li>a')[i].parentNode.onmouseover = function() {
-            headerStrip.style.width = $('.header li>a')[i].offsetWidth + 'px';
-            headerStrip.style.left = getLeft($('.header li>a')[i]) - 220 + 'px';
+                headerStrip.style.width = '0px';
+            }
+            // if (!sideFlag) {
+            //     console.log(1111);
+            //     $('.header li>a')[i].parentNode.onmouseover = function() {
+            //         headerStrip.style.width = $('.header li>a')[i].offsetWidth + 'px';
+            //         headerStrip.style.left = getLeft($('.header li>a')[i]) - 220 + 'px';
+            //     }
+            // } else {
+            //     console.log(2222);
+            //     $('.header li>a')[i].parentNode.onmouseover = function() {
+            //         headerStrip.style.width = $('.header li>a')[i].offsetWidth + 'px';
+            //         headerStrip.style.left = getLeft($('.header li>a')[i]) - 46 + 'px';
+            //     }
+            // }
+        if (sideFlag) {
+            console.log(1111);
+            $('.header li>a')[i].parentNode.onmouseover = function() {
+                headerStrip.style.width = $('.header li>a')[i].offsetWidth + 'px';
+                headerStrip.style.left = getLeft($('.header li>a')[i]) - 46 + 'px';
+            }
+        } else {
+            console.log(2222);
+            $('.header li>a')[i].parentNode.onmouseover = function() {
+                headerStrip.style.width = $('.header li>a')[i].offsetWidth + 'px';
+                headerStrip.style.left = getLeft($('.header li>a')[i]) - 220 + 'px';
+            }
         }
     }
 }
