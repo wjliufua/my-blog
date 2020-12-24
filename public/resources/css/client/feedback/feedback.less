@@ -1,20 +1,90 @@
 body {
     background-color: #fff;
 
+    // 回复评论模块
+    .comment_autor {
+        width: 864px;
+        margin: 0 auto;
+        padding: 20px 0 0 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        // 输入框及按钮
+        textarea,
+        button {
+            -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+            -webkit-user-select: none;
+            -moz-user-focus: none;
+            -moz-user-select: none;
+            -webkit-appearance: none;
+            outline: none;
+            border: none;
+        }
+
+        // 你的狗头
+        .comment_autor_face {
+            overflow: hidden;
+            width: 35px;
+            height: 35px;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+
+            img {
+                max-width: 100%;
+                max-height: 100%;
+            }
+        }
+
+        // 输入框及点击按钮
+        .comment_autor_box {
+            flex: 1;
+            display: flex;
+            padding-left: 30px;
+
+            // 输入框
+            textarea {
+                flex: 1;
+                resize: none;
+                height: 60px;
+                padding: 2px 10px;
+                border-radius: 5px;
+                border: 1px solid #B1B1B1;
+            }
+
+            // 点击按钮
+            span {
+                display: flex;
+                align-items: center;
+
+                button {
+                    padding: 9px 17px;
+                    margin-left: 30px;
+                    color: #fff;
+                    font-size: 15px;
+                    border-radius: 5px;
+                    background-color: rgb(0, 161, 214);
+                }
+            }
+        }
+    }
+
     // 留言主体
     .opinion {
         width: 864px;
         margin: 0 auto;
-        padding: 70px 0;
+        padding: 30px 0;
 
         ul {
             li {
                 padding: 20px 30px;
+                border-bottom: 1px solid #6F6F6F;
                 background-color: #FAFAFA;
 
                 .opinion_common {
 
                     &>a {
+                        height: 35px;
                         margin-right: 11px;
 
                         img {

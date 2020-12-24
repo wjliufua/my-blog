@@ -24,7 +24,6 @@ var sideOpen = true;
 // 
 var sideOpens = true;
 
-
 // 侧边栏左侧动画条形效果
 function sideliAddress() {
     for (let i = 0; i < sideli.length; i++) {
@@ -47,6 +46,10 @@ function sideliAddress() {
         }
     }
 }
+
+// function name(params) {
+
+// }
 
 /**
  * @method sidePullFunction 点击下拉方法
@@ -97,6 +100,16 @@ function sidePullFunction(i) {
             sidelicenter[i].nextElementSibling.style.display = 'block';
             // 点击下拉效果
             sidedlpull();
+        } else {
+            sidelicenter[i].style.backgroundColor = '#909090';
+            for (let x = 0; x < sidedl.length; x++) {
+                // 遍历侧边栏下拉框的各个选项
+                for (let y = 0; y < sidedl[x].children.length; y++) {
+                    // 为遍历侧边栏下拉框的各个选项添加点击事件
+                    sidedl[x].children[y].style.backgroundColor = '#3C3C3C';
+                    sidedl[x].children[y].children[0].style.color = '#D2D2D2';
+                }
+            }
         }
     } else {
         // 改变侧边栏一级菜单的字体 和 图标颜色
@@ -118,7 +131,7 @@ function sidePullFunction(i) {
 // 点击下拉效果
 function sidelipull() {
     // 点击侧边栏第一项
-    setTimeout(function() { sidelicenter[0].click() }, 0);
+    // setTimeout(function() { sidelicenter[0].click() }, 0);
     for (let i = 0; i < sidelicenter.length; i++) {
         // 为每个侧边栏 添加点击状态
         sideArr.push({ pull: false });
@@ -135,9 +148,11 @@ function sidelipull() {
                 sideShrink();
                 // 点击下拉方法
                 sidePullFunction(i);
+                headerLeft.children[0].children[0].click();
             }
         }
     }
+    sidelicenter[0].click();
 }
 
 // 侧边栏下拉框
@@ -167,21 +182,18 @@ function sidedlpull() {
     }
 }
 
+var a = 1;
 var subject = document.getElementsByClassName('subject')[0];
-// console.log(subject);
 var header = document.getElementsByClassName('header')[0];
-// console.log(header);
 
 function headerWidth() {
     var w = subject.clientWidth;
     header.style.width = w + 'px';
 }
-// window.addEventListener("resize", headerWidth);
 headerWidth();
 
 // 侧边栏收缩
 function sideShrink() {
-    let sideFlag = false;
     headerLeft.children[0].children[0].onclick = function() {
         sideOpen = !sideOpen;
         for (let i = 0; i < sidedl.length; i++) {
@@ -195,13 +207,14 @@ function sideShrink() {
                         continue
                     }
                 }
+                var sideFlag = false;
             } else {
+                var sideFlag = true;
                 side.style.width = '46px';
                 subject.style.marginLeft = '46px';
                 sidedl[i].style.display = 'none';
             }
         }
-        sideFlag = !sideFlag;
         headerStripStyle(sideFlag);
         headerWidth();
     }
@@ -211,54 +224,52 @@ sideliAddress();
 sidelipull();
 sideShrink();
 
-// var headerRight = document.getElementsByClassName('header_right')[0];
-// var user = headerRight.children[1];
-// console.log(user);
+var thisWebPath = window.location.pathname;
+var thisWebPage = thisWebPath.substring(12, thisWebPath.length - 5);
+
+function sideData() {
+    if (thisWebPage === 'user') {
+        return '用户'
+    } else if (thisWebPage === 'adminIndex') {
+        return '后台管理主页'
+    }
+}
+// 侧边栏遍历
+function sideFor() {
+    for (var i = 0; i < sidelicenter.length; i++) {
+        if (sidelicenter[i].nextElementSibling) {
+            for (var j = 0; j < sidelicenter[i].nextElementSibling.children; j++) {
+                if (sidelicenter[i].nextElementSibling.children[j].children[0].innerHTML === sideData()) {
+                    sidelicenter[i].nextElementSibling.children[j].click();
+                }
+            }
+        }
+        if (sidelicenter[i].children[1].innerHTML === sideData()) {
+            console.log(sidelicenter[i]);
+            sidelicenter[i].click();
+        }
+    }
+}
+sideFor();
 var userShow = document.getElementsByClassName('userShow')[0];
 var userTriangle = document.getElementById('userTriangle');
-// userShow.onmouseout = function() {
-//     userTriangle.style.borderColor = '#6D6D6D transparent transparent';
-// }
-// userShow.onmouseover = function() {
-//     userTriangle.style.borderColor = 'transparent transparent #6D6D6D';
-// }
 
 var headerStrip = document.getElementById('header_strip');
-// var header = document.getElementsByClassName('header')[0];
-// var header = header.children[0].children;
-// console.log($('.header li>a'));
 
 function headerStripStyle(sideFlag) {
     for (let i = 0; i < $('.header li>a').length; i++) {
-        // console.log($('.header li>a')[i].offsetLeft);
-        // console.log(getLeft($('.header li>a')[i]));
         $('.header li>a')[i].parentNode.onmouseout = function() {
-                headerStrip.style.width = '0px';
-            }
-            // if (!sideFlag) {
-            //     console.log(1111);
-            //     $('.header li>a')[i].parentNode.onmouseover = function() {
-            //         headerStrip.style.width = $('.header li>a')[i].offsetWidth + 'px';
-            //         headerStrip.style.left = getLeft($('.header li>a')[i]) - 220 + 'px';
-            //     }
-            // } else {
-            //     console.log(2222);
-            //     $('.header li>a')[i].parentNode.onmouseover = function() {
-            //         headerStrip.style.width = $('.header li>a')[i].offsetWidth + 'px';
-            //         headerStrip.style.left = getLeft($('.header li>a')[i]) - 46 + 'px';
-            //     }
-            // }
-        if (sideFlag) {
-            console.log(1111);
-            $('.header li>a')[i].parentNode.onmouseover = function() {
-                headerStrip.style.width = $('.header li>a')[i].offsetWidth + 'px';
-                headerStrip.style.left = getLeft($('.header li>a')[i]) - 46 + 'px';
-            }
-        } else {
-            console.log(2222);
+            headerStrip.style.width = '0px';
+        }
+        if (!sideFlag) {
             $('.header li>a')[i].parentNode.onmouseover = function() {
                 headerStrip.style.width = $('.header li>a')[i].offsetWidth + 'px';
                 headerStrip.style.left = getLeft($('.header li>a')[i]) - 220 + 'px';
+            }
+        } else {
+            $('.header li>a')[i].parentNode.onmouseover = function() {
+                headerStrip.style.width = $('.header li>a')[i].offsetWidth + 'px';
+                headerStrip.style.left = getLeft($('.header li>a')[i]) - 46 + 'px';
             }
         }
     }
