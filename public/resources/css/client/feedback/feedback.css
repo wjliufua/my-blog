@@ -60,10 +60,15 @@ body .opinion {
   margin: 0 auto;
   padding: 30px 0;
 }
-body .opinion ul li {
-  padding: 20px 30px;
-  border-bottom: 1px solid #6F6F6F;
+body .opinion ul {
+  padding-bottom: 20px;
   background-color: #FAFAFA;
+}
+body .opinion ul li {
+  margin: 0px 30px 0px 30px;
+  padding: 20px 0;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e5e9ef;
 }
 body .opinion ul li .opinion_common > a {
   height: 35px;
@@ -78,12 +83,19 @@ body .opinion ul li .opinion_common > a img {
   box-sizing: border-box;
 }
 body .opinion ul li .opinion_common .comment {
+  flex: 1;
   display: flex;
   align-items: center;
   font-size: 14px;
 }
+body .opinion ul li .opinion_common .comment .comment_box {
+  flex: 1;
+}
 body .opinion ul li .opinion_common .comment .comment_box a {
   color: #00D9F2;
+}
+body .opinion ul li .opinion_common .comment .comment_box a:hover {
+  cursor: pointer;
 }
 body .opinion ul li .opinion_common .comment .comment_box .author_name img {
   max-height: 19px;
@@ -94,6 +106,7 @@ body .opinion ul li .opinion_common .comment .comment_box .colon {
   padding: 0 7px;
 }
 body .opinion ul li .opinion_common .comment .comment_box .comment_operate {
+  flex: 1;
   display: flex;
   justify-content: flex-end;
   padding: 15px 0;
@@ -109,6 +122,10 @@ body .opinion ul li .reply {
   display: flex;
   padding-left: 20px;
   font-size: 14px;
+}
+body .opinion ul li .reply .two_reply {
+  flex: 1;
+  display: flex;
 }
 body .opinion ul li .assembly {
   padding: 20px 0 0 20px;

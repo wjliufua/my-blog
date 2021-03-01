@@ -1,19 +1,12 @@
-.body {
-  display: flex;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  margin-top: 54px;
-}
-.body .user_search {
+.user_search {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   box-sizing: border-box;
   width: 100%;
   margin-top: 40px;
-  padding-left: 30px;
 }
-.body .user_search input {
+.user_search input {
   outline: none;
   width: 100px;
   margin-left: 11px;
@@ -22,11 +15,11 @@
   font-size: 14px;
   border: 1px solid #898989;
 }
-.body .user_search label {
+.user_search label {
   font-size: 14px;
   color: #5B5B5B;
 }
-.body .user_search select {
+.user_search select {
   outline: none;
   font-size: 14px;
   margin-left: 11px;
@@ -34,17 +27,17 @@
   border-radius: 5px;
   border: 1px solid #898989;
 }
-.body .user_search .user_email,
-.body .user_search .user_role,
-.body .user_search .user_state {
+.user_search .user_email,
+.user_search .user_role,
+.user_search .user_state {
   display: flex;
   align-items: center;
   margin-left: 25px;
 }
-.body .user_search .user_role {
+.user_search .user_role {
   position: relative;
 }
-.body .user_search .user_role .select_role {
+.user_search .user_role .select_role {
   display: flex;
   justify-content: space-between;
   width: 96px;
@@ -54,13 +47,13 @@
   border-radius: 5px;
   border: 1px solid #898989;
 }
-.body .user_search .user_role .select_role em {
+.user_search .user_role .select_role em {
   margin-left: 20px;
 }
-.body .user_search .user_role .select_role:hover {
+.user_search .user_role .select_role:hover {
   cursor: pointer;
 }
-.body .user_search .user_role ul {
+.user_search .user_role ul {
   display: none;
   position: absolute;
   text-align: center;
@@ -68,20 +61,20 @@
   right: 3px;
   z-index: 1;
 }
-.body .user_search .user_role ul li {
+.user_search .user_role ul li {
   padding: 4px 24px;
   background-color: #fff;
   border: 1px solid #898989;
   border-top: none;
 }
-.body .user_search .user_role ul li:hover {
+.user_search .user_role ul li:hover {
   cursor: pointer;
   background-color: #EEEEEE;
 }
-.body .user_search .user_state {
+.user_search .user_state {
   position: relative;
 }
-.body .user_search .user_state .select_state {
+.user_search .user_state .select_state {
   display: flex;
   justify-content: space-between;
   margin-left: 11px;
@@ -90,13 +83,13 @@
   border-radius: 5px;
   border: 1px solid #898989;
 }
-.body .user_search .user_state .select_state em {
+.user_search .user_state .select_state em {
   margin-left: 20px;
 }
-.body .user_search .user_state .select_state:hover {
+.user_search .user_state .select_state:hover {
   cursor: pointer;
 }
-.body .user_search .user_state ul {
+.user_search .user_state ul {
   display: none;
   position: absolute;
   text-align: center;
@@ -104,17 +97,17 @@
   right: 3px;
   z-index: 1;
 }
-.body .user_search .user_state ul li {
+.user_search .user_state ul li {
   padding: 4px 24px;
   background-color: #fff;
   border: 1px solid #898989;
   border-top: none;
 }
-.body .user_search .user_state ul li:hover {
+.user_search .user_state ul li:hover {
   cursor: pointer;
   background-color: #EEEEEE;
 }
-.body .user_search .search_button {
+.user_search .search_button {
   outline: 0;
   border: 1px solid #00B4C9;
   border-radius: 5px;
@@ -122,17 +115,17 @@
   margin-left: 50px;
   background-color: #00B0E3;
 }
-.body .user_search .search_button i {
+.user_search .search_button i {
   color: #fff;
   font-size: 20px;
 }
-.body .user_search .search_button {
+.user_search .search_button {
   cursor: pointer;
 }
-.body .selict_user {
-  margin: 40px 0 10px 30px;
+.selict_user {
+  margin: 40px 0 10px 0;
 }
-.body .selict_user button {
+.selict_user button {
   outline: 0;
   color: #fff;
   padding: 9px 22px;
@@ -140,16 +133,15 @@
   border: 1px solid #00B4C9;
   background-color: #00B0E3;
 }
-.body table {
+table {
   width: 100%;
-  margin: 0 30px 0 30px;
   box-sizing: border-box;
   border-collapse: collapse;
   border-spacing: 0px;
   table-layout: fixed;
 }
-.body table tr th,
-.body table tr td {
+table tr th,
+table tr td {
   position: relative;
   text-align: left;
   box-sizing: border-box;
@@ -161,8 +153,8 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.body table tr th input,
-.body table tr td input {
+table tr th input,
+table tr td input {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -170,82 +162,81 @@
   height: 18px;
   width: 18px;
 }
-.body table tr .th_center {
+table tr .th_center {
   width: 80px;
   text-align: center;
 }
-.body table tr .operation {
+table tr .operation {
   align-items: center;
 }
-.body table tr .operation .operation_center {
+table tr .operation .operation_center {
   display: flex;
   justify-content: center;
   box-sizing: border-box;
   width: 100%;
 }
-.body table tr .operation .operation_center a {
+table tr .operation .operation_center a {
   border-radius: 5px;
   padding: 6px 9px;
   font-size: 12px;
   color: #fff;
 }
-.body table tr .operation .operation_center a i {
+table tr .operation .operation_center a i {
   font-size: 12px;
   margin-right: 5px;
 }
-.body table tr .operation .operation_center .modify {
+table tr .operation .operation_center .modify {
   background-color: #1e9fff;
 }
-.body table tr .operation .operation_center .delete {
+table tr .operation .operation_center .delete {
   margin-left: 10px;
   background-color: #ff5722;
 }
-.body table thead tr {
+table thead tr {
   background-color: #EEEEEE;
 }
-.body .user_page {
+.user_page {
   display: flex;
   align-items: center;
-  margin-left: 30px;
   margin-top: 20px;
 }
-.body .user_page ul li {
+.user_page ul li {
   float: left;
   display: flex;
   color: #313131;
 }
-.body .user_page ul li a {
+.user_page ul li a {
   padding: 5px 11px;
   color: #313131;
 }
-.body .user_page ul li span {
+.user_page ul li span {
   display: inline-block;
   padding: 5px 11px;
 }
-.body .user_page ul .pageClick {
+.user_page ul .pageClick {
   color: #fff;
   background-color: #00CFD9;
 }
-.body .user_page ul .rpageClick {
+.user_page ul .rpageClick {
   color: #313131;
   background-color: #fff;
 }
-.body .user_page .userPageL,
-.body .user_page .userPageR {
+.user_page .userPageL,
+.user_page .userPageR {
   display: block;
   padding: 5px 11px;
   color: #444444;
 }
-.body .user_page .aDisable {
+.user_page .aDisable {
   color: #d2d2d2 !important;
   cursor: not-allowed !important;
 }
-.body .userPageNum {
+.userPageNum {
   display: flex;
   align-items: center;
   padding: 0 20px;
 }
-.body .userPageNum input {
+.userPageNum input {
   outline: none;
   text-align: center;
   width: 20px;
@@ -254,21 +245,21 @@
   font-size: 12px;
   border: 1px solid #ccc;
 }
-.body .userPageNum button {
+.userPageNum button {
   outline: 0;
   margin-left: 11px;
   padding: 2px 7px;
   border: 1px solid #ccc;
   background-color: #fff;
 }
-.body .userPageNum button:hover {
+.userPageNum button:hover {
   cursor: pointer;
 }
-.body .total {
+.total {
   margin-right: 20px;
   font-size: 14px;
 }
-.body select {
+select {
   outline: none;
   border: 1px solid #898989;
 }

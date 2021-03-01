@@ -25,23 +25,24 @@
             </div>
             <ul>
                 <li>
-                    <a href="#" target="_blank" title="博客首页"><i class="iconfont icon-daohangshouye"></i>博客首页</a>
+                    <a href="/" target="_blank" title="博客首页"><i class="iconfont icon-daohangshouye"></i>博客首页</a>
                 </li>
                 <li>
-                    <a href="#" target="_blank" title="你要的都在这里哦"><i class="iconfont icon-sort"></i>分类</a>
+                    <a href="/view/client/sort.html" target="_blank" title="你要的都在这里哦"><i class="iconfont icon-sort"></i>分类</a>
                 </li>
                 <li>
-                    <a href="#" target="_blank" title="在这里提出你的问题吧"><i class="iconfont icon-V"></i>论坛</a>
+                    <a href="/view/client/feedback.html" target="_blank" title="在这里提出你的问题吧"><i class="iconfont icon-V"></i>论坛</a>
                 </li>
                 <li>
                     <a href="#" target="_blank" title="让它变得更好吧"><i class="iconfont icon-yijian"></i>博客建议</a>
                 </li>
                 <li>
-                    <a href="../comment/login.html" target="_blank" title="登录注册都点这里嗷">登录/注册</a>
+                    <a href="/view/login.html" target="_blank" title="登录注册都点这里嗷" id="userState">登录/注册</a>
                 </li>
             </ul>
         </div>
     </div>
+    <!-- 一级评论 -->
     <!-- 发表评论 -->
     <div class="comment_autor">
         <!-- 你的狗头 -->
@@ -49,17 +50,18 @@
         <!-- 评论组件 -->
         <div class="comment_autor_box">
             <!-- 输入框 -->
-            <textarea name="" id="" cols="30" rows="10" placeholder="说出你的骚话"></textarea>
+            <textarea name="" id="commentOne" cols="30" rows="10" placeholder="说出你的骚话"></textarea>
             <!-- 提交按钮 -->
             <span>
-                <button>发表评论</button>
+                <button id="makeComment">发表评论</button>
             </span>
         </div>
     </div>
     <!-- 留言主体内容 -->
     <div class="opinion">
-        <ul>
+        <ul id="comment_comtent">
             <li>
+                <!-- 一级评论 -->
                 <!-- 留言内容 -->
                 <div class="opinion_content opinion_common">
                     <!-- 用户头像 -->
@@ -93,35 +95,69 @@
                         </div>
                     </div>
                 </div>
+                <!-- 二级评论 -->
                 <!-- 评论回复 -->
-                <div class="reply opinion_common">
-                    <!-- 回复人头像 -->
-                    <a href="#">
-                        <img src="../../resources/images/1.jpg" alt="你的头">
-                    </a>
-                    <!-- 回复人评论右侧留言信息,回复面板 -->
-                    <div class="comment">
-                        <div class="comment_box">
-                            <!-- 用户昵称及标签 -->
-                            <span class="author_name">
+                <div class="reply two">
+                    <div class="two_reply opinion_common">
+                        <!-- 回复人头像 -->
+                        <a href="#">
+                            <img src="../../resources/images/1.jpg" alt="你的头">
+                        </a>
+                        <!-- 回复人评论右侧留言信息,回复面板 -->
+                        <div class="comment">
+                            <div class="comment_box">
+                                <!-- 用户昵称及标签 -->
+                                <span class="author_name">
                                 <span><a href="#">富婆富婆</a></span>
-                            <a href="#"><img src="../../resources/images/富婆标签.png" alt=""></a>
-                            </span>
-                            <!-- 冒号 -->
-                            <span class="colon">:</span>
-                            <!-- 回复人昵称及标签 -->
-                            <span class="author_name">
-                                <span><a href="#">富婆富婆</a></span>
-                            <a href="#"><img src="../../resources/images/富婆标签.png" alt=""></a>
-                            </span>
-                            <!-- 回复人具体评论内容 -->
-                            <span class="new_comment">我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁</span>
-                            <!-- 对回复人进行操作 -->
-                            <div class="comment_operate">
-                                <span class="date">0秒前</span>
-                                <span class="reply_button">
+                                <a href="#"><img src="../../resources/images/富婆标签.png" alt=""></a>
+                                </span>
+                                <!-- 冒号 -->
+                                <span class="colon">:</span>
+                                <!-- 回复人具体评论内容 -->
+                                <span class="new_comment">我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁</span>
+                                <!-- 对回复人进行操作 -->
+                                <div class="comment_operate">
+                                    <span class="date">0秒前</span>
+                                    <span class="reply_button">
                                     <a href="#">回复</a>
                                 </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 三级评论 -->
+                <!-- 评论回复 -->
+                <div class="reply three">
+                    <div class="two_reply opinion_common">
+                        <!-- 回复人头像 -->
+                        <a href="#">
+                            <img src="../../resources/images/1.jpg" alt="你的头">
+                        </a>
+                        <!-- 回复人评论右侧留言信息,回复面板 -->
+                        <div class="comment">
+                            <div class="comment_box">
+                                <!-- 用户昵称及标签 -->
+                                <span class="author_name">
+                                <span><a href="#">富婆富婆</a></span>
+                                <a href="#"><img src="../../resources/images/富婆标签.png" alt=""></a>
+                                </span>
+                                <!-- 冒号 -->
+                                <span class="colon">:</span>
+                                <!-- 回复人昵称及标签 -->
+                                <span class="author_name">
+                                <span><a href="#">富婆富婆</a></span>
+                                <a href="#"><img src="../../resources/images/富婆标签.png" alt=""></a>
+                                </span>
+                                <!-- 回复人具体评论内容 -->
+                                <span class="new_comment">我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁我人无了，铁汁</span>
+                                <!-- 对回复人进行操作 -->
+                                <div class="comment_operate">
+                                    <span class="date">0秒前</span>
+                                    <span class="reply_button">
+                                    <a href="#">回复</a>
+                                </span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -143,6 +179,9 @@
             </li>
         </ul>
     </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script src="../../resources/js/client/common.js" type="module"></script>
+    <script src="../../resources/js/client/comment.js" type="module"></script>
 </body>
 
 </html>

@@ -197,7 +197,7 @@
 }
 .all .subject .header {
   position: fixed;
-  z-index: 1;
+  z-index: 99999;
   display: flex;
   justify-content: space-between;
   height: 54px;
@@ -209,6 +209,9 @@
 }
 .all .subject .header a {
   color: #6D6D6D;
+}
+.all .subject .header li > a:hover {
+  color: #C50000;
 }
 .all .subject .header .header_left {
   display: flex;
@@ -247,7 +250,7 @@
   left: 50%;
   z-index: 1;
   transform: translateX(-50%);
-  width: 150%;
+  width: 106px;
 }
 .all .subject .header .header_right li dd .userddTriangle {
   margin: 0 auto;
@@ -255,8 +258,11 @@
   height: 0;
   border-width: 11px;
   border-bottom: 10px;
-  border-color: transparent transparent #fff;
+  border-color: transparent transparent #FFDBDB;
   border-style: solid dashed dashed;
+}
+.all .subject .header .header_right li dd dl {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 .all .subject .header .header_right li dd dl a {
   background-color: #fff;
@@ -285,4 +291,10 @@
   height: 3px;
   transition: all 0.2s;
   background-color: #444444;
+}
+.all .subject .body {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin: 54px 30px 0;
 }

@@ -75,7 +75,10 @@ html .content .article > ul > li .content_img {
   border: 1px solid #E3E3E3;
 }
 html .content .article > ul > li .content_img img {
-  width: 100%;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
 }
 html .content .article > ul > li .content_details {
   flex: 1;

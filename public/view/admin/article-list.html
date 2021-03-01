@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>用户管理页面</title>
+    <!-- 公共样式(全体通用) -->
+    <link rel="stylesheet" href="../../resources/css/common.css">
+    <!-- 公共字体(全体通用) -->
+    <link rel="stylesheet" href="../../resources/css/font.css">
+    <!-- 管理页面公共样式 -->
+    <link rel="stylesheet" href="../../resources/css/admin/common/adminCommon.css">
+    <!-- 管理页面样式 -->
+    <link rel="stylesheet" href="../../resources/css/admin/article-list/article-list.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <!-- <script type="text/javascript" src="https://unpkg.com/wangeditor/dist/wangEditor.min.js"></script> -->
+    <!-- <script type="text/javascript" src="https://unpkg.zhimg.com/wangeditor@4.6.2/dist/wangEditor.min.js"></script> -->
+    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/24.0.0/classic/ckeditor.js"></script> -->
+</head>
+
+<body>
+    <div class="user_all">
+        <!-- 博客管理内容 -->
+        <div class="all">
+            <!-- 侧边栏 -->
+            <div class="side">
+                <!-- 侧边栏标题 -->
+                <div class="side_title">
+                    <span>my-blog博客管理后台</span>
+                </div>
+                <ul>
+                    <!-- 侧边栏选项 -->
+                    <li class="sideli">
+                        <!-- 侧边栏内容居中显示 -->
+                        <div class="sidelicenter">
+                            <!-- 该条内容图标描述 -->
+                            <i class="iconfont icon-daohangshouye side_default"></i>
+                            <!-- 该条内容文字描述 -->
+                            <a class="sideliTitle side_default" href="javascript:;">主页</a>
+                            <!-- 点击下拉小三角 -->
+                            <span class="side_pull triangle"></span>
+                        </div>
+                        <!-- 侧边栏下拉框 -->
+                        <dl class="sidedl">
+                            <!-- 侧边栏下拉框内容选项 -->
+                            <dd><a href="/view/admin/adminIndex.html">后台管理主页</a></dd>
+                            <dd><a href="javascript:;">客户端主页</a></dd>
+                        </dl>
+                    </li>
+                    <!-- 侧边栏选项 -->
+                    <li class="sideli">
+                        <!-- 侧边栏内容居中显示 -->
+                        <div class="sidelicenter">
+                            <!-- 该条内容图标描述 -->
+                            <i class="iconfont icon--yemianliebiao side_default"></i>
+                            <!-- 该条内容文字描述 -->
+                            <a class="sideliTitle side_default" href="javascript:;">页面</a>
+                            <!-- 点击下拉小三角 -->
+                            <span class="side_pull triangle"></span>
+                        </div>
+                        <!-- 侧边栏下拉框 -->
+                        <dl class="sidedl">
+                            <!-- 侧边栏下拉框内容选项 -->
+                            <dd><a href="/view/admin/adminIndex.html">abc</a></dd>
+                            <dd><a href="javascript:;">abc</a></dd>
+                        </dl>
+                    </li>
+                    <!-- 侧边栏选项 -->
+                    <li class="sideli">
+                        <!-- 侧边栏内容居中显示 -->
+                        <div class="sidelicenter">
+                            <!-- 该条内容图标描述 -->
+                            <i class="iconfont icon-yonghu side_default"></i>
+                            <!-- 该条内容文字描述 -->
+                            <a href="/view/admin/user.html" class="sideliTitle side_default">用户</a>
+                        </div>
+                    </li>
+                    <!-- 侧边栏选项 -->
+                    <li class="sideli">
+                        <!-- 侧边栏内容居中显示 -->
+                        <div class="sidelicenter">
+                            <!-- 该条内容图标描述 -->
+                            <i class="iconfont icon-16 side_default"></i>
+                            <!-- 该条内容文字描述 -->
+                            <a href="javascript:;" class="sideliTitle side_default">文章管理</a>
+                            <!-- 点击下拉小三角 -->
+                            <span class="side_pull triangle"></span>
+                        </div>
+                        <!-- 侧边栏下拉框 -->
+                        <dl class="sidedl">
+                            <!-- 侧边栏下拉框内容选项 -->
+                            <dd><a href="/view/admin/article-list.html">文章列表</a></dd>
+                            <dd><a href="/view/admin/article.html">编写文章</a></dd>
+                        </dl>
+                    </li>
+                    <!-- 侧边栏选项 -->
+                    <li class="sideli">
+                        <!-- 侧边栏内容居中显示 -->
+                        <div class="sidelicenter">
+                            <!-- 该条内容图标描述 -->
+                            <i class="iconfont icon-daohangshouye side_default"></i>
+                            <!-- 该条内容文字描述 -->
+                            <a class="sideliTitle side_default" href="javascript:;">主页</a>
+                        </div>
+                    </li>
+                    <!-- 侧边栏选项 -->
+                    <li class="sideli">
+                        <!-- 侧边栏内容居中显示 -->
+                        <div class="sidelicenter">
+                            <!-- 该条内容图标描述 -->
+                            <i class="iconfont icon-daohangshouye side_default"></i>
+                            <!-- 该条内容文字描述 -->
+                            <a class="sideliTitle side_default" href="javascript:;">主页</a>
+                        </div>
+                    </li>
+                    <!-- 侧边栏选项 -->
+                    <li class="sideli">
+                        <!-- 侧边栏内容居中显示 -->
+                        <div class="sidelicenter">
+                            <!-- 该条内容图标描述 -->
+                            <i class="iconfont icon-shezhi side_default"></i>
+                            <!-- 该条内容文字描述 -->
+                            <a class="sideliTitle side_default" href="javascript:;">设置</a>
+                            <!-- 点击下拉小三角 -->
+                            <span class="side_pull triangle"></span>
+                        </div>
+                        <!-- 侧边栏下拉框 -->
+                        <dl class="sidedl">
+                            <!-- 侧边栏下拉框内容选项 -->
+                            <dd><a href="javascript:;">abc</a></dd>
+                            <dd><a href="javascript:;">客户端主页</a></dd>
+                        </dl>
+                    </li>
+                    <!-- 侧边栏左侧动画条形效果 -->
+                    <span class="left_animation"></span>
+                </ul>
+            </div>
+            <!-- 主体内容 -->
+            <div class="subject">
+                <!-- 头部 -->
+                <div class="header" id="header">
+                    <!-- 头部左侧导航 -->
+                    <ul class="header_left">
+                        <li>
+                            <a href="javascript:;"><i class="iconfont icon-backward-a"></i></a>
+                        </li>
+                        <li>
+                            <a href="javascript:;"><i class="iconfont icon-hulianwang"></i></a>
+                        </li>
+                        <li>
+                            <a href="javascript:;"><i class="iconfont icon-shuaxin"></i></a>
+                        </li>
+                    </ul>
+                    <!-- 头部右侧导航 -->
+                    <ul class="header_right">
+                        <li>
+                            <a href="javascript:;"><i class="iconfont icon-beijingtupian"></i></a>
+                        </li>
+                        <!-- 用户昵称 -->
+                        <li>
+                            <a class="user" href="javascript:;">
+                                <cite>富婆</cite>
+                                <input type="hidden" value="" id="userLoginId">
+                                <span id="userTriangle" class="triangle"></span>
+                            </a>
+                            <!-- 用户下拉框 -->
+                            <dd class="userShow">
+                                <dl class="userddTriangle">
+                                </dl>
+                                <dl><a href="#">基本资料</a></dl>
+                                <dl><a href="#">修改密码</a></dl>
+                                <dl><a href="/loginState?login=out">退出登录</a></dl>
+                            </dd>
+                        </li>
+                        <li>
+                            <a href="javascript:;"><i class="iconfont icon-github"></i></a>
+                        </li>
+                    </ul>
+                    <span id="header_strip"></span>
+                </div>
+                <div class="body">
+                    <div class="article_operation">
+                        <p class="article_all">筛选文章</p>
+                        <div class="article_screen">
+                            <div class="article_find select_sort" data-find="">
+                                <div class="article_select">
+                                    <div class="select_content complex_find">
+                                        <span>选择查找分类</span>
+                                        <i class="iconfont icon-xiasanjiaoxing"></i>
+                                    </div>
+                                    <ul>
+                                        <!-- <li>
+                                            <a href="javascript:;">HTML</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;">Java</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;">c</a>
+                                        </li> -->
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="article_find select_sort" data-find="">
+                                <div class="article_select">
+                                    <div class="select_content complex_find">
+                                        <span>选择查找分类</span>
+                                        <i class="iconfont icon-xiasanjiaoxing"></i>
+                                    </div>
+                                    <ul>
+                                        <!-- <li>
+                                            <a href="javascript:;">HTML</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;">Java</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;">c</a>
+                                        </li> -->
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="article_find select_sort" data-find="">
+                                <div class="article_select">
+                                    <div class="select_content complex_find">
+                                        <span>选择查找分类</span>
+                                        <i class="iconfont icon-xiasanjiaoxing"></i>
+                                    </div>
+                                    <ul>
+                                        <!-- <li>
+                                            <a href="javascript:;">HTML</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;">Java</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;">c</a>
+                                        </li> -->
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="article_find">
+                                <div class="article_select">
+                                    <div id="select_state" class="select_content">
+                                        <span>文章状态</span>
+                                        <i class="iconfont icon-xiasanjiaoxing"></i>
+                                    </div>
+                                    <ul>
+                                        <li>
+                                            <a href="javascript:;">已发布</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;">草稿</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="article_button">
+                                <button id="find_get">查询</button>
+                            </div>
+                        </div>
+                        <div class="edit_write">
+                            <button>进入文章编写页面</button>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>标题</th>
+                                <th>文章封面</th>
+                                <th>作者</th>
+                                <th class="table_center">分类</th>
+                                <th style="width: 98px;" class="table_center">编写时间</th>
+                                <th style="width: 80px;" class="table_center">状态</th>
+                                <th style="width: 170px;" class="table_center">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody">
+                            <tr>
+                                <td>1233211234567</td>
+                                <th>文章封面</th>
+                                <td>1233211234567</td>
+                                <td class="table_center">HTML、Node.js</td>
+                                <td class="table_center">2021-1-20</td>
+                                <td class="table_center">已发布</td>
+                                <td>
+                                    <div class="table_operation">
+                                        <a class="article_modify"><i class="iconfont icon-xiugai"></i>编辑</a>
+                                        <a class="article_delete"><i class="iconfont icon-shanchu"></i>删除</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="article_page">
+                        <ul>
+                            <li>
+                                <a class="page_prohibit_change" href="#"><i class="iconfont icon-tubiaozhizuo-"></i></a>
+                            </li>
+                            <li>
+                                <a class="page_click" href="#">1</a>
+                            </li>
+                            <li>
+                                <a href="#">2</a>
+                            </li>
+                            <li>
+                                <a href="#">3</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="iconfont icon-tubiaozhizuo-1"></i></a>
+                            </li>
+                        </ul>
+                        <span class="page_jump">跳转到<input value="1" type="text">页<button>跳转</button></span>
+                        <span class="page_num">共<label>10</label>条</span>
+                        <div class="page_select">
+                            <div class="page_show">
+                                <span>5条/页</span>
+                                <i class="iconfont icon-xia"></i>
+                            </div>
+                            <ul>
+                                <li><a href="#">5条/页</a></li>
+                                <li><a href="#">10条/页</a></li>
+                                <li><a href="#">15条/页</a></li>
+                                <li><a href="#">20条/页</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 100%;height: 500px;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="tips_background"></div>
+    <script src="../../resources/js/admin/index.js"></script>
+    <!-- <script src="../../resources/js/common/common.js" type="module"></script>
+    <script src="../../resources/js/admin/article.js" type="module"></script> -->
+    <script src="../../resources/js/admin/article-list.js"></script>
+</body>
+
+</html>

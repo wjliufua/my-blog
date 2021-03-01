@@ -10,6 +10,16 @@ var sidelicenter = document.getElementsByClassName('sidelicenter');
 var sideli = document.getElementsByClassName('sideli');
 // 主体头部左侧导航栏
 var headerLeft = document.getElementsByClassName('header_left')[0];
+// 主体头部右侧导航栏
+var headerRight = document.getElementsByClassName('header_right')[0];
+// 右侧导航栏用户下拉图标
+var userTriangle = document.getElementById('userTriangle');
+// 用户下拉框
+var userShow = document.getElementsByClassName('userShow')[0];
+// 用户昵称处
+var user = document.getElementsByClassName('user')[0];
+// 用户登录ID
+var userLoginId = document.getElementById('userLoginId');
 
 // 侧边栏下拉框默认选中样式
 sidedl[0].children[0].style.backgroundColor = '#808080';
@@ -24,6 +34,7 @@ var sideOpen = true;
 // 
 var sideOpens = true;
 
+
 // 侧边栏左侧动画条形效果
 function sideliAddress() {
     for (let i = 0; i < sideli.length; i++) {
@@ -34,6 +45,9 @@ function sideliAddress() {
             var oTo = oEvent.toElement || oEvent.relatedTarget;
             if (this.contains(oTo)) return;
             $('.left_animation').css('opacity', '0');
+            // setTimeout(function() {
+            //     $('.left_animation').css('opacity', '0');
+            // }, 100);
         }
 
         // 获取侧边栏每个 li 选项
@@ -42,7 +56,10 @@ function sideliAddress() {
             // 解决 onmouseover bug (鼠标移入触发事件)
             var oFrom = oEvent.fromElement || oEvent.relatedTarget;
             if (this.contains(oFrom)) return;
-            $('.left_animation').css({ 'opacity': '1', 'top': this.offsetTop + 'px' });
+            // setTimeout(function() {
+            //     $('.left_animation').css({ 'opacity': '1', 'top': sideli[i].offsetTop + 'px' });
+            // }, 100);
+            $('.left_animation').css({ 'opacity': '1', 'top': sideli[i].offsetTop + 'px' });
         }
     }
 }
@@ -182,6 +199,23 @@ function sidedlpull() {
     }
 }
 
+user.onmouseover = function() {
+    userTriangle.style.borderColor = 'transparent transparent #6D6D6D';
+    user.style.color = '#C50000';
+};
+user.onmouseout = function() {
+    userTriangle.style.borderColor = '#6D6D6D transparent transparent';
+    user.style.color = '#6D6D6D';
+};
+userShow.onmouseover = function() {
+    userTriangle.style.borderColor = 'transparent transparent #6D6D6D';
+    user.style.color = '#C50000';
+};
+userShow.onmouseout = function() {
+    userTriangle.style.borderColor = '#6D6D6D transparent transparent';
+    user.style.color = '#6D6D6D';
+};
+
 var a = 1;
 var subject = document.getElementsByClassName('subject')[0];
 var header = document.getElementsByClassName('header')[0];
@@ -232,27 +266,29 @@ function sideData() {
         return '用户'
     } else if (thisWebPage === 'adminIndex') {
         return '后台管理主页'
+    } else if (thisWebPage === 'article-list') {
+        return '文章列表'
+    } else if (thisWebPage === 'article') {
+        return '编写文章'
     }
 }
 // 侧边栏遍历
 function sideFor() {
     for (var i = 0; i < sidelicenter.length; i++) {
         if (sidelicenter[i].nextElementSibling) {
-            for (var j = 0; j < sidelicenter[i].nextElementSibling.children; j++) {
-                if (sidelicenter[i].nextElementSibling.children[j].children[0].innerHTML === sideData()) {
+            for (var j = 0; j < sidelicenter[i].nextElementSibling.children.length; j++) {
+                if (sidelicenter[i].nextElementSibling.children[j].children[0].innerText === sideData()) {
+                    if (sideData() !== '后台管理主页') { sidelicenter[i].click(); }
                     sidelicenter[i].nextElementSibling.children[j].click();
                 }
             }
         }
-        if (sidelicenter[i].children[1].innerHTML === sideData()) {
-            console.log(sidelicenter[i]);
+        if (sidelicenter[i].children[1].innerText === sideData()) {
             sidelicenter[i].click();
         }
     }
 }
 sideFor();
-var userShow = document.getElementsByClassName('userShow')[0];
-var userTriangle = document.getElementById('userTriangle');
 
 var headerStrip = document.getElementById('header_strip');
 
@@ -281,3 +317,18 @@ function getLeft(e) {
     if (e.offsetParent != null) offset += getLeft(e.offsetParent);
     return offset;
 }
+
+function userLogin() {
+    $.ajax({
+        type: 'get',
+        url: '/loginState',
+        data: {},
+        success: function(data) {
+            user.children[0].innerHTML = data.username;
+        },
+        error: function(err) {
+            console.log(err);
+        }
+    });
+}
+userLogin();

@@ -1,0 +1,154 @@
+.body .blue {
+  border: 2px solid #0099E0;
+  background-color: #89FDFF;
+  color: #2794C7;
+}
+.body .green {
+  border: 2px solid #00AD5C;
+  background-color: #7FFFDA;
+  color: #3AB18F;
+}
+.body .red {
+  border: 2px solid #FF1A1A;
+  background-color: #FFC8C8;
+  color: #FF2323;
+}
+.body .yellow {
+  border: 2px solid #D6DB00;
+  background-color: #FEFFCA;
+  color: #BFC330;
+}
+.body h1 {
+  width: 100%;
+  padding: 30px 0;
+}
+.body .article_operation {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+}
+.body .article_operation .article_edit {
+  width: 70%;
+}
+.body .article_operation .article_edit .article_title {
+  margin-bottom: 30px;
+}
+.body .article_operation .article_edit .article_title label {
+  width: 100%;
+}
+.body .article_operation .article_edit .article_title input {
+  width: 100%;
+  margin-top: 10px;
+  padding: 13px 10px;
+  box-sizing: border-box;
+  border-radius: 7px;
+  outline: none;
+  border: 1px solid #777777;
+}
+.body .article_operation .article_edit .article_content label {
+  width: 100%;
+}
+.body .article_operation .article_edit .article_content #div1 {
+  z-index: 0;
+  margin-top: 10px;
+}
+.body .article_operation .article_edit .article_content .ck-editor {
+  margin-top: 10px;
+}
+.body .article_operation .article_edit .article_content .ck-editor .ck-editor__editable {
+  height: 500px;
+}
+.body .article_operation .other_edit {
+  width: 27%;
+}
+.body .article_operation .other_edit > div {
+  margin-bottom: 30px;
+}
+.body .article_operation .other_edit .cover input {
+  width: 100%;
+  margin-top: 10px;
+  outline: none;
+  padding: 7px 10px;
+  border-radius: 7px;
+  box-sizing: border-box;
+  border: 1px solid #777777;
+}
+.body .article_operation .other_edit .cover .cover_preview {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+  margin-top: 10px;
+  border-radius: 7px;
+  max-height: 300px;
+  border: 1px solid #00B3D6;
+  background-color: #F1F1F1;
+  overflow: hidden;
+}
+.body .article_operation .other_edit .cover .cover_preview img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+.body .article_operation .other_edit .article_category ul {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  border: 1px solid #777777;
+}
+.body .article_operation .other_edit .article_category ul li {
+  width: 33.33%;
+  margin: 7px 0;
+  box-sizing: border-box;
+}
+.body .article_operation .other_edit .article_category ul li .category_choice {
+  margin: 0 7px;
+  padding: 7px 0;
+  border-radius: 5px;
+}
+.body .article_operation .other_edit .article_category ul li .category_choice input {
+  margin: 0 7px 0 12px;
+}
+.body .article_operation .other_edit .state {
+  position: relative;
+}
+.body .article_operation .other_edit .state .article_select {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding: 7px 11px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  border: 2px solid #FF8C2D;
+}
+.body .article_operation .other_edit .state .article_select:hover {
+  cursor: pointer;
+}
+.body .article_operation .other_edit .state ul {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  width: 100%;
+}
+.body .article_operation .other_edit .state ul li {
+  padding: 7px 11px;
+  border-radius: 5px;
+  margin: -1px 0;
+  box-sizing: border-box;
+  border: 1px solid #848484;
+  background-color: #fff;
+}
+.body .article_operation .other_edit .state ul li:hover {
+  cursor: pointer;
+}
+.body .article_operation .other_edit .req button {
+  outline: none;
+  padding: 9px 30px;
+  border-radius: 5px;
+  color: #fff;
+  border: none;
+  background-color: #D73F1D;
+}

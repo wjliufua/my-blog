@@ -76,10 +76,15 @@ body {
         padding: 30px 0;
 
         ul {
+            padding-bottom: 20px;
+            background-color: #FAFAFA;
+
             li {
-                padding: 20px 30px;
-                border-bottom: 1px solid #6F6F6F;
-                background-color: #FAFAFA;
+                margin: 0px 30px 0px 30px;
+                padding: 20px 0;
+                // border-bottom: 1px solid #6F6F6F;
+                padding-bottom: 20px;
+                border-bottom: 1px solid rgb(229, 233, 239);
 
                 .opinion_common {
 
@@ -97,15 +102,27 @@ body {
                         }
                     }
 
+                    // &>.comment {
+                    //     padding-bottom: 20px;
+                    //     border-bottom: 1px solid rgb(229, 233, 239);
+                    // }
+
                     // 回复人评论右侧留言信息,回复面板
                     .comment {
+                        flex: 1;
                         display: flex;
                         align-items: center;
                         font-size: 14px;
 
                         .comment_box {
+                            flex: 1;
+
                             a {
                                 color: #00D9F2;
+                            }
+
+                            a:hover {
+                                cursor: pointer;
                             }
 
                             // 回复人昵称及标签
@@ -124,6 +141,7 @@ body {
 
                             // 对留言操作
                             .comment_operate {
+                                flex: 1;
                                 display: flex;
                                 justify-content: flex-end;
                                 padding: 15px 0;
@@ -149,6 +167,11 @@ body {
                     display: flex;
                     padding-left: 20px;
                     font-size: 14px;
+
+                    .two_reply {
+                        flex: 1;
+                        display: flex;
+                    }
                 }
 
                 // 回复评论模块

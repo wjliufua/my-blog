@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>用户管理页面</title>
+    <!-- 公共样式(全体通用) -->
+    <link rel="stylesheet" href="../../resources/css/common.css">
+    <!-- 公共字体(全体通用) -->
+    <link rel="stylesheet" href="../../resources/css/font.css">
+    <!-- 管理页面公共样式 -->
+    <link rel="stylesheet" href="../../resources/css/admin/common/adminCommon.css">
+    <!-- 管理页面样式 -->
+    <link rel="stylesheet" href="../../resources/css/admin/article/article.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <!-- <script type="text/javascript" src="https://unpkg.com/wangeditor/dist/wangEditor.min.js"></script> -->
+    <!-- <script type="text/javascript" src="https://unpkg.zhimg.com/wangeditor@4.6.2/dist/wangEditor.min.js"></script> -->
+    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/24.0.0/classic/ckeditor.js"></script> -->
+</head>
+
+<body>
+    <div class="user_all">
+        <!-- 博客管理内容 -->
+        <div class="all">
+            <!-- 侧边栏 -->
+            <div class="side">
+                <!-- 侧边栏标题 -->
+                <div class="side_title">
+                    <span>my-blog博客管理后台</span>
+                </div>
+                <ul>
+                    <!-- 侧边栏选项 -->
+                    <li class="sideli">
+                        <!-- 侧边栏内容居中显示 -->
+                        <div class="sidelicenter">
+                            <!-- 该条内容图标描述 -->
+                            <i class="iconfont icon-daohangshouye side_default"></i>
+                            <!-- 该条内容文字描述 -->
+                            <a class="sideliTitle side_default" href="javascript:;">主页</a>
+                            <!-- 点击下拉小三角 -->
+                            <span class="side_pull triangle"></span>
+                        </div>
+                        <!-- 侧边栏下拉框 -->
+                        <dl class="sidedl">
+                            <!-- 侧边栏下拉框内容选项 -->
+                            <dd><a href="/view/admin/adminIndex.html">后台管理主页</a></dd>
+                            <dd><a href="javascript:;">客户端主页</a></dd>
+                        </dl>
+                    </li>
+                    <!-- 侧边栏选项 -->
+                    <li class="sideli">
+                        <!-- 侧边栏内容居中显示 -->
+                        <div class="sidelicenter">
+                            <!-- 该条内容图标描述 -->
+                            <i class="iconfont icon--yemianliebiao side_default"></i>
+                            <!-- 该条内容文字描述 -->
+                            <a class="sideliTitle side_default" href="javascript:;">页面</a>
+                            <!-- 点击下拉小三角 -->
+                            <span class="side_pull triangle"></span>
+                        </div>
+                        <!-- 侧边栏下拉框 -->
+                        <dl class="sidedl">
+                            <!-- 侧边栏下拉框内容选项 -->
+                            <dd><a href="/view/admin/adminIndex.html">abc</a></dd>
+                            <dd><a href="javascript:;">abc</a></dd>
+                        </dl>
+                    </li>
+                    <!-- 侧边栏选项 -->
+                    <li class="sideli">
+                        <!-- 侧边栏内容居中显示 -->
+                        <div class="sidelicenter">
+                            <!-- 该条内容图标描述 -->
+                            <i class="iconfont icon-yonghu side_default"></i>
+                            <!-- 该条内容文字描述 -->
+                            <a href="/view/admin/user.html" class="sideliTitle side_default">用户</a>
+                        </div>
+                    </li>
+                    <!-- 侧边栏选项 -->
+                    <li class="sideli">
+                        <!-- 侧边栏内容居中显示 -->
+                        <div class="sidelicenter">
+                            <!-- 该条内容图标描述 -->
+                            <i class="iconfont icon-16 side_default"></i>
+                            <!-- 该条内容文字描述 -->
+                            <a href="javascript:;" class="sideliTitle side_default">文章管理</a>
+                            <!-- 点击下拉小三角 -->
+                            <span class="side_pull triangle"></span>
+                        </div>
+                        <!-- 侧边栏下拉框 -->
+                        <dl class="sidedl">
+                            <!-- 侧边栏下拉框内容选项 -->
+                            <dd><a href="/view/admin/article-list.html">文章列表</a></dd>
+                            <dd><a href="/view/admin/article.html">编写文章</a></dd>
+                        </dl>
+                    </li>
+                    <!-- 侧边栏选项 -->
+                    <li class="sideli">
+                        <!-- 侧边栏内容居中显示 -->
+                        <div class="sidelicenter">
+                            <!-- 该条内容图标描述 -->
+                            <i class="iconfont icon-daohangshouye side_default"></i>
+                            <!-- 该条内容文字描述 -->
+                            <a class="sideliTitle side_default" href="javascript:;">主页</a>
+                        </div>
+                    </li>
+                    <!-- 侧边栏选项 -->
+                    <li class="sideli">
+                        <!-- 侧边栏内容居中显示 -->
+                        <div class="sidelicenter">
+                            <!-- 该条内容图标描述 -->
+                            <i class="iconfont icon-daohangshouye side_default"></i>
+                            <!-- 该条内容文字描述 -->
+                            <a class="sideliTitle side_default" href="javascript:;">主页</a>
+                        </div>
+                    </li>
+                    <!-- 侧边栏选项 -->
+                    <li class="sideli">
+                        <!-- 侧边栏内容居中显示 -->
+                        <div class="sidelicenter">
+                            <!-- 该条内容图标描述 -->
+                            <i class="iconfont icon-shezhi side_default"></i>
+                            <!-- 该条内容文字描述 -->
+                            <a class="sideliTitle side_default" href="javascript:;">设置</a>
+                            <!-- 点击下拉小三角 -->
+                            <span class="side_pull triangle"></span>
+                        </div>
+                        <!-- 侧边栏下拉框 -->
+                        <dl class="sidedl">
+                            <!-- 侧边栏下拉框内容选项 -->
+                            <dd><a href="javascript:;">abc</a></dd>
+                            <dd><a href="javascript:;">客户端主页</a></dd>
+                        </dl>
+                    </li>
+                    <!-- 侧边栏左侧动画条形效果 -->
+                    <span class="left_animation"></span>
+                </ul>
+            </div>
+            <!-- 主体内容 -->
+            <div class="subject">
+                <!-- 头部 -->
+                <div class="header" id="header">
+                    <!-- 头部左侧导航 -->
+                    <ul class="header_left">
+                        <li>
+                            <a href="javascript:;"><i class="iconfont icon-backward-a"></i></a>
+                        </li>
+                        <li>
+                            <a href="javascript:;"><i class="iconfont icon-hulianwang"></i></a>
+                        </li>
+                        <li>
+                            <a href="javascript:;"><i class="iconfont icon-shuaxin"></i></a>
+                        </li>
+                    </ul>
+                    <!-- 头部右侧导航 -->
+                    <ul class="header_right">
+                        <li>
+                            <a href="javascript:;"><i class="iconfont icon-beijingtupian"></i></a>
+                        </li>
+                        <!-- 用户昵称 -->
+                        <li>
+                            <a class="user" href="javascript:;">
+                                <cite>富婆</cite>
+                                <input type="hidden" value="" id="userLoginId">
+                                <span id="userTriangle" class="triangle"></span>
+                            </a>
+                            <!-- 用户下拉框 -->
+                            <dd class="userShow">
+                                <dl class="userddTriangle">
+                                </dl>
+                                <dl><a href="#">基本资料</a></dl>
+                                <dl><a href="#">修改密码</a></dl>
+                                <dl><a href="/loginState?login=out">退出登录</a></dl>
+                            </dd>
+                        </li>
+                        <li>
+                            <a href="javascript:;"><i class="iconfont icon-github"></i></a>
+                        </li>
+                    </ul>
+                    <span id="header_strip"></span>
+                </div>
+                <div class="body">
+                    <h1>写个屁的文章</h1>
+                    <!-- 编写文章主体部分 -->
+                    <div class="article_operation">
+                        <div class="article_edit">
+                            <div class="article_title">
+                                <label>文章标题：</label>
+                                <input type="text" id="article_title">
+                            </div>
+                            <div class="article_content">
+                                <label>文章内容：</label>
+                                <!-- <textarea namen="content" id="editor">
+                                    这里的内容会被初始化到编辑器中
+                                </textarea> -->
+                                <div id="div1">
+                                    <p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 文章其他部分 -->
+                        <div class="other_edit">
+                            <div class="cover">
+                                <label>文章封面：</label>
+                                <div id="article_coverBox">
+                                    <input id="article_cover" type="file">
+                                </div>
+                                <input type="hidden" value="" id="cover_hidden">
+                                <div class="cover_preview">
+                                    <img id="cover_preview">
+                                </div>
+                            </div>
+                            <div class="category">
+                                <label>所属分类：</label>
+                                <div class="article_category">
+                                    <ul>
+                                        <li>
+                                            <div class="category_choice">
+                                                <input class="article_check" type="checkbox">
+                                                <span>HTML</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="category_choice blue">
+                                                <input class="article_check" type="checkbox">
+                                                <span>Node</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="category_choice green">
+                                                <input class="article_check" type="checkbox">
+                                                <span>Java</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="category_choice red">
+                                                <input class="article_check" type="checkbox">
+                                                <span>C</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="category_choice yellow">
+                                                <input class="article_check" type="checkbox">
+                                                <span>C++</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="state">
+                                <label>文章状态：</label>
+                                <div class="article_select">
+                                    <span id="state_text">草稿</span>
+                                    <em class="arrow_state"><i class="iconfont icon-xiasanjiaoxing"></i></em>
+                                </div>
+                                <ul id="article_select_choice">
+                                    <li>发布</li>
+                                    <li>草稿</li>
+                                </ul>
+                            </div>
+                            <div class="req">
+                                <button id="article_submit">提交</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 100%;height: 500px;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="tips_background"></div>
+    <script src="../../resources/js/wangEditor.min.js"></script>
+    <script src="../../resources/js/admin/index.js"></script>
+    <script src="../../resources/js/common/common.js" type="module"></script>
+    <script src="../../resources/js/admin/article.js" type="module"></script>
+    <!-- <script src="../../resources/js/wangEditor.min.js.map"></script> -->
+    <!-- <script src="../../resources/js/ckeditor.js"></script>
+    <script src="../../resources/js/zh-cn.js"></script>
+    <script>
+        var myEditor = null;
+        window.onload = function() {
+            ClassicEditor
+                .create(document.querySelector("#editor"), {
+                    language: 'zh-cn'
+                })
+                .then(editor => {
+                    myEditor = editor;
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        }
+    </script> -->
+    <!-- <script type="text/javascript">
+        const E = window.wangEditor;
+        const editor = new E("#div1");
+        // 或者 const editor = new E(document.getElementById('div1'));
+        editor.config.height = 500;
+        editor.create();
+    </script> -->
+</body>
+
+</html>

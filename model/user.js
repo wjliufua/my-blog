@@ -6,7 +6,7 @@ const { Schema } = mongoose;
 // 用户集合规则
 const UserSchema = new Schema({
     // 昵称
-    usernmae: {
+    username: {
         type: String,
         required: true
     },

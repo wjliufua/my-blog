@@ -41,7 +41,7 @@ module.exports = async(req, res) => {
         let registerFlag = await User.findOne({ email: registerEmail, register: 'blankState' });
         if (userFlag == null) {
             User.create({
-                usernmae: nickName,
+                username: nickName,
                 email: registerEmail,
                 password: registerPwd,
                 role: 'ordinary',

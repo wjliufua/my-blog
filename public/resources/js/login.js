@@ -172,6 +172,8 @@ var registerValue = '';
 function debounce() {
     register();
 }
+
+// 注册
 // 获取用户输入值
 function register() {
     if (!pwdFlag) {
@@ -219,9 +221,8 @@ function register() {
 var loginEmail = document.getElementById('login_email');
 var loginPwd = document.getElementById('login_pwd');
 
+// 登录
 function login() {
-    console.log(loginEmail.value.trim());
-    console.log(loginPwd.value.trim());
     if (loginEmail.value.trim() == '' || loginPwd.value.trim() == '') return alert('好好输入信息,爱你');
     $.ajax({
         type: 'post',
@@ -231,19 +232,25 @@ function login() {
             loginPwd: loginPwd.value
         },
         success: function(data) {
-            console.log(data);
-            // let { msg } = data;
             if (data.msg) {
                 console.log(msg);
                 alert(msg);
             }
             if (data.href) {
-                // console.log(data.username);
-                // console.log(data.role);
-                // sessionStorage.setItem("username", data.username);
-                // sessionStorage.setItem("role", data.role);
+                function setCookie(name, value) {
+                    if (value) {
+                        var days = 1; //定义一天
+                        var exp = new Date();
+                        exp.setTime(exp.getTime() + days * 24 * 60 * 60 * 1000);
+                        console.log(exp.setTime(exp.getTime() + days * 24 * 60 * 60 * 1000));
+                        // 写入Cookie, toGMTString将时间转换成字符串
+                        document.cookie = name + "=" + value + ";path=" + "/" + ";expires=" + exp.toGMTString();
+                    }
+                };
+                setCookie('username', data.username);
+                setCookie('id', data.id);
+                // alert(document.cookie);
                 location.href = data.href;
-                // console.log(data.href);
             }
         },
         error: function(err) {

@@ -15,7 +15,7 @@ module.exports = async(req, res) => {
      */
     let pagesize = parseInt(req.query.pagesize) || 5;
     let userObj = {
-        usernmae: username,
+        username: username,
         email: useremail,
         role: userrole,
         state: userstate,
@@ -56,6 +56,7 @@ module.exports = async(req, res) => {
      * skip 从什么位置开始查找
      */
     let users = await User.find(searchArry[0]).limit(pagesize).skip(start);
+    // console.log(users);
     res.send({
         users,
         thatPage,

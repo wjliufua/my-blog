@@ -10,6 +10,8 @@ const path = require('path');
 const htpp = require('http');
 // 引入session模块
 var session = require('express-session');
+// 处理文件上传
+const formidableMiddleware = require('express-formidable');
 // 引入cookie模块
 var cookieParser = require('cookie-parser');
 // 创建网站服务器
@@ -43,7 +45,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/view/admin', (req, res, next) => {
-    if (!req.session.username) {
+    if (!req.session.email) {
         res.redirect(302, '/view/login.html');
     } else {
         // 如果用户是登录状态 并且是一个普通用户
@@ -56,15 +58,28 @@ app.use('/view/admin', (req, res, next) => {
     }
 });
 
+// 处理post参数
+app.use('/upload', formidableMiddleware({
+    // 文件上传目录
+    uploadDir: path.join(__dirname, 'public', 'upload'),
+    // 最大上传文件为2M
+    maxFileSize: 2 * 1024 * 1024,
+    // 保留文件扩展名
+    keepExtensions: true
+}));
+
 // 开放静态资源文件
 app.use(express.static(path.join(__dirname, 'public')));
 
 // 路由模块
 require('./routes')(app);
 
-mongoose.connect('mongodb://root:root@localhost:27017/myblog?authSource=admin', { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false })
+// mongoose.connect('mongodb://root:root@localhost:27017/myblog?authSource=admin', { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false })
+//     .then(() => console.log('数据库连接成功'))
+//     .catch(() => console.log('数据库连接失败'));
+mongoose.connect('mongodb://127.0.0.1/myblog', { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false })
     .then(() => console.log('数据库连接成功'))
-    .catch(() => console.log('数据库连接失败'));
+    .catch((err) => console.log(err));
 
 // 监听端口
 app.listen(8000);

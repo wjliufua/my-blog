@@ -64,7 +64,7 @@ $.ajax({
                 <tr>
                     <td><input type="checkbox" class="checked"></td>
                     <td>${users[x]._id}</td>
-                    <td>${users[x].usernmae}</td>
+                    <td>${users[x].username}</td>
                     <td>${users[x].email}</td>
                     <td class="th_center">${users[x].role == 'admin' ? '管理员' : '普通用户'}</td>
                     <td class="th_center">${users[x].state == 0 ? '启用' : '禁用'}</td>
@@ -280,7 +280,7 @@ function reqPage() {
                                 <tr>
                                     <td><input type="checkbox" class="checked"></td>
                                     <td>${users[x]._id}</td>
-                                    <td>${users[x].usernmae}</td>
+                                    <td>${users[x].username}</td>
                                     <td>${users[x].email}</td>
                                     <td class="th_center">${users[x].role == 'admin' ? '管理员' : '普通用户'}</td>
                                     <td class="th_center">${users[x].state == 0 ? '启用' : '禁用'}</td>
@@ -540,7 +540,7 @@ searchButton.onclick = function() {
                             <tr>
                                 <td><input type="checkbox" class="checked"></td>
                                 <td>${users[x]._id}</td>
-                                <td>${users[x].usernmae}</td>
+                                <td>${users[x].username}</td>
                                 <td>${users[x].email}</td>
                                 <td class="th_center">${users[x].role == 'admin' ? '管理员' : '普通用户'}</td>
                                 <td class="th_center">${users[x].state == 0 ? '启用' : '禁用'}</td>
@@ -618,13 +618,14 @@ var userId = document.getElementById('userId');
 function tipsEdit() {
     tipsSelect();
     tips.onclick = function() {
-        tipsSelectArr[0] = true;
-        tipsSelectArr[1] = true;
-        document.getElementsByClassName('tips_select')[0].children[1].setAttribute('class', 'iconfont icon-xiasanjiaoxing');
-        document.getElementsByClassName('tips_select')[0].children[2].style.display = 'none';
-        document.getElementsByClassName('tips_select')[1].children[1].setAttribute('class', 'iconfont icon-xiasanjiaoxing');
-        document.getElementsByClassName('tips_select')[1].children[2].style.display = 'none';
-    }
+            tipsSelectArr[0] = true;
+            tipsSelectArr[1] = true;
+            document.getElementsByClassName('tips_select')[0].children[1].setAttribute('class', 'iconfont icon-xiasanjiaoxing');
+            document.getElementsByClassName('tips_select')[0].children[2].style.display = 'none';
+            document.getElementsByClassName('tips_select')[1].children[1].setAttribute('class', 'iconfont icon-xiasanjiaoxing');
+            document.getElementsByClassName('tips_select')[1].children[2].style.display = 'none';
+        }
+        // 循环获取页面中的编辑按钮
     for (var i = 0; i < userModify.length; i++) {
         userModify[i].index = i;
         userModify[i].onclick = function() {
@@ -694,7 +695,7 @@ function userReqTotal(obj) {
                 search: true
             },
             success: function(data) {
-                console.log(data);
+                // console.log(data);
                 let { thatPage, totalPage, users } = data;
                 tbodyContent = ``;
                 for (var x = 0; x < users.length; x++) {
@@ -702,7 +703,7 @@ function userReqTotal(obj) {
                                 <tr>
                                     <td><input type="checkbox" class="checked"></td>
                                     <td>${users[x]._id}</td>
-                                    <td>${users[x].usernmae}</td>
+                                    <td>${users[x].username}</td>
                                     <td>${users[x].email}</td>
                                     <td class="th_center">${users[x].role == 'admin' ? '管理员' : '普通用户'}</td>
                                     <td class="th_center">${users[x].state == 0 ? '启用' : '禁用'}</td>
@@ -729,6 +730,7 @@ function userReqTotal(obj) {
                     }
                 }
                 thisDelete();
+                tipsEdit();
             },
             error: function(err) {
                 console.log(err);
@@ -772,7 +774,7 @@ function userEdit() {
                             <tr>
                                 <td><input type="checkbox" class="checked"></td>
                                 <td>${users[x]._id}</td>
-                                <td>${users[x].usernmae}</td>
+                                <td>${users[x].username}</td>
                                 <td>${users[x].email}</td>
                                 <td class="th_center">${users[x].role == 'admin' ? '管理员' : '普通用户'}</td>
                                 <td class="th_center">${users[x].state == 0 ? '启用' : '禁用'}</td>
@@ -840,6 +842,7 @@ checkedSelect();
 
 var userDeleteArr = [];
 
+// 批量删除
 function batchDelete() {
     userDelete = [];
     for (var i = 0; i < check.length; i++) {
@@ -865,7 +868,7 @@ function batchDelete() {
                             <tr>
                                 <td><input type="checkbox" class="checked"></td>
                                 <td>${users[x]._id}</td>
-                                <td>${users[x].usernmae}</td>
+                                <td>${users[x].username}</td>
                                 <td>${users[x].email}</td>
                                 <td class="th_center">${users[x].role == 'admin' ? '管理员' : '普通用户'}</td>
                                 <td class="th_center">${users[x].state == 0 ? '启用' : '禁用'}</td>
@@ -902,6 +905,7 @@ function batchDelete() {
 }
 var userDeleteOne = '';
 
+// 删除该用户
 function thisDelete() {
     var userDelte = document.getElementsByClassName('delete');
     // console.log(userDelte);
@@ -924,7 +928,7 @@ function thisDelete() {
                                     <tr>
                                         <td><input type="checkbox" class="checked"></td>
                                         <td>${users[x]._id}</td>
-                                        <td>${users[x].usernmae}</td>
+                                        <td>${users[x].username}</td>
                                         <td>${users[x].email}</td>
                                         <td class="th_center">${users[x].role == 'admin' ? '管理员' : '普通用户'}</td>
                                         <td class="th_center">${users[x].state == 0 ? '启用' : '禁用'}</td>

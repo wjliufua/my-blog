@@ -62,7 +62,7 @@
             .tips_select {
                 display: flex;
                 justify-content: space-between;
-                user-select:none;
+                user-select: none;
                 position: relative;
                 // z-index: 2;
                 width: 150px;
@@ -96,8 +96,9 @@
                 }
             }
         }
-        .tips_button{
-            button{
+
+        .tips_button {
+            button {
                 outline: 0;
                 border-radius: 5px;
                 margin-left: 130px;
@@ -264,7 +265,7 @@
         // 头部
         .header {
             position: fixed;
-            z-index: 1;
+            z-index: 99999;
             display: flex;
             justify-content: space-between;
             height: 54px;
@@ -276,6 +277,10 @@
 
             a {
                 color: #6D6D6D;
+            }
+
+            li>a:hover {
+                color: #C50000;
             }
 
             // 头部左侧导航栏
@@ -330,7 +335,7 @@
                         left: 50%;
                         z-index: 1;
                         transform: translateX(-50%);
-                        width: 150%;
+                        width: 106px;
 
                         // 用户昵称处下拉框气泡特效小三角
                         .userddTriangle {
@@ -339,11 +344,13 @@
                             height: 0;
                             border-width: 11px;
                             border-bottom: 10px;
-                            border-color: transparent transparent #fff;
+                            border-color: transparent transparent #FFDBDB;
                             border-style: solid dashed dashed;
                         }
 
                         dl {
+                            box-shadow: 0 15px 30px rgba(0, 0, 0, .2);
+
                             a {
                                 background-color: #fff;
                                 display: block;
@@ -386,6 +393,13 @@
                 transition: all .2s;
                 background-color: #444444;
             }
+        }
+
+        .body {
+            display: flex;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin: 54px 30px 0;
         }
     }
 }
